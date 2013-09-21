@@ -3,10 +3,33 @@ package jogoanatomia.entidades;
 import java.util.ArrayList;
 
 public class Orgao {
+    
     private int idOrgao;
+    
     private String nome;
+    
     private String malha;
+    
+    // TODO retirar json
     private static OperacoesJSON op=new OperacoesJSON();
+    
+    private int status;
+
+    
+    /**
+     * 
+     * @return 1 se finalizado, 0 caso contrário;
+     */
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Orgao(){
+    }
     
     
     public int getIdOrgao() {
@@ -39,6 +62,8 @@ public class Orgao {
         this.malha = malha;
     }
     
+    
+    //TODO Mover para método DAO
     public static ArrayList<Orgao> getTodos(){
         return op.getTodosOrgaos();
     }

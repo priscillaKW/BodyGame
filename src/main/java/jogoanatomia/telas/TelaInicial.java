@@ -6,9 +6,11 @@ import jogoanatomia.entidades.actor.LoginActor;
 
 public class TelaInicial extends javax.swing.JFrame {
 
-    LoginActor loginActor;
+    public LoginActor loginActor;
     
-    boolean loginOK = false;
+    public boolean loginOK = false;
+    
+    public TelaCadastro telaDeCadastro;
     
         
     /**
@@ -16,6 +18,7 @@ public class TelaInicial extends javax.swing.JFrame {
      */
     public TelaInicial() {
         loginActor = new LoginActor();
+        telaDeCadastro = new TelaCadastro();
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -87,7 +90,7 @@ public class TelaInicial extends javax.swing.JFrame {
         getContentPane().add(jButtonCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 110, -1));
 
         jLabelMessage.setForeground(new java.awt.Color(255, 0, 0));
-        getContentPane().add(jLabelMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 310, 30));
+        getContentPane().add(jLabelMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 310, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -113,7 +116,8 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     private void jButtonCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroActionPerformed
-        //Redirecionar para tela de cadastro
+        this.dispose();
+        telaDeCadastro.setVisible(true);
     }//GEN-LAST:event_jButtonCadastroActionPerformed
 
     /**
