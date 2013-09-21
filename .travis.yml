@@ -6,5 +6,8 @@ jdk:
   - oraclejdk6
 before_install:
   - mvn install -DskipTests=true -e
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 script:
   - mvn test -X
