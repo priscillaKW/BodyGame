@@ -51,11 +51,11 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jButtonStart" min="-2" pref="83" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="jLabelPersonagens" min="-2" pref="215" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabelOrgaos" min="-2" pref="189" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
@@ -71,7 +71,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jLabelPersonagens" pref="289" max="32767" attributes="0"/>
-                  <Component id="jLabelOrgaos" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="35" max="32767" attributes="0"/>
               <Component id="jButtonStart" min="-2" max="-2" attributes="0"/>
@@ -114,19 +114,6 @@
         <Property name="text" type="java.lang.String" value="Selecione o seu personagem e escolha a parte do corpo para Iniciar a Partida!!"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelOrgaos">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder justification="2" position="2" title="Selecione o &#xf3;rg&#xe3;o ">
-              <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder/>
-              </Border>
-            </TitledBorder>
-          </Border>
-        </Property>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="jButtonStart">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -144,5 +131,21 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JList" name="jListOrgaos">
+          <Properties>
+            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.AbstractListModel() {&#xa;    public int getSize() { return orgaos.size(); }&#xa;    public Object getElementAt(int i) { return orgaos.get(i).getNome(); }&#xa;}" type="code"/>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

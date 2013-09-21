@@ -10,6 +10,8 @@ import com.sun.j3d.utils.universe.SimpleUniverse;
 import java.applet.Applet;
 import java.awt.FlowLayout;
 import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -22,10 +24,12 @@ import javax.vecmath.Vector3f;
 public class CarregaStereo extends Applet {
 
     protected Canvas3D c1 = new Canvas3D(SimpleUniverse.getPreferredConfiguration());
-    private static MainFrame mf;
-    protected SimpleUniverse u = null;
+    protected SimpleUniverse su = null;
     protected BranchGroup scene = null;
     protected String fileName;
+    
+    VirtualUniverse u = new VirtualUniverse();
+    Locale myLocale = new Locale(u);
 
     public String getFileName() {
         return fileName;
@@ -48,8 +52,8 @@ public class CarregaStereo extends Applet {
         c1.setSize(size, size);
         add(c1);
         scene = createSceneGraph();
-        u = new SimpleUniverse(c1);
-        u.addBranchGraph(scene);
+        su = new SimpleUniverse(c1);
+        su.addBranchGraph(scene);
 
     }
 
@@ -168,15 +172,28 @@ public class CarregaStereo extends Applet {
 
     public CarregaStereo() {
     }
-
-    public void destroy() {
-        u.removeAllLocales();
+    
+    public Canvas3D carregaObjeto(String nome){
+        GraphicsConfigTemplate3D g3d = new GraphicsConfigTemplate3D();
+	GraphicsEnvironment ge = GraphicsEnvironment
+			.getLocalGraphicsEnvironment();
+	GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
+	GraphicsConfiguration gcn = defaultScreen.getBestConfiguration(g3d);
+        Canvas3D c = new Canvas3D(gcn);
+        // construcao do universo
+        this.setFileName(nome);
+        myLocale.addBranchGraph(this.createSceneGraph());
+        myLocale.addBranchGraph(this.branchGroupLeft(c));
+        // Background
+        BranchGroup brbg = new BranchGroup();
+        BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0),
+                400);
+        Color3f bgColor = new Color3f(0f, 0f, 0f);
+        Background backg = new Background(bgColor);
+        backg.setApplicationBounds(bounds);
+        brbg.addChild(backg);
+        myLocale.addBranchGraph(brbg);
+        return c;
     }
 
-    public static void main(String[] args) {
-
-        CarregaStereo s = new CarregaStereo();
-        s.setFileName("./coracao");
-        mf = new MainFrame(s, size, size);
-    }
 }

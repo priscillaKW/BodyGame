@@ -4,6 +4,7 @@
  */
 package jogoanatomia.telas;
 
+import javax.swing.JOptionPane;
 import jogoanatomia.entidades.actor.CadastroActor;
 
 /**
@@ -12,9 +13,11 @@ import jogoanatomia.entidades.actor.CadastroActor;
  */
 public class TelaCadastro extends javax.swing.JFrame {
     
-    CadastroActor cadastroActor;
+    public CadastroActor cadastroActor;
     
-    boolean cadastroOK;
+    public boolean cadastroOK;
+    
+    public TelaPersonagemOrgaos telaPersoganemOrgao;
 
     /**
      * Creates new form TelaCadastro
@@ -22,6 +25,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     public TelaCadastro() {
         cadastroActor = new CadastroActor();
         initComponents();
+        telaPersoganemOrgao = new TelaPersonagemOrgaos();
     }
 
     /**
@@ -82,23 +86,26 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(159, 159, 159)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelLogin)
-                                .addGap(31, 31, 31)
-                                .addComponent(jTextLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelSenha)
-                                .addGap(26, 26, 26)
-                                .addComponent(jTextSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(71, 71, 71)
-                            .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabelMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabelLogin)
+                                    .addGap(31, 31, 31)
+                                    .addComponent(jTextLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabelSenha)
+                                    .addGap(26, 26, 26)
+                                    .addComponent(jTextSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(jLabelMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -141,7 +148,10 @@ public class TelaCadastro extends javax.swing.JFrame {
         }else{
             cadastroOK = cadastroActor.cadastrar(login, senha);
             if(cadastroOK){
-                //Redirecionar para outra tela;
+                // JOptionPane.showMessageDialog(rootPane, "Cadastro realizado com sucesso!");
+                this.dispose();                
+                telaPersoganemOrgao.setVisible(true);
+                
             }else{
                 jLabelMessage.setText("Login já cadastrado no sistema, tente outro");
             }

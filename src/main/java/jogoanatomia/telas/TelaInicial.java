@@ -12,6 +12,7 @@ public class TelaInicial extends javax.swing.JFrame {
     
     public TelaCadastro telaDeCadastro;
     
+    public TelaPersonagemOrgaos telaPersoganemOrgao;
         
     /**
      * Creates new form TelaInicial
@@ -19,6 +20,7 @@ public class TelaInicial extends javax.swing.JFrame {
     public TelaInicial() {
         loginActor = new LoginActor();
         telaDeCadastro = new TelaCadastro();
+        telaPersoganemOrgao = new TelaPersonagemOrgaos();
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -107,7 +109,8 @@ public class TelaInicial extends javax.swing.JFrame {
         }else{
             loginOK = loginActor.verificaLogin(login, senha);
             if(loginOK){
-                //Redirecionar para outra tela;
+                this.dispose();                
+                telaPersoganemOrgao.setVisible(true);
             }else{
                 jLabelMessage.setText("Login ou senha inválidos!");
             }

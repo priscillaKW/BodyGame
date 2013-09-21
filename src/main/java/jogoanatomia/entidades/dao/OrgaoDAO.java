@@ -22,7 +22,7 @@ public class OrgaoDAO {
         coracao.setNome("Coração");
         coracao.setStatus(1);
         Orgao rim = new Orgao();
-        rim.setIdOrgao(0);
+        rim.setIdOrgao(1);
         rim.setMalha("./rim.obj");
         rim.setNome("Rim");
         rim.setStatus(0);

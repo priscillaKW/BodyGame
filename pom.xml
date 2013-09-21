@@ -37,12 +37,12 @@
 
         <dependency>
             <groupId>java3d</groupId>
-            <artifactId>j3dcore</artifactId>
+            <artifactId>j3d-core-utils</artifactId>
             <scope>system</scope>
             <version>1.5.1</version>
-            <systemPath>${project.basedir}/lib/j3dcore.jar</systemPath>
+            <systemPath>${project.basedir}/lib/j3d-core-utils.jar</systemPath>
         </dependency>
-
+        
         <dependency>
             <groupId>java3d</groupId>
             <artifactId>j3dutils</artifactId>

@@ -9,7 +9,11 @@ import com.sun.j3d.utils.behaviors.mouse.MouseWheelZoom;
 import com.sun.j3d.utils.universe.SimpleUniverse;
 import java.applet.Applet;
 import java.awt.BorderLayout;
+import java.awt.Canvas;
 import java.awt.Frame;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.util.Vector;
 import javax.media.j3d.*;
 import javax.vecmath.AxisAngle4d;
@@ -23,6 +27,9 @@ public class CarregaObj extends Applet {
     SimpleUniverse simpleU;
     static boolean application = false;
     public String file;
+    
+    VirtualUniverse u = new VirtualUniverse();
+    Locale myLocale = new Locale(u);
 
     public String getFile() {
         return file;
@@ -148,14 +155,29 @@ public class CarregaObj extends Applet {
         bg.compile();
         return bg;
     }
-
-    public void destroy() {
-        simpleU.removeAllLocales();
+    
+    public Canvas3D carregaOrgao(String nome){
+        Canvas3D c;
+        GraphicsConfigTemplate3D g3d = new GraphicsConfigTemplate3D();
+	GraphicsEnvironment ge = GraphicsEnvironment
+			.getLocalGraphicsEnvironment();
+	GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
+	GraphicsConfiguration gcn = defaultScreen.getBestConfiguration(g3d);
+	c = new Canvas3D(gcn);
+        // construcao do universo        
+        CarregaObj CarregaObj = new CarregaObj();
+        this.setFile("./"+nome);
+        myLocale.addBranchGraph(CarregaObj.createSceneGraph());
+        myLocale.addBranchGraph(CarregaObj.branchGroupLeft(c));
+        BranchGroup brbg = new BranchGroup();
+        BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0),
+                100);
+        Color3f bgColor = new Color3f(0.0f, 0.7f, 1.0f);
+        Background backg = new Background(bgColor);
+        backg.setApplicationBounds(bounds);
+        brbg.addChild(backg);
+        myLocale.addBranchGraph(brbg);
+        return c;
     }
 
-    public static void main(String[] args) {
-        application = true;
-        Frame frame = new MainFrame(new CarregaObj(), 800, 800);
-
-    }
 }

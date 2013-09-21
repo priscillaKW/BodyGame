@@ -112,12 +112,12 @@ public class OperacoesJSON {
         }
     }
     
-    public ArrayList<Estudos> getEstudosPorOrgao(int idorgao) { 
+    public ArrayList<Conteudo> getEstudosPorOrgao(int idorgao) { 
         String url="http://bodygame.orgfree.com/obtemEstudos.php?idorgao="+idorgao;
         setURL(url);
         // Converte em string
         final String result = convertStreamToString(this.getInputStream());
-        ArrayList<Estudos> resultado=new ArrayList<Estudos>();
+        ArrayList<Conteudo> resultado=new ArrayList<Conteudo>();
         try {
             // Tranforma a string em objeto JSON
             final JSONObject json = new JSONObject(result);
@@ -129,7 +129,7 @@ public class OperacoesJSON {
                 String conteudo=org.getString("conteudo");
                 String nivel=org.getString("nivel");
                 String ido=org.getString("idorgao");
-                Estudos estudo=new Estudos(Integer.parseInt(id), conteudo, Integer.parseInt(nivel), Integer.parseInt(ido));
+                Conteudo estudo=new Conteudo(Integer.parseInt(id), conteudo, Integer.parseInt(nivel), Integer.parseInt(ido));
                 resultado.add(estudo);
             }
             return resultado;
