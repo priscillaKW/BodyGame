@@ -212,10 +212,9 @@ public class Associacao extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLtempo = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("BodyGame - Jogo de Associa����o");
+        setTitle("BodyGame - Jogo de Associação");
         setMaximumSize(new java.awt.Dimension(1142, 600));
         setMinimumSize(new java.awt.Dimension(1142, 600));
         setPreferredSize(new java.awt.Dimension(1142, 600));
@@ -223,12 +222,12 @@ public class Associacao extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel12.setText("Pontua����o Total:");
+        jLabel12.setText("Pontuação Total:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(153, 0, 0));
-        jLabel11.setText("Jogo de Associa����o");
+        jLabel11.setText("Jogo de Associação");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jLpontuacaoTotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -467,9 +466,6 @@ public class Associacao extends javax.swing.JFrame {
         jLtempo.setText("-");
         getContentPane().add(jLtempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 38, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jogoanatomia/telas/images/fundo_associacao.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 600));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -551,7 +547,6 @@ public class Associacao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLdica1;
     private javax.swing.JLabel jLdica2;

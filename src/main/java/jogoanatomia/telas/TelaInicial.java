@@ -2,22 +2,20 @@ package jogoanatomia.telas;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import jogoanatomia.entidades.actor.LoginActor;
 
 public class TelaInicial extends javax.swing.JFrame {
 
-    static TelaInicial singleton;
+    LoginActor loginActor;
     
-    public static TelaInicial getInstance(){
-        if (singleton==null){
-            singleton=new TelaInicial();
-        }
-        return singleton;
-    }
+    boolean loginOK = false;
     
+        
     /**
      * Creates new form TelaInicial
      */
     public TelaInicial() {
+        loginActor = new LoginActor();
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -31,88 +29,92 @@ public class TelaInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jBestudar = new javax.swing.JButton();
-        jBjogar = new javax.swing.JButton();
-        jBranking = new javax.swing.JButton();
-        jBsair = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jButtonEntrar = new javax.swing.JButton();
+        jLabelTitulo = new javax.swing.JLabel();
+        jTextSenha = new javax.swing.JTextField();
+        jLabelLogin = new javax.swing.JLabel();
+        jLabelSenha = new javax.swing.JLabel();
+        jTextLogin1 = new javax.swing.JTextField();
+        jButtonCadastro = new javax.swing.JButton();
+        jLabelMessage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("BodyGame");
-        setBounds(new java.awt.Rectangle(300, 50, 0, 0));
+        setBounds(new java.awt.Rectangle(200, 50, 0, 0));
+        setIconImages(null);
         setMaximumSize(new java.awt.Dimension(590, 520));
         setMinimumSize(new java.awt.Dimension(590, 520));
-        setPreferredSize(new java.awt.Dimension(590, 520));
+        setPreferredSize(new java.awt.Dimension(200, 200));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jBestudar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jBestudar.setForeground(new java.awt.Color(153, 0, 0));
-        jBestudar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jogoanatomia/telas/images/1369963189_notebook.png"))); // NOI18N
-        jBestudar.setText("Estudar");
-        jBestudar.setMaximumSize(new java.awt.Dimension(690, 230));
-        jBestudar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEntrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonEntrar.setForeground(new java.awt.Color(153, 0, 0));
+        jButtonEntrar.setText("Entrar");
+        jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBestudarActionPerformed(evt);
+                jButtonEntrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBestudar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 130, -1));
+        getContentPane().add(jButtonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 83, -1));
 
-        jBjogar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jBjogar.setForeground(new java.awt.Color(153, 0, 0));
-        jBjogar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jogoanatomia/telas/images/1369963184_game.png"))); // NOI18N
-        jBjogar.setText("Jogar");
-        jBjogar.addActionListener(new java.awt.event.ActionListener() {
+        jLabelTitulo.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        jLabelTitulo.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTitulo.setText("BodyGame");
+        getContentPane().add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 580, 50));
+
+        jTextSenha.setToolTipText("Insira o login");
+        getContentPane().add(jTextSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 120, 40));
+
+        jLabelLogin.setText("Login:");
+        getContentPane().add(jLabelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
+
+        jLabelSenha.setText("Senha:");
+        getContentPane().add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
+
+        jTextLogin1.setToolTipText("Insira o login");
+        getContentPane().add(jTextLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 120, 40));
+
+        jButtonCadastro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonCadastro.setForeground(new java.awt.Color(153, 0, 0));
+        jButtonCadastro.setText("Cadastre-se");
+        jButtonCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBjogarActionPerformed(evt);
+                jButtonCadastroActionPerformed(evt);
             }
         });
-        getContentPane().add(jBjogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 130, -1));
+        getContentPane().add(jButtonCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 110, -1));
 
-        jBranking.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jBranking.setForeground(new java.awt.Color(153, 0, 0));
-        jBranking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jogoanatomia/telas/images/winners.png"))); // NOI18N
-        jBranking.setText("Ranking");
-        jBranking.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBrankingActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jBranking, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 130, 50));
-
-        jBsair.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jBsair.setForeground(new java.awt.Color(153, 0, 0));
-        jBsair.setText("Sair");
-        jBsair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBsairActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jBsair, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 83, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jogoanatomia/telas/images/fundo_Inicial.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabelMessage.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(jLabelMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 310, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBjogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBjogarActionPerformed
-        EscolheJogo.getInstance().setVisible(true);
-    }//GEN-LAST:event_jBjogarActionPerformed
+    private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
+        jLabelMessage.setText("");
+        String login  = jTextLogin1.getText();
+        String senha = jTextSenha.getText();
+        if(login==null || login.isEmpty()){
+            jLabelMessage.setText("Insira o login");
+            
+        }else if(senha==null || senha.isEmpty()){
+            jLabelMessage.setText("Insira a senha");
+        }else{
+            loginOK = loginActor.verificaLogin(login, senha);
+            if(loginOK){
+                //Redirecionar para outra tela;
+            }else{
+                jLabelMessage.setText("Login ou senha inválidos!");
+            }
+        }
+           
+    }//GEN-LAST:event_jButtonEntrarActionPerformed
 
-    private void jBestudarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBestudarActionPerformed
-        EscolheParteCorpo.getInstance().setVisible(true);
-        EscolheParteCorpo.getInstance().inicio();
-    }//GEN-LAST:event_jBestudarActionPerformed
-
-    private void jBrankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBrankingActionPerformed
-        TelaRanking.getInstance().setVisible(true);
-    }//GEN-LAST:event_jBrankingActionPerformed
-
-    private void jBsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsairActionPerformed
-        JOptionPane.showMessageDialog(this, "Volte sempre!");
-        this.dispose();
-    }//GEN-LAST:event_jBsairActionPerformed
+    private void jButtonCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroActionPerformed
+        //Redirecionar para tela de cadastro
+    }//GEN-LAST:event_jButtonCadastroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,10 +151,13 @@ public class TelaInicial extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBestudar;
-    private javax.swing.JButton jBjogar;
-    private javax.swing.JButton jBranking;
-    private javax.swing.JButton jBsair;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JButton jButtonCadastro;
+    public javax.swing.JButton jButtonEntrar;
+    private javax.swing.JLabel jLabelLogin;
+    public javax.swing.JLabel jLabelMessage;
+    private javax.swing.JLabel jLabelSenha;
+    private javax.swing.JLabel jLabelTitulo;
+    public javax.swing.JTextField jTextLogin1;
+    public javax.swing.JTextField jTextSenha;
     // End of variables declaration//GEN-END:variables
 }

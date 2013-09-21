@@ -28,7 +28,6 @@ public class EscolheJogo extends javax.swing.JFrame {
         jBassociacao = new javax.swing.JButton();
         jBperguntas = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("BodyGame - Escolha o Jogo");
@@ -82,9 +81,6 @@ public class EscolheJogo extends javax.swing.JFrame {
         jLabel5.setText("Escolha um jogo!");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 11, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jogoanatomia/telas/images/fundo_escolhe_jogo.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 350));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -122,7 +118,6 @@ public class EscolheJogo extends javax.swing.JFrame {
     private javax.swing.JButton jBcacaPalavras;
     private javax.swing.JButton jBforca;
     private javax.swing.JButton jBperguntas;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

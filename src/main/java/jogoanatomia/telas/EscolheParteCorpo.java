@@ -40,6 +40,7 @@ public class EscolheParteCorpo extends javax.swing.JFrame {
         modelo = new DefaultListModel();
         jLorgaos = new javax.swing.JList();
         jLabel2 = new javax.swing.JLabel();
+        orgaoPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("BodyGame - Escolha Parte do Corpo");
@@ -73,6 +74,7 @@ public class EscolheParteCorpo extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jogoanatomia/telas/images/fundo_escolhe_orgao.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 400));
+        getContentPane().add(orgaoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 210, 160));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -91,5 +93,6 @@ public class EscolheParteCorpo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JList jLorgaos;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel orgaoPanel;
     // End of variables declaration//GEN-END:variables
 }
