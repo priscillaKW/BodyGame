@@ -4,7 +4,7 @@
  */
 package jogoanatomia.entidades.dao;
 
-import jogoanatomia.entidades.Usuario;
+import jogoanatomia.entidades.User;
 
 /**
  *
@@ -16,7 +16,7 @@ public class UsuarioDAO {
             return false;
     }
     
-    public Usuario buscarUsuario(String login, String senha){
+    public User buscarUsuario(String login, String senha){
         return null;
     }
     

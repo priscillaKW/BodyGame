@@ -4,38 +4,35 @@
  */
 package jogoanatomia.telas;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
-import junit.framework.TestCase;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  *
  * @author Jessica
  */
-public class TelaCadastroTest extends TestCase {
-    
-    public TelaCadastroTest(String testName) {
-        super(testName);
-    }
-    
+public class TelaCadastroTest {
     TelaCadastro window;
     
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+    @Before
+    public void setUp() {
         window = new TelaCadastro();
         window.setVisible(true);
     }
     
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
+    @After
+    public void tearDown() {
         window.dispose();
     }
 
     /**
      * Test of main method, of class TelaInicial.
      */
+    @Test
     public void testMain() {
         System.out.println("main");
         String[] args = null;
@@ -45,31 +42,32 @@ public class TelaCadastroTest extends TestCase {
     /**
      * Testa se a tela está sendo exibida
      */
+    @Test
     public void testIsShowing(){
         assertTrue(window.isShowing());
     }
-    
+
+    @Test
     public void testTextoLoginVazio(){
         window.jButtonCadastrar.doClick();
         String message = (String) window.jLabelMessage.getText();
-        assertEquals(window.cadastroOK, false);     
         assertEquals(message, "Insira o login");
     }
-    
+
+    @Test
     public void testTextoSenhaVazio(){
         window.jTextLogin1.setText("jessica");
         window.jButtonCadastrar.doClick();
         String message = (String) window.jLabelMessage.getText();
-        assertEquals(window.cadastroOK, false);     
         assertEquals(message, "Insira a senha");
     }
-    
+
+    @Test
     public void testTextoLoginIncorreto(){
         window.jTextLogin1.setText("jessica");
         window.jTextSenha.setText("1234");
         window.jButtonCadastrar.doClick();
         String message = (String) window.jLabelMessage.getText();
-        assertEquals(window.cadastroOK, false);     
         assertEquals(message, "Login já cadastrado no sistema, tente outro");
     }
 }

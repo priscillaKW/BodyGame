@@ -1,15 +1,14 @@
 package jogoanatomia.telas;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import jogoanatomia.entidades.actor.LoginActor;
+
+import jogoanatomia.entidades.User;
+import jogoanatomia.services.UserService;
+import jogoanatomia.services.UserServiceImpl;
 
 public class TelaInicial extends javax.swing.JFrame {
+    private UserService userService;
 
-    public LoginActor loginActor;
-    
-    public boolean loginOK = false;
-    
     public TelaCadastro telaDeCadastro;
     
     public TelaPersonagemOrgaos telaPersoganemOrgao;
@@ -18,7 +17,7 @@ public class TelaInicial extends javax.swing.JFrame {
      * Creates new form TelaInicial
      */
     public TelaInicial() {
-        loginActor = new LoginActor();
+        userService = new UserServiceImpl();
         telaDeCadastro = new TelaCadastro();
         telaPersoganemOrgao = new TelaPersonagemOrgaos();
         initComponents();
@@ -107,11 +106,12 @@ public class TelaInicial extends javax.swing.JFrame {
         }else if(senha==null || senha.isEmpty()){
             jLabelMessage.setText("Insira a senha");
         }else{
-            loginOK = loginActor.verificaLogin(login, senha);
-            if(loginOK){
+            User user = userService.login(login, senha);
+
+            if(user != null) {
                 this.dispose();                
                 telaPersoganemOrgao.setVisible(true);
-            }else{
+            } else {
                 jLabelMessage.setText("Login ou senha inválidos!");
             }
         }

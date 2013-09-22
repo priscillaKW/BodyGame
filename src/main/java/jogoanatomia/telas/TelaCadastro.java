@@ -4,26 +4,24 @@
  */
 package jogoanatomia.telas;
 
-import javax.swing.JOptionPane;
-import jogoanatomia.entidades.actor.CadastroActor;
+import jogoanatomia.entidades.User;
+import jogoanatomia.services.UserService;
+import jogoanatomia.services.UserServiceImpl;
 
 /**
  *
  * @author Jessica
  */
 public class TelaCadastro extends javax.swing.JFrame {
-    
-    public CadastroActor cadastroActor;
-    
-    public boolean cadastroOK;
-    
+    private UserService userService;
+
     public TelaPersonagemOrgaos telaPersoganemOrgao;
 
     /**
      * Creates new form TelaCadastro
      */
     public TelaCadastro() {
-        cadastroActor = new CadastroActor();
+        userService = new UserServiceImpl();
         initComponents();
         telaPersoganemOrgao = new TelaPersonagemOrgaos();
     }
@@ -146,8 +144,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         }else if(senha==null || senha.isEmpty()){
             jLabelMessage.setText("Insira a senha");
         }else{
-            cadastroOK = cadastroActor.cadastrar(login, senha);
-            if(cadastroOK){
+            User user = userService.create(login, senha);
+            if(user != null){
                 // JOptionPane.showMessageDialog(rootPane, "Cadastro realizado com sucesso!");
                 this.dispose();                
                 telaPersoganemOrgao.setVisible(true);

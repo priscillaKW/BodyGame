@@ -4,41 +4,35 @@
  */
 package jogoanatomia.telas;
 
-import java.awt.AWTEvent;
-import java.awt.Frame;
-import java.awt.event.WindowEvent;
-import javax.swing.JOptionPane;
-import static junit.framework.Assert.assertEquals;
-import junit.framework.TestCase;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  *
  * @author Jessica
  */
-public class TelaInicialTest extends TestCase {
-    
-    public TelaInicialTest(String testName) {
-        super(testName);
-    }
-    
+public class TelaInicialTest {
     TelaInicial window;
     
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+    @Before
+    public void setUp() {
         window = new TelaInicial();
         window.setVisible(true);
     }
     
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
+    @After
+    public void tearDown() {
         window.dispose();
     }
 
     /**
      * Test of main method, of class TelaInicial.
      */
+    @Test
     public void testMain() {
         System.out.println("main");
         String[] args = null;
@@ -48,31 +42,32 @@ public class TelaInicialTest extends TestCase {
     /**
      * Testa se a tela está sendo exibida
      */
+    @Test
     public void testIsShowing(){
         assertTrue(window.isShowing());
     }
-    
+
+    @Test
     public void testTextoLoginVazio(){
         window.jButtonEntrar.doClick();
         String message = (String) window.jLabelMessage.getText();
-        assertEquals(window.loginOK, false);     
         assertEquals(message, "Insira o login");
     }
-    
+
+    @Test
     public void testTextoSenhaVazio(){
         window.jTextLogin1.setText("jessica");
         window.jButtonEntrar.doClick();
         String message = (String) window.jLabelMessage.getText();
-        assertEquals(window.loginOK, false);     
         assertEquals(message, "Insira a senha");
     }
-    
+
+    @Test
     public void testTextoLoginIncorreto(){
         window.jTextLogin1.setText("jessica");
-        window.jTextSenha.setText("1234");
+        window.jTextSenha.setText("12345");
         window.jButtonEntrar.doClick();
         String message = (String) window.jLabelMessage.getText();
-        assertEquals(window.loginOK, false);     
         assertEquals(message, "Login ou senha inválidos!");
     }
 }
