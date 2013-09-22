@@ -9,3 +9,5 @@ before_script:
   - "sh -e /etc/init.d/xvfb start"
 script:
   - mvn test -X
+notifications:
+  email: false
