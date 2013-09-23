@@ -86,7 +86,7 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitulo.setText("BodyGame");
 
-        jLabelPersonagens.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Escolha o seu personagem", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
+        jLabelPersonagens.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Escolha o seu personagem", 2, 2));
         jLabelPersonagens.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelPersonagensMouseClicked(evt);

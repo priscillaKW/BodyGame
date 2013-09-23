@@ -28,6 +28,8 @@ public class TelaEstudar extends javax.swing.JFrame {
     public int contaConteudo;
     
     static Orgao orgao;
+    
+    public EscolheJogo telaEscolheJogo;
 
     /**
      * Creates new form Estudar
@@ -196,7 +198,8 @@ public class TelaEstudar extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
     private void jButtonJogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJogarActionPerformed
-        // TODO add your handling code here:
+        telaEscolheJogo = new EscolheJogo();
+        telaEscolheJogo.orgao = orgao;
     }//GEN-LAST:event_jButtonJogarActionPerformed
 
     private void jButtonProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProximoActionPerformed

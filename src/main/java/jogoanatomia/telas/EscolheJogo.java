@@ -1,24 +1,66 @@
 package jogoanatomia.telas;
 
-import java.util.ArrayList;
-import javax.swing.JFormattedTextField;
-import jogoanatomia.entidades.FasesDicas;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import jogoanatomia.entidades.Orgao;
+import jogoanatomia.entidades.actor.JogosActor;
 
 public class EscolheJogo extends javax.swing.JFrame {
 
-    static EscolheJogo singleton;
+    public Icon icon;
     
-    public static EscolheJogo getInstance(){
-        if (singleton==null){
-            singleton=new EscolheJogo();
-        }
-        return singleton;
-    }
-
+    static Orgao orgao;
+    
+    public JogosActor jogosActor;
+    
+    public Forca forca;
+    
     public EscolheJogo() {
         initComponents();
+        icon = new ImageIcon(getClass().getResource("/images/trophy.png"), "Troféu"); 
+        jogosActor = new JogosActor();
+        orgao = new Orgao();
+        //Forca completa?
+        if(jogosActor.jogoCompletoPorOrgao(1,orgao.getIdOrgao())) jBforca.setIcon(icon);
+        //Associação completa?
+        if(jogosActor.jogoCompletoPorOrgao(2,orgao.getIdOrgao())) jBassociacao.setIcon(icon);
+        //Caça-Palavras completa?
+        if(jogosActor.jogoCompletoPorOrgao(3,orgao.getIdOrgao())) jBcacaPalavras.setIcon(icon);
+        //Quiz completo?
+        if(jogosActor.jogoCompletoPorOrgao(4,orgao.getIdOrgao())) jBperguntas.setIcon(icon);
     }
     
+    public static void main(String[] args) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new EscolheJogo().setVisible(true);
+            }
+        });
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -28,13 +70,13 @@ public class EscolheJogo extends javax.swing.JFrame {
         jBassociacao = new javax.swing.JButton();
         jBperguntas = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("BodyGame - Escolha o Jogo");
         setBounds(new java.awt.Rectangle(300, 50, 0, 0));
         setMinimumSize(new java.awt.Dimension(450, 350));
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jBforca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jBforca.setForeground(new java.awt.Color(153, 0, 0));
@@ -44,7 +86,6 @@ public class EscolheJogo extends javax.swing.JFrame {
                 jBforcaActionPerformed(evt);
             }
         });
-        getContentPane().add(jBforca, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 140, -1));
 
         jBcacaPalavras.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jBcacaPalavras.setForeground(new java.awt.Color(153, 0, 0));
@@ -54,7 +95,6 @@ public class EscolheJogo extends javax.swing.JFrame {
                 jBcacaPalavrasActionPerformed(evt);
             }
         });
-        getContentPane().add(jBcacaPalavras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 140, -1));
 
         jBassociacao.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jBassociacao.setForeground(new java.awt.Color(153, 0, 0));
@@ -64,7 +104,6 @@ public class EscolheJogo extends javax.swing.JFrame {
                 jBassociacaoActionPerformed(evt);
             }
         });
-        getContentPane().add(jBassociacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 170, -1));
 
         jBperguntas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jBperguntas.setForeground(new java.awt.Color(153, 0, 0));
@@ -74,12 +113,54 @@ public class EscolheJogo extends javax.swing.JFrame {
                 jBperguntasActionPerformed(evt);
             }
         });
-        getContentPane().add(jBperguntas, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 0, 0));
         jLabel5.setText("Escolha um jogo!");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 11, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 0, 0));
+        jLabel1.setText("Complete os 4 jogos para ganhar a parte do corpo correspondente!");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(143, 143, 143)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jBperguntas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBforca, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBcacaPalavras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBassociacao, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(126, 126, 126))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(33, 33, 33))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(jLabel5)
+                .addGap(35, 35, 35)
+                .addComponent(jBforca, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jBassociacao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jBcacaPalavras, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jBperguntas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -92,10 +173,8 @@ public class EscolheJogo extends javax.swing.JFrame {
     }//GEN-LAST:event_jBassociacaoActionPerformed
 
     private void jBforcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBforcaActionPerformed
-        Forca.getInstance().setVisible(true);
-        Forca.getInstance().inicio();
-        Forca.getInstance().setPontuacao(600);
-        Forca.getInstance().setPontuacaoTotal(0);
+       forca = new Forca();
+       forca.orgao = orgao;
     }//GEN-LAST:event_jBforcaActionPerformed
 
     private void jBperguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBperguntasActionPerformed
@@ -118,6 +197,7 @@ public class EscolheJogo extends javax.swing.JFrame {
     private javax.swing.JButton jBcacaPalavras;
     private javax.swing.JButton jBforca;
     private javax.swing.JButton jBperguntas;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

@@ -46,9 +46,7 @@ public class TelaInicial extends javax.swing.JFrame {
         setTitle("BodyGame");
         setBounds(new java.awt.Rectangle(200, 50, 0, 0));
         setIconImages(null);
-        setMaximumSize(new java.awt.Dimension(590, 520));
         setMinimumSize(new java.awt.Dimension(590, 520));
-        setPreferredSize(new java.awt.Dimension(200, 200));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
