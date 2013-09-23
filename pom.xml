@@ -141,7 +141,26 @@
                 <version>2.9</version>
                 <configuration>
                     <useFile>false</useFile>
+                    <forkMode>once</forkMode> 
+                    <workingDirectory>target</workingDirectory> 
+                    <argLine>-Djava.library.path=${basedir}/lib</argLine>
                 </configuration>
+            </plugin>
+            <plugin>  
+               <groupId>org.codehaus.mojo</groupId>  
+               <artifactId>exec-maven-plugin</artifactId>  
+               <version>1.1.1</version>  
+               <executions>  
+                    <execution>  
+                         <phase>test</phase>  
+                         <goals>  
+                            <goal>java</goal>  
+                         </goals>  
+                         <configuration>  
+                              <mainClass>jogoanatomia.loader.CarregaObj</mainClass>
+                         </configuration>  
+                    </execution>  
+               </executions>  
             </plugin>
         </plugins>
     </build>
