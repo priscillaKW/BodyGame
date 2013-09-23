@@ -12,7 +12,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.plaf.IconUIResource;
 import jogoanatomia.entidades.Orgao;
 import jogoanatomia.entidades.dao.OrgaoDAO;
 
@@ -39,6 +38,7 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
      * Creates new form TelaPersonagemOrgaos
      */
     public TelaPersonagemOrgaos() {
+        
         windowSeleciona = new TelaSelecionaPersonagens();
         
         orgaosDAO = new OrgaoDAO();
@@ -162,11 +162,14 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
         if(index == -1){
             JOptionPane.showMessageDialog(rootPane, "Selecione um órgão para iniciar o jogo");
         }else{
-            Orgao orgao = orgaos.get(index);            
-            TelaEstudar.orgao = orgao;
-            windowEstudar = new TelaEstudar();                    
+            Orgao orgaoSelecionado = orgaos.get(index);  
+            windowEstudar = new TelaEstudar();
+            windowEstudar.setOrgao(orgaoSelecionado);
             this.dispose();
-            windowEstudar.setVisible(true);
+            windowEstudar.setVisible(true);            
+            windowEstudar.iniciar();
+            
+            
         }
     }//GEN-LAST:event_jButtonStartActionPerformed
 

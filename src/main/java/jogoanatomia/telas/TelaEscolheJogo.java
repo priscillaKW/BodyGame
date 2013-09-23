@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import javax.swing.JFormattedTextField;
 import jogoanatomia.entidades.FasesDicas;
 
-public class EscolheJogo extends javax.swing.JFrame {
+public class TelaEscolheJogo extends javax.swing.JFrame {
 
-    static EscolheJogo singleton;
+    static TelaEscolheJogo singleton;
     
-    public static EscolheJogo getInstance(){
+    public static TelaEscolheJogo getInstance(){
         if (singleton==null){
-            singleton=new EscolheJogo();
+            singleton=new TelaEscolheJogo();
         }
         return singleton;
     }
 
-    public EscolheJogo() {
+    public TelaEscolheJogo() {
         initComponents();
     }
     
@@ -85,32 +85,19 @@ public class EscolheJogo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBassociacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBassociacaoActionPerformed
-        Associacao.getInstance().setVisible(true);
-        Associacao.getInstance().limpa();
-        Associacao.getInstance().inicio();
-        Associacao.getInstance().setPontuacaoTotal(0);
+
     }//GEN-LAST:event_jBassociacaoActionPerformed
 
     private void jBforcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBforcaActionPerformed
-        Forca.getInstance().setVisible(true);
-        Forca.getInstance().inicio();
-        Forca.getInstance().setPontuacao(600);
-        Forca.getInstance().setPontuacaoTotal(0);
+
     }//GEN-LAST:event_jBforcaActionPerformed
 
     private void jBperguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBperguntasActionPerformed
-        Perguntas.getInstance().setVisible(true);
-        Perguntas.getInstance().inicio();
-        Perguntas.getInstance().setVidas(3);
-        Perguntas.getInstance().setPontuacaoTotal(0);
-        Perguntas.getInstance().setQuestao(1);
+  
     }//GEN-LAST:event_jBperguntasActionPerformed
 
     private void jBcacaPalavrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcacaPalavrasActionPerformed
-        CacaPalavras.getInstance().setVisible(true);
-        CacaPalavras.getInstance().inicio();
-        CacaPalavras.getInstance().setPontuacaoTotal(0);
-        CacaPalavras.getInstance().setFaltaEncontrar(10);
+
     }//GEN-LAST:event_jBcacaPalavrasActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
