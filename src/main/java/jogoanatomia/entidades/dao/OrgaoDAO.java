@@ -18,12 +18,12 @@ public class OrgaoDAO {
         ArrayList orgaos = new ArrayList();
         Orgao coracao = new Orgao();
         coracao.setIdOrgao(0);
-        coracao.setMalha("./coracao.obj");
+        coracao.setMalha("coracao.obj");
         coracao.setNome("Coração");
         coracao.setStatus(1);
         Orgao rim = new Orgao();
         rim.setIdOrgao(1);
-        rim.setMalha("./rim.obj");
+        rim.setMalha("rim.obj");
         rim.setNome("Rim");
         rim.setStatus(0);
         orgaos.add(rim);

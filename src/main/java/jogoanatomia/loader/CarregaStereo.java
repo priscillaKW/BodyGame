@@ -74,7 +74,7 @@ public class CarregaStereo extends Applet {
             ObjectFile f = new ObjectFile();
             f.setFlags(ObjectFile.RESIZE | ObjectFile.TRIANGULATE | ObjectFile.STRIPIFY);
 
-            Scene s = f.load(fileName + ".obj");
+            Scene s = f.load(this.getClass().getResource("/malhas/coracao.obj").getPath());
             Transform3D myTrans = new Transform3D();
             myTrans.setTranslation(new Vector3f(eyeOffset, -eyeOffset, 0F));
             TransformGroup mytg = new TransformGroup(myTrans);
@@ -173,15 +173,13 @@ public class CarregaStereo extends Applet {
     public CarregaStereo() {
     }
     
-    public Canvas3D carregaObjeto(String nome){
+    public Canvas3D carregaObjeto(){
         GraphicsConfigTemplate3D g3d = new GraphicsConfigTemplate3D();
 	GraphicsEnvironment ge = GraphicsEnvironment
 			.getLocalGraphicsEnvironment();
 	GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
 	GraphicsConfiguration gcn = defaultScreen.getBestConfiguration(g3d);
         Canvas3D c = new Canvas3D(gcn);
-        // construcao do universo
-        this.setFileName(nome);
         myLocale.addBranchGraph(this.createSceneGraph());
         myLocale.addBranchGraph(this.branchGroupLeft(c));
         // Background

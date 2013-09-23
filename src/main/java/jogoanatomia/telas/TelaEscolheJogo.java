@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 import jogoanatomia.entidades.Orgao;
 import jogoanatomia.entidades.actor.JogosActor;
 
-public class EscolheJogo extends javax.swing.JFrame {
+public class TelaEscolheJogo extends javax.swing.JFrame {
 
     public Icon icon;
     
@@ -166,10 +166,7 @@ public class EscolheJogo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBassociacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBassociacaoActionPerformed
-        Associacao.getInstance().setVisible(true);
-        Associacao.getInstance().limpa();
-        Associacao.getInstance().inicio();
-        Associacao.getInstance().setPontuacaoTotal(0);
+
     }//GEN-LAST:event_jBassociacaoActionPerformed
 
     private void jBforcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBforcaActionPerformed
@@ -178,18 +175,11 @@ public class EscolheJogo extends javax.swing.JFrame {
     }//GEN-LAST:event_jBforcaActionPerformed
 
     private void jBperguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBperguntasActionPerformed
-        Perguntas.getInstance().setVisible(true);
-        Perguntas.getInstance().inicio();
-        Perguntas.getInstance().setVidas(3);
-        Perguntas.getInstance().setPontuacaoTotal(0);
-        Perguntas.getInstance().setQuestao(1);
+  
     }//GEN-LAST:event_jBperguntasActionPerformed
 
     private void jBcacaPalavrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcacaPalavrasActionPerformed
-        CacaPalavras.getInstance().setVisible(true);
-        CacaPalavras.getInstance().inicio();
-        CacaPalavras.getInstance().setPontuacaoTotal(0);
-        CacaPalavras.getInstance().setFaltaEncontrar(10);
+
     }//GEN-LAST:event_jBcacaPalavrasActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

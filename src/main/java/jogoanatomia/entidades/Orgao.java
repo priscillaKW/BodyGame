@@ -8,7 +8,7 @@ public class Orgao {
     
     private String nome;
     
-    private String malha;
+    private String malha;    
     
     // TODO retirar json
     private static OperacoesJSON op=new OperacoesJSON();
