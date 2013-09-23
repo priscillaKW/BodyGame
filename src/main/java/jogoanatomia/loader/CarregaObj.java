@@ -5,7 +5,6 @@ import com.sun.j3d.loaders.Scene;
 import com.sun.j3d.loaders.objectfile.ObjectFile;
 import com.sun.j3d.utils.applet.MainFrame;
 import com.sun.j3d.utils.behaviors.mouse.MouseRotate;
-import com.sun.j3d.utils.behaviors.mouse.MouseWheelZoom;
 import com.sun.j3d.utils.universe.SimpleUniverse;
 import java.applet.Applet;
 import java.awt.BorderLayout;
@@ -41,7 +40,6 @@ public class CarregaObj extends Applet {
 
     // Criacao do Universo
     public void init() {
-        file = "./coracao27512";
         setLayout(new BorderLayout());
         Canvas3D c = new Canvas3D(SimpleUniverse.getPreferredConfiguration());
         add("Center", c);
@@ -65,7 +63,7 @@ public class CarregaObj extends Applet {
         try {
             ObjectFile f = new ObjectFile();
             f.setFlags(ObjectFile.RESIZE | Loader.LOAD_ALL);
-            s = f.load("./" + file + ".obj");
+            s = f.load(this.getClass().getResource("/malhas/coracao.obj").getPath()); 
             tg.addChild(s.getSceneGroup());
         } catch (java.io.FileNotFoundException ex) {
             System.err.println(ex.toString());
@@ -105,9 +103,6 @@ public class CarregaObj extends Applet {
         MouseRotate m1 = new MouseRotate(tg);
         m1.setSchedulingBounds(bounds);
 
-        MouseWheelZoom m2 = new MouseWheelZoom(tg);
-        m2.setSchedulingBounds(bounds);
-
         // Capta��o dados mouse
         t3d.setTranslation(new Vector3f(0f, 0f, -5f));
         t3d.setScale(new Vector3d(3.0, 3.0, 3.0));
@@ -122,7 +117,6 @@ public class CarregaObj extends Applet {
 
         objRoot.addChild(tg);
         objRoot.addChild(m1);
-        objRoot.addChild(m2);
         objRoot.addChild(ambientLightNode);
         objRoot.addChild(luzDir);
         tg.addChild(tg1);
@@ -156,7 +150,7 @@ public class CarregaObj extends Applet {
         return bg;
     }
     
-    public Canvas3D carregaOrgao(String nome){
+    public Canvas3D carregaOrgao(){
         Canvas3D c;
         GraphicsConfigTemplate3D g3d = new GraphicsConfigTemplate3D();
 	GraphicsEnvironment ge = GraphicsEnvironment
@@ -166,7 +160,7 @@ public class CarregaObj extends Applet {
 	c = new Canvas3D(gcn);
         // construcao do universo        
         CarregaObj CarregaObj = new CarregaObj();
-        this.setFile("./"+nome);
+        System.out.println(file); 
         myLocale.addBranchGraph(CarregaObj.createSceneGraph());
         myLocale.addBranchGraph(CarregaObj.branchGroupLeft(c));
         BranchGroup brbg = new BranchGroup();
@@ -178,6 +172,16 @@ public class CarregaObj extends Applet {
         brbg.addChild(backg);
         myLocale.addBranchGraph(brbg);
         return c;
+    }
+    
+    public void destroy() {
+        simpleU.removeAllLocales();
+    }
+
+    public static void main(String[] args) {
+        application = true;
+        Frame frame = new MainFrame(new CarregaObj(), 800, 800);
+
     }
 
 }
