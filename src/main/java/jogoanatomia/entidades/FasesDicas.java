@@ -8,7 +8,6 @@ public class FasesDicas {
     private String dica;
     private String resposta;
     private int idOrgao;
-    public static OperacoesJSON op=new OperacoesJSON();
 
     public int getId() {
         return id;
@@ -56,13 +55,5 @@ public class FasesDicas {
         this.dica = dica;
         this.resposta = resposta;
         this.idOrgao = idOrgao;
-    }
- 
-    public static ArrayList<FasesDicas> getTodas(){
-        return op.getTodasFasesDicas();
-    }
-    
-    public static ArrayList<FasesDicas> getPorIdOrgao(int idO){
-        return op.getFasesDicasPorIdOrgao(idO);
     }
 }

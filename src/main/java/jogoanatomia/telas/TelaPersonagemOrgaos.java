@@ -6,14 +6,15 @@ package jogoanatomia.telas;
 
 import java.awt.Component;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import jogoanatomia.entidades.Orgao;
-import jogoanatomia.entidades.dao.OrgaoDAO;
+import jogoanatomia.entidades.Organ;
+import jogoanatomia.services.OrganServiceImpl;
 
 /**
  *
@@ -25,9 +26,9 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
     
     public TelaEstudar windowEstudar;
     
-    public OrgaoDAO orgaosDAO;
+    public OrganServiceImpl organServiceImpl;
     
-    public ArrayList<Orgao> orgaos;
+    public List<Organ> orgaos;
     
     public Icon icon;
     
@@ -41,10 +42,10 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
         
         windowSeleciona = new TelaSelecionaPersonagens();
         
-        orgaosDAO = new OrgaoDAO();
-        orgaos = orgaosDAO.retornaTodos();
+        organServiceImpl = new OrganServiceImpl();
+        orgaos = organServiceImpl.all();
         initComponents();
-        icon = new ImageIcon(getClass().getResource("/images/trophy.png"), "Troféu");            
+        /*icon = new ImageIcon(getClass().getResource("/images/trophy.png"), "Troféu");            
         icon2 = new ImageIcon(getClass().getResource("/images/Nottrophy.png"), "Troféu");            
         jListOrgaos.setCellRenderer(new DefaultListCellRenderer() {
             @Override
@@ -57,7 +58,7 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
                 }
                 return label;
             }
-        });
+        }); */
     }
 
     /**
@@ -86,7 +87,7 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitulo.setText("BodyGame");
 
-        jLabelPersonagens.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Escolha o seu personagem", 2, 2));
+        jLabelPersonagens.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Escolha o seu personagem", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
         jLabelPersonagens.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelPersonagensMouseClicked(evt);
@@ -106,7 +107,7 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
 
         jListOrgaos.setModel(new javax.swing.AbstractListModel() {
             public int getSize() { return orgaos.size(); }
-            public Object getElementAt(int i) { return orgaos.get(i).getNome(); }
+            public Object getElementAt(int i) { return orgaos.get(i).getName(); }
         });
         jScrollPane1.setViewportView(jListOrgaos);
 
@@ -162,7 +163,7 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
         if(index == -1){
             JOptionPane.showMessageDialog(rootPane, "Selecione um órgão para iniciar o jogo");
         }else{
-            Orgao orgaoSelecionado = orgaos.get(index);  
+            Organ orgaoSelecionado = orgaos.get(index);  
             windowEstudar = new TelaEstudar();
             windowEstudar.setOrgao(orgaoSelecionado);
             this.dispose();

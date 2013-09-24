@@ -18,6 +18,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -68,7 +69,7 @@
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
                           <Component id="jLnivel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="173" max="32767" attributes="0"/>
+                          <EmptySpace pref="165" max="32767" attributes="0"/>
                           <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLvidas" min="-2" pref="38" max="-2" attributes="0"/>
@@ -104,7 +105,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLPergunta" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -232,7 +233,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jRBresposta1" pref="534" max="32767" attributes="0"/>
+                      <Component id="jRBresposta1" pref="526" max="32767" attributes="0"/>
                       <Component id="jRBresposta2" alignment="0" max="32767" attributes="0"/>
                       <Component id="jRBresposta3" max="32767" attributes="0"/>
                       <Component id="jRBresposta4" alignment="0" max="32767" attributes="0"/>
@@ -252,7 +253,7 @@
                   <Component id="jRBresposta3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                   <Component id="jRBresposta4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="66" max="32767" attributes="0"/>
+                  <EmptySpace pref="58" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

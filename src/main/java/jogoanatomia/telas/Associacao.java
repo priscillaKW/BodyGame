@@ -21,8 +21,7 @@ import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 
 import jogoanatomia.entidades.FasesDicas;
-import jogoanatomia.entidades.Orgao;
-import jogoanatomia.entidades.Ranking;
+import jogoanatomia.entidades.Organ;
 import jogoanatomia.loader.CarregaObj;
 import jogoanatomia.loader.CarregaStereo;
 
@@ -66,7 +65,7 @@ public class Associacao extends javax.swing.JFrame {
     
     public ArrayList<FasesDicas> sorteiaFases(){
         int idorgao=(int)(Math.random()*2)+1;
-        ArrayList<FasesDicas> todas = FasesDicas.getPorIdOrgao(idorgao);
+        ArrayList<FasesDicas> todas = null;
         ArrayList<FasesDicas> resp = new ArrayList<FasesDicas>();
         for(int i=0;i<5;i++){
             int j=(int) (Math.random()*todas.size());
@@ -104,13 +103,13 @@ public class Associacao extends javax.swing.JFrame {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
         GraphicsConfiguration gcn = defaultScreen.getBestConfiguration(g3d);
-        Orgao orgao = Orgao.getOrgaoPorId(fasesOriginal.get(0).getIdOrgao()).get(0);
+        Organ orgao = null;
         c = new Canvas3D(gcn);
         // construcao do universo
         u = new VirtualUniverse();
         myLocale = new Locale(u);
         CarregaObj CarregaObj = new CarregaObj();
-        CarregaObj.setFile("./" + orgao.getNome().toLowerCase());
+        CarregaObj.setFile("./" + orgao.getName().toLowerCase());
         myLocale.addBranchGraph(CarregaObj.createSceneGraph());
         myLocale.addBranchGraph(CarregaObj.branchGroupLeft(c));
         jPanel3.removeAll();
@@ -157,12 +156,6 @@ public class Associacao extends javax.swing.JFrame {
                 jLtempo.setText(--current + "");
                 if (current == 0) {
                     JOptionPane.showMessageDialog(rootPane, "Ops, voc�� perdeu!", "AVISO", 1, null);
-                    String nomeRanking = JOptionPane.showInputDialog(rootPane, "Insira seu nome:", "AVISO", 1);
-                    Ranking.insereRegistro(nomeRanking, getPontuacaoTotal(), 3);
-                    Associacao.this.dispose();
-                    TelaRanking.getInstance().setVisible(true);
-                    TelaRanking.getInstance().jCBjogos.setSelectedIndex(3);
-                    TelaRanking.getInstance().inicio();
                     setPontuacaoTotal(0);
                 }
             }
@@ -470,7 +463,7 @@ public class Associacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTBestereoscopiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTBestereoscopiaActionPerformed
-        Orgao orgao = Orgao.getOrgaoPorId(fasesOriginal.get(0).getIdOrgao()).get(0);
+        Organ orgao = null;
         GraphicsConfigTemplate3D g3d = new GraphicsConfigTemplate3D();
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
@@ -480,7 +473,7 @@ public class Associacao extends javax.swing.JFrame {
         u = new VirtualUniverse();
         myLocale = new Locale(u);
         CarregaStereo CarregaObj = new CarregaStereo();
-        CarregaObj.setFileName("./" + orgao.getNome().toLowerCase());
+        CarregaObj.setFileName("./" + orgao.getName().toLowerCase());
         myLocale.addBranchGraph(CarregaObj.createSceneGraph());
         myLocale.addBranchGraph(CarregaObj.branchGroupLeft(c));
         jPanel3.removeAll();
@@ -523,13 +516,6 @@ public class Associacao extends javax.swing.JFrame {
                 inicio();
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Ops, voc�� perdeu!", "AVISO", 1, null);
-                String nomeRanking = JOptionPane.showInputDialog(rootPane, "Insira seu nome:", "AVISO", 1);
-                Ranking.insereRegistro(nomeRanking, getPontuacaoTotal(), 3);
-                limpa();
-                this.setVisible(false);
-                TelaRanking.getInstance().setVisible(true);
-                TelaRanking.getInstance().jCBjogos.setSelectedIndex(3);
-                TelaRanking.getInstance().inicio();
                 setPontuacaoTotal(0);
             }
         }

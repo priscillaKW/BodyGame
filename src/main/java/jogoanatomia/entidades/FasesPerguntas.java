@@ -12,7 +12,6 @@ public class FasesPerguntas {
     private String respC;
     private String respD;
     private int idOrgao;
-    public static OperacoesJSON op=new OperacoesJSON();
 
     public int getId() {
         return id;
@@ -96,9 +95,5 @@ public class FasesPerguntas {
         this.respC = respC;
         this.respD = respD;
         this.idOrgao = idOrgao;
-    }
-
-    public static ArrayList<FasesPerguntas> getTodas(){
-        return op.getTodasFasesPerguntas();
     }
 }

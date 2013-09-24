@@ -14,8 +14,7 @@ import javax.swing.Timer;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import jogoanatomia.entidades.FasesPerguntas;
-import jogoanatomia.entidades.Orgao;
-import jogoanatomia.entidades.Ranking;
+import jogoanatomia.entidades.Organ;
 import jogoanatomia.loader.CarregaObj;
 import jogoanatomia.loader.CarregaStereo;
 
@@ -99,7 +98,7 @@ public class Perguntas extends javax.swing.JFrame {
     }
     
     public FasesPerguntas sorteiaFase(){
-        ArrayList<FasesPerguntas> todas = FasesPerguntas.getTodas();
+        ArrayList<FasesPerguntas> todas = null;
         int i=(int) (Math.random()*todas.size());
         return todas.get(i);
     }
@@ -154,10 +153,10 @@ public class Perguntas extends javax.swing.JFrame {
 	c = new Canvas3D(gcn);
         // construcao do universo
         u = new VirtualUniverse();
-        Orgao orgao = Orgao.getOrgaoPorId(fase.getIdOrgao()).get(0);
+        Organ orgao = null;
         myLocale = new Locale(u);
             CarregaObj CarregaObj = new CarregaObj();
-        CarregaObj.setFile("./"+orgao.getNome().toLowerCase());
+        CarregaObj.setFile("./"+orgao.getName().toLowerCase());
         myLocale.addBranchGraph(CarregaObj.createSceneGraph());
         myLocale.addBranchGraph(CarregaObj.branchGroupLeft(c));
         jPanel3.removeAll();
@@ -185,12 +184,6 @@ public class Perguntas extends javax.swing.JFrame {
                 jLtempo.setText(--current + "");
                 if(current==0){
                     JOptionPane.showMessageDialog(rootPane, "Ops!! Você perdeu!", "AVISO", 1, null);
-                    String nomeRanking = JOptionPane.showInputDialog(rootPane, "Insira seu nome:", "AVISO", 1);
-                    Ranking.insereRegistro(nomeRanking,getPontuacaoTotal(),4);
-                    Perguntas.this.dispose();
-                    TelaRanking.getInstance().setVisible(true);
-                    TelaRanking.getInstance().jCBjogos.setSelectedIndex(4);
-                    TelaRanking.getInstance().inicio();
                     setPontuacaoTotal(0);       
                 }
             }  
@@ -488,12 +481,6 @@ public class Perguntas extends javax.swing.JFrame {
             setVidas(getVidas() - 1);
             if (getVidas() == 0) {
                 JOptionPane.showMessageDialog(rootPane, "Ops!! Você perdeu!", "AVISO", 1, null);
-                String nomeRanking = JOptionPane.showInputDialog(rootPane, "Insira seu nome:", "AVISO", 1);
-                Ranking.insereRegistro(nomeRanking, getPontuacaoTotal(), 4);
-                this.setVisible(false);
-                TelaRanking.getInstance().setVisible(true);
-                TelaRanking.getInstance().jCBjogos.setSelectedIndex(4);
-                TelaRanking.getInstance().inicio();
                 setVidas(3);
                 setPontuacaoTotal(0);
                 setQuestao(1);
@@ -505,7 +492,7 @@ public class Perguntas extends javax.swing.JFrame {
     }//GEN-LAST:event_jBresponderActionPerformed
 
     private void jTBestereoscopiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTBestereoscopiaActionPerformed
-        Orgao orgao = Orgao.getOrgaoPorId(fase.getIdOrgao()).get(0);
+        Organ orgao = null;
         GraphicsConfigTemplate3D g3d = new GraphicsConfigTemplate3D();
 	GraphicsEnvironment ge = GraphicsEnvironment
 			.getLocalGraphicsEnvironment();
@@ -516,7 +503,7 @@ public class Perguntas extends javax.swing.JFrame {
         u = new VirtualUniverse();
         myLocale = new Locale(u);
             CarregaStereo CarregaObj = new CarregaStereo();
-        CarregaObj.setFileName("./"+orgao.getNome().toLowerCase());
+        CarregaObj.setFileName("./"+orgao.getName().toLowerCase());
         myLocale.addBranchGraph(CarregaObj.createSceneGraph());
         myLocale.addBranchGraph(CarregaObj.branchGroupLeft(c));
         jPanel3.removeAll();

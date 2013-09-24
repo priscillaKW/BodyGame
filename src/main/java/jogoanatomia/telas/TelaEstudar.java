@@ -10,7 +10,7 @@ import javax.media.j3d.*;
 import javax.swing.JFrame;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
-import jogoanatomia.entidades.Orgao;
+import jogoanatomia.entidades.Organ;
 import jogoanatomia.entidades.dao.ConteudoDAO;
 import jogoanatomia.loader.CarregaObj;
 import jogoanatomia.loader.CarregaStereo;
@@ -27,7 +27,7 @@ public class TelaEstudar extends javax.swing.JFrame {
 
     public int contaConteudo;
     
-    private Orgao orgao;
+    private Organ orgao;
     
     private TelaEscolheJogo windowJogos;
 
@@ -41,10 +41,10 @@ public class TelaEstudar extends javax.swing.JFrame {
     
     public void iniciar(){
         conteudoDAO = new ConteudoDAO();
-        conteudos = conteudoDAO.procuraConteudosPorOrgao(orgao.getIdOrgao());
-        jLabel1.setText(orgao.getNome());
+        conteudos = conteudoDAO.procuraConteudosPorOrgao(Integer.parseInt(orgao.getId()));
+        jLabel1.setText(orgao.getName());
         carregaObj = new CarregaObj();
-        String file = orgao.getMalha();
+        String file = orgao.getImageFileName();
         carregaObj.setFile(file);
         Canvas3D c = carregaObj.carregaOrgao();
         atualizaPanel(c);        
@@ -57,11 +57,11 @@ public class TelaEstudar extends javax.swing.JFrame {
         jPanelOrgao.updateUI();
     }
 
-    public Orgao getOrgao() {
+    public Organ getOrgao() {
         return orgao;
     }
 
-    public void setOrgao(Orgao orgao) {
+    public void setOrgao(Organ orgao) {
         this.orgao = orgao;
     }
     
@@ -229,7 +229,7 @@ public class TelaEstudar extends javax.swing.JFrame {
 
     private void jRadioButtonStereoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonStereoActionPerformed
         carregaStereo = new CarregaStereo();
-        String file = orgao.getMalha();
+        String file = orgao.getImageFileName();
         carregaStereo.setFileName(file);
         atualizaPanel(carregaStereo.carregaObjeto());
     }//GEN-LAST:event_jRadioButtonStereoActionPerformed

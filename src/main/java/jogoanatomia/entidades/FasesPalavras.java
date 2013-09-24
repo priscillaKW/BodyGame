@@ -7,7 +7,6 @@ public class FasesPalavras {
     private int nivel;
     private String palavra;
     private int idOrgao;
-    public static OperacoesJSON op=new OperacoesJSON();
 
     public int getId() {
         return id;
@@ -46,13 +45,5 @@ public class FasesPalavras {
         this.nivel = nivel;
         this.palavra = palavra;
         this.idOrgao = idOrgao;
-    }
-    
-    public static ArrayList<FasesPalavras> getTodas(){
-        return op.getTodasFasesPalavras();
-    }
-    
-    public static ArrayList<FasesPalavras> getPorIdOrgao(int idorgao){
-        return op.getFasesPalavrasPorIdOrgao(idorgao);
     }
 }

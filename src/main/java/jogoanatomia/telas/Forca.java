@@ -4,13 +4,13 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import jogoanatomia.entidades.FasesDicas;
-import jogoanatomia.entidades.Orgao;
+import jogoanatomia.entidades.Organ;
 import jogoanatomia.entidades.actor.ForcaActor;
 
 
 public class Forca extends javax.swing.JFrame {
 
-    public Orgao orgao;
+    public Organ orgao;
     public ForcaActor forcaActor;
     private FasesDicas fase;
     public int rodada;

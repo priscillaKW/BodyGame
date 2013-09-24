@@ -12,8 +12,7 @@ import javax.swing.table.TableColumn;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import jogoanatomia.entidades.FasesPalavras;
-import jogoanatomia.entidades.Orgao;
-import jogoanatomia.entidades.Ranking;
+import jogoanatomia.entidades.Organ;
 import jogoanatomia.loader.CarregaObj;
 import jogoanatomia.loader.CarregaStereo;
 
@@ -62,7 +61,7 @@ public class CacaPalavras extends javax.swing.JFrame {
 
     public ArrayList<FasesPalavras> sorteiaFases() {
         int idorgao = (int) (Math.random() * 2) + 1;
-        ArrayList<FasesPalavras> todas = FasesPalavras.getPorIdOrgao(idorgao);
+        ArrayList<FasesPalavras> todas = null;
         ArrayList<FasesPalavras> resp = new ArrayList<FasesPalavras>();
         for (int i = 0; i < 10; i++) {
             int j = (int) (Math.random() * todas.size());
@@ -74,7 +73,7 @@ public class CacaPalavras extends javax.swing.JFrame {
 
     public void inicio() {
         fases = sorteiaFases();
-        Orgao orgao = Orgao.getOrgaoPorId(fases.get(0).getIdOrgao()).get(0);
+        Organ orgao = null;
         GraphicsConfigTemplate3D g3d = new GraphicsConfigTemplate3D();
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
@@ -84,7 +83,7 @@ public class CacaPalavras extends javax.swing.JFrame {
         u = new VirtualUniverse();
         myLocale = new Locale(u);
         CarregaObj CarregaObj = new CarregaObj();
-        CarregaObj.setFile("./" + orgao.getNome().toLowerCase());
+        CarregaObj.setFile("./" + orgao.getName().toLowerCase());
         myLocale.addBranchGraph(CarregaObj.createSceneGraph());
         myLocale.addBranchGraph(CarregaObj.branchGroupLeft(c));
         jPanel2.removeAll();
@@ -123,12 +122,6 @@ public class CacaPalavras extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 jLtempo.setText(--current + "");
                 if (current == 0) {
-                    String nomeRanking = JOptionPane.showInputDialog(rootPane, "Insira seu nome:", "AVISO", 1);
-                    Ranking.insereRegistro(nomeRanking, getPontuacaoTotal(), 2);
-                    CacaPalavras.this.dispose();
-                    TelaRanking.getInstance().setVisible(true);
-                    TelaRanking.getInstance().jCBjogos.setSelectedIndex(2);
-                    TelaRanking.getInstance().inicio();
                     setPontuacaoTotal(0);
                 }
             }
@@ -426,7 +419,7 @@ public class CacaPalavras extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTBestereoscopiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTBestereoscopiaActionPerformed
-        Orgao orgao = Orgao.getOrgaoPorId(fases.get(0).getIdOrgao()).get(0);
+        Organ orgao = null;
         GraphicsConfigTemplate3D g3d = new GraphicsConfigTemplate3D();
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
@@ -436,7 +429,7 @@ public class CacaPalavras extends javax.swing.JFrame {
         u = new VirtualUniverse();
         myLocale = new Locale(u);
         CarregaStereo CarregaObj = new CarregaStereo();
-        CarregaObj.setFileName("./" + orgao.getNome().toLowerCase());
+        CarregaObj.setFileName("./" + orgao.getName().toLowerCase());
         myLocale.addBranchGraph(CarregaObj.createSceneGraph());
         myLocale.addBranchGraph(CarregaObj.branchGroupLeft(c));
         jPanel2.removeAll();
