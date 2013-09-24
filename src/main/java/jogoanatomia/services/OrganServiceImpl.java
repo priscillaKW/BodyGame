@@ -24,7 +24,7 @@ public class OrganServiceImpl implements OrganService {
             HttpResponse response = apiClient.get("/organs");
 
             if (response.getStatusLine().getStatusCode() == 200)
-                return JSONParser.fromJson(IOUtils.toString(response.getEntity().getContent(), "UTF-8"), new TypeReference<List<Organ>>() {});
+                return JSONParser.fromHttpResponse(response, new TypeReference<List<Organ>>() {});
 
             return null;
         } catch (Exception e) {

@@ -27,7 +27,7 @@ public class StudyServiceImpl implements StudyService {
             HttpResponse response = apiClient.get(format("/organs/%s/studies", organId));
 
             if (response != null && response.getStatusLine().getStatusCode() == 200)
-                return JSONParser.fromJson(IOUtils.toString(response.getEntity().getContent(), "UTF-8"), new TypeReference<List<Study>>() {});
+                return JSONParser.fromHttpResponse(response, new TypeReference<List<Study>>() {});
 
             return null;
         } catch (Exception e) {
@@ -41,7 +41,7 @@ public class StudyServiceImpl implements StudyService {
             HttpResponse response = apiClient.get(format("/studies/%s", id));
 
             if (response != null && response.getStatusLine().getStatusCode() == 200)
-                return JSONParser.fromJson(IOUtils.toString(response.getEntity().getContent(), "UTF-8"), Study.class);
+                return JSONParser.fromHttpResponse(response, Study.class);
 
             return null;
         } catch (Exception e) {
