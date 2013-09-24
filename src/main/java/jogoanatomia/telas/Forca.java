@@ -14,11 +14,16 @@ public class Forca extends javax.swing.JFrame {
     public ForcaActor forcaActor;
     private HangmanGame fase;
     public int rodada;
+    
+    public void setOrgao(Organ orgao) {
+        this.orgao = orgao;
+    }
       
-    public Forca() {
+    public Forca(Organ orgao) {
         initComponents();
         setVisible(true);
         forcaActor = new ForcaActor();
+        setOrgao(orgao);
         forcaActor.sorteiaFaseDicas(orgao.getId());
         rodada = 0;
         
@@ -207,11 +212,17 @@ public class Forca extends javax.swing.JFrame {
             jLletrasErradas.setText("");
             rodada += 1;
             fase = forcaActor.getProxFase(rodada);   
-            jTforca.setText(forcaActor.gerarMascara());
-            jLdica.setText(fase.getTip());
-            jLletras.setText(forcaActor.quantLetras());
-            jLletrasErradas.setText("");
-            jLforca.setIcon(new ImageIcon(getClass().getResource("images/forca0.png")));
+            
+            if(fase==null) {
+                JOptionPane.showMessageDialog(rootPane, "Não há mais fases para este jogo!", "AVISO", 1, null);
+                setVisible(false);
+            } else {
+                jTforca.setText(forcaActor.gerarMascara());
+                jLdica.setText(fase.getTip());
+                jLletras.setText(forcaActor.quantLetras());
+                jLletrasErradas.setText("");
+                jLforca.setIcon(new ImageIcon(getClass().getResource("images/forca0.png")));
+            }
         }
     }//GEN-LAST:event_jBtentaLetraActionPerformed
 
