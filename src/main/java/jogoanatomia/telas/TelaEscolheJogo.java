@@ -8,16 +8,16 @@ import jogoanatomia.entidades.actor.JogosActor;
 public class TelaEscolheJogo extends javax.swing.JFrame {
 
     public Icon icon;
-    
+
     static Orgao orgao;
-    
+
     public JogosActor jogosActor;
-    
+
     public Forca forca;
-    
-    public EscolheJogo() {
+
+    public TelaEscolheJogo() {
         initComponents();
-        icon = new ImageIcon(getClass().getResource("/images/trophy.png"), "Troféu"); 
+        icon = new ImageIcon(getClass().getResource("/images/trophy.png"), "Troféu");
         jogosActor = new JogosActor();
         orgao = new Orgao();
         //Forca completa?
@@ -29,12 +29,12 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
         //Quiz completo?
         if(jogosActor.jogoCompletoPorOrgao(4,orgao.getIdOrgao())) jBperguntas.setIcon(icon);
     }
-    
+
     public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -57,7 +57,7 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EscolheJogo().setVisible(true);
+                new TelaEscolheJogo().setVisible(true);
             }
         });
     }
@@ -175,7 +175,7 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
     }//GEN-LAST:event_jBforcaActionPerformed
 
     private void jBperguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBperguntasActionPerformed
-  
+
     }//GEN-LAST:event_jBperguntasActionPerformed
 
     private void jBcacaPalavrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcacaPalavrasActionPerformed
