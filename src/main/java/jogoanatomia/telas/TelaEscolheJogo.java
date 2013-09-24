@@ -3,7 +3,6 @@ package jogoanatomia.telas;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import jogoanatomia.entidades.Organ;
-import jogoanatomia.entidades.actor.JogosActor;
 
 public class TelaEscolheJogo extends javax.swing.JFrame {
 
@@ -11,23 +10,20 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
 
     static Organ orgao;
 
-    public JogosActor jogosActor;
-
     public Forca forca;
 
     public TelaEscolheJogo() {
         initComponents();
         icon = new ImageIcon(getClass().getResource("/images/trophy.png"), "Troféu");
-        jogosActor = new JogosActor();
         orgao = new Organ();
-        //Forca completa?
+  /*      //Forca completa?
         if(jogosActor.jogoCompletoPorOrgao(1, Integer.parseInt(orgao.getId()))) jBforca.setIcon(icon);
         //Associação completa?
         if(jogosActor.jogoCompletoPorOrgao(2,Integer.parseInt(orgao.getId()))) jBassociacao.setIcon(icon);
         //Caça-Palavras completa?
         if(jogosActor.jogoCompletoPorOrgao(3,Integer.parseInt(orgao.getId()))) jBcacaPalavras.setIcon(icon);
         //Quiz completo?
-        if(jogosActor.jogoCompletoPorOrgao(4,Integer.parseInt(orgao.getId()))) jBperguntas.setIcon(icon);
+        if(jogosActor.jogoCompletoPorOrgao(4,Integer.parseInt(orgao.getId()))) jBperguntas.setIcon(icon); */
     }
 
     public static void main(String[] args) {

@@ -3,7 +3,7 @@ package jogoanatomia.telas;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import jogoanatomia.entidades.FasesDicas;
+import jogoanatomia.entidades.HangmanGame;
 import jogoanatomia.entidades.Organ;
 import jogoanatomia.entidades.actor.ForcaActor;
 
@@ -12,19 +12,19 @@ public class Forca extends javax.swing.JFrame {
 
     public Organ orgao;
     public ForcaActor forcaActor;
-    private FasesDicas fase;
+    private HangmanGame fase;
     public int rodada;
       
     public Forca() {
         initComponents();
         setVisible(true);
         forcaActor = new ForcaActor();
-        forcaActor.sorteiaFaseDicas(/*orgao.getIdOrgao()*/ 1);
+        forcaActor.sorteiaFaseDicas(orgao.getId());
         rodada = 0;
+        
         fase = forcaActor.getProxFase(rodada);
         jTforca.setText(forcaActor.gerarMascara());
-        jLdica.setText(fase.getDica());
-        jLnivel.setText(fase.getNivel()+"");
+        jLdica.setText(fase.getTip());
         jLletras.setText(forcaActor.quantLetras());
         jLletrasErradas.setText("");
         jLforca.setIcon(new ImageIcon(getClass().getResource("images/forca0.png")));
@@ -208,8 +208,7 @@ public class Forca extends javax.swing.JFrame {
             rodada += 1;
             fase = forcaActor.getProxFase(rodada);   
             jTforca.setText(forcaActor.gerarMascara());
-            jLdica.setText(fase.getDica());
-            jLnivel.setText(fase.getNivel()+"");
+            jLdica.setText(fase.getTip());
             jLletras.setText(forcaActor.quantLetras());
             jLletrasErradas.setText("");
             jLforca.setIcon(new ImageIcon(getClass().getResource("images/forca0.png")));

@@ -5,7 +5,9 @@
 package jogoanatomia.entidades.actor;
 
 import java.util.ArrayList;
-import jogoanatomia.entidades.FasesDicas;
+import java.util.List;
+import jogoanatomia.entidades.HangmanGame;
+import jogoanatomia.services.GameServiceImpl;
 
 /**
  *
@@ -13,27 +15,25 @@ import jogoanatomia.entidades.FasesDicas;
  */
 public class ForcaActor {
     
-    ArrayList<FasesDicas> fasesForca;
+    ArrayList<HangmanGame> fasesForca;
     
     int pontuacaoTotal=0;
     int letrasErradas=0;
     String palavraForca="";
     public ArrayList<String> listaLetrasErradas;
     
+    public GameServiceImpl game;
     
-    public void sorteiaFaseDicas(int idOrgao) {
-        ArrayList<FasesDicas> todas = new ArrayList<FasesDicas>();
-        FasesDicas f1 = new FasesDicas(0, 1, "Nome", "Priscilla", 1);
-        FasesDicas f2 = new FasesDicas(0, 1, "Namorado", "Renan", 2);
-        todas.add(f2);
-        todas.add(f1);
-        fasesForca = todas;
+    
+    public void sorteiaFaseDicas(String idOrgao) {
+        game = new GameServiceImpl();
+        List<HangmanGame> todas = game.listHangmanGamesByOrganId(idOrgao);
     }
     
-    public FasesDicas getProxFase(int i) {
+    public HangmanGame getProxFase(int i) {
         if(fasesForca.size()<i){
             setLetrasErradas(0);
-            setPalavraForca(fasesForca.get(i).getResposta());
+            setPalavraForca(fasesForca.get(i).getAnswer());
             listaLetrasErradas=new ArrayList<String>();
             return fasesForca.get(i);
         }

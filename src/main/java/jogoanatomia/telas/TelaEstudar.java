@@ -4,16 +4,17 @@ import java.awt.BorderLayout;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-import jogoanatomia.entidades.Conteudo;
 import java.util.ArrayList;
+import java.util.List;
 import javax.media.j3d.*;
 import javax.swing.JFrame;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import jogoanatomia.entidades.Organ;
-import jogoanatomia.entidades.dao.ConteudoDAO;
+import jogoanatomia.entidades.Study;
 import jogoanatomia.loader.CarregaObj;
 import jogoanatomia.loader.CarregaStereo;
+import jogoanatomia.services.StudyServiceImpl;
 
 public class TelaEstudar extends javax.swing.JFrame {
 
@@ -21,9 +22,9 @@ public class TelaEstudar extends javax.swing.JFrame {
     
     public CarregaStereo carregaStereo;
     
-    public ArrayList<Conteudo> conteudos;
+    public List<Study> conteudos;
     
-    private ConteudoDAO conteudoDAO;
+    private StudyServiceImpl studyServiceImpl;
 
     public int contaConteudo;
     
@@ -40,8 +41,8 @@ public class TelaEstudar extends javax.swing.JFrame {
     }
     
     public void iniciar(){
-        conteudoDAO = new ConteudoDAO();
-        conteudos = conteudoDAO.procuraConteudosPorOrgao(Integer.parseInt(orgao.getId()));
+        studyServiceImpl = new StudyServiceImpl();
+        conteudos = studyServiceImpl.listByOrganId(orgao.getId());
         jLabel1.setText(orgao.getName());
         carregaObj = new CarregaObj();
         String file = orgao.getImageFileName();
@@ -204,7 +205,7 @@ public class TelaEstudar extends javax.swing.JFrame {
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
         contaConteudo--;
         jButtonProximo.setEnabled(true);
-        jTextAreaConteudo.setText(conteudos.get(contaConteudo).getConteudo());
+        jTextAreaConteudo.setText(conteudos.get(contaConteudo).getContent());
         if (contaConteudo == 0) {
             jButtonAnterior.setEnabled(false);
         }
@@ -221,7 +222,7 @@ public class TelaEstudar extends javax.swing.JFrame {
     private void jButtonProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProximoActionPerformed
         contaConteudo++;
         jButtonAnterior.setEnabled(true);
-        jTextAreaConteudo.setText(conteudos.get(contaConteudo).getConteudo());
+        jTextAreaConteudo.setText(conteudos.get(contaConteudo).getContent());
         if (contaConteudo == conteudos.size() - 1) {
             jButtonProximo.setEnabled(false);
         }
