@@ -26,3 +26,8 @@ local.properties
 .buildpath
 
 target/
+
+# IDEA
+*.iml
+*.ipr
+*.iws
