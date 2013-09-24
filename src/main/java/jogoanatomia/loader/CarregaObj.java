@@ -5,6 +5,7 @@ import com.sun.j3d.loaders.Scene;
 import com.sun.j3d.loaders.objectfile.ObjectFile;
 import com.sun.j3d.utils.applet.MainFrame;
 import com.sun.j3d.utils.behaviors.mouse.MouseRotate;
+import com.sun.j3d.utils.behaviors.mouse.MouseWheelZoom;
 import com.sun.j3d.utils.universe.SimpleUniverse;
 import java.applet.Applet;
 import java.awt.BorderLayout;
@@ -103,6 +104,9 @@ public class CarregaObj extends Applet {
         MouseRotate m1 = new MouseRotate(tg);
         m1.setSchedulingBounds(bounds);
 
+        MouseWheelZoom m2 = new MouseWheelZoom(tg);
+        m2.setSchedulingBounds(bounds);
+
         // Capta��o dados mouse
         t3d.setTranslation(new Vector3f(0f, 0f, -5f));
         t3d.setScale(new Vector3d(3.0, 3.0, 3.0));
@@ -117,6 +121,7 @@ public class CarregaObj extends Applet {
 
         objRoot.addChild(tg);
         objRoot.addChild(m1);
+        objRoot.addChild(m2);
         objRoot.addChild(ambientLightNode);
         objRoot.addChild(luzDir);
         tg.addChild(tg1);
