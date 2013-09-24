@@ -215,6 +215,7 @@ public class TelaEstudar extends javax.swing.JFrame {
         //telaEscolheJogo = new EscolheJogo();
         //telaEscolheJogo.orgao = orgao;
         windowJogos = new TelaEscolheJogo();
+        windowJogos.setOrgao(orgao);
         this.dispose();
         windowJogos.setVisible(true);
     }//GEN-LAST:event_jButtonJogarActionPerformed

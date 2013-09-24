@@ -28,10 +28,11 @@ public class ForcaActor {
     public void sorteiaFaseDicas(String idOrgao) {
         game = new GameServiceImpl();
         List<HangmanGame> todas = game.listHangmanGamesByOrganId(idOrgao);
+        fasesForca = (ArrayList<HangmanGame>) todas;
     }
     
     public HangmanGame getProxFase(int i) {
-        if(fasesForca.size()<i){
+        if(fasesForca.size()>i){
             setLetrasErradas(0);
             setPalavraForca(fasesForca.get(i).getAnswer());
             listaLetrasErradas=new ArrayList<String>();

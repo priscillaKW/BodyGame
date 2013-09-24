@@ -11,7 +11,11 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
     static Organ orgao;
 
     public Forca forca;
-
+    
+    public void setOrgao(Organ orgao) {
+        this.orgao = orgao;
+    }
+    
     public TelaEscolheJogo() {
         initComponents();
         icon = new ImageIcon(getClass().getResource("/images/trophy.png"), "Troféu");
@@ -166,8 +170,7 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
     }//GEN-LAST:event_jBassociacaoActionPerformed
 
     private void jBforcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBforcaActionPerformed
-       forca = new Forca();
-       forca.orgao = orgao;
+       forca = new Forca(orgao);       
     }//GEN-LAST:event_jBforcaActionPerformed
 
     private void jBperguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBperguntasActionPerformed
