@@ -1,6 +1,7 @@
 package jogoanatomia.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -20,6 +21,15 @@ public class JSONParser {
             return buildObjectMapper().readValue(json, klass);
         } catch (Exception e) {
             String message = String.format("Error when deserializing from json: %s to: %s, caused by: %s", json, klass, e);
+            throw new RuntimeException(message, e);
+        }
+    }
+
+    public static <T> T fromJson(String json, TypeReference<T> type) {
+        try {
+            return buildObjectMapper().readValue(json, type);
+        } catch (Exception e) {
+            String message = String.format("Error when deserializing from json: %s to: %s, caused by: %s", json, type.getType(), e);
             throw new RuntimeException(message, e);
         }
     }
