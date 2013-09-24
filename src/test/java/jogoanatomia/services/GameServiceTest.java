@@ -15,10 +15,9 @@ public class GameServiceTest {
     private GameService service = new GameServiceImpl();
 
     @Test
-    public void listHangmanGamesByOrganIdTest(String id) {
-        //   List<HangmanGame> hangmanGames = service.listHangmanGamesByOrganId("52404778ec48b10e0e000002");
+    public void listHangmanGamesByOrganIdTest() {
+       List<HangmanGame> hangmanGames = service.listHangmanGamesByOrganId("52404778ec48b10e0e000002");
 
-        List<HangmanGame> hangmanGames = service.listHangmanGamesByOrganId(id);
         assertNotNull(hangmanGames);
         assertFalse(hangmanGames.isEmpty());
 
