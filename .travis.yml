@@ -1,7 +1,6 @@
 language: java
 jdk:
   - openjdk7
-  - openjdk6
 before_install:
   - mvn install -DskipTests=true -e
 before_script:
