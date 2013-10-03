@@ -11,9 +11,12 @@ import java.util.List;
 public class StudyServiceTest {
     private StudyService service = new StudyServiceImpl();
 
+    private final String ORRGAN_ID = "5241a3234afaca7a9a000002";
+    private final String STUDY_ID  = "5241a3234afaca7a9a000001";
+
     @Test
     public void listByOrganId() {
-        List<Study> studies = service.listByOrganId("52404778ec48b10e0e000002");
+        List<Study> studies = service.listByOrganId(ORRGAN_ID);
 
         assertNotNull(studies);
         assertFalse(studies.isEmpty());
@@ -21,16 +24,16 @@ public class StudyServiceTest {
         for (Study study: studies) {
             assertNotNull(study.getId());
             assertNotNull(study.getContent());
-            assertEquals(study.getOrganId(), "52404778ec48b10e0e000002");
+            assertEquals(study.getOrganId(), ORRGAN_ID);
         }
     }
 
     @Test
     public void findTest() {
-        Study study = service.find("52404778ec48b10e0e000001");
+        Study study = service.find(STUDY_ID);
 
         assertNotNull(study);
-        assertEquals("52404778ec48b10e0e000001", study.getId());
+        assertEquals(STUDY_ID, study.getId());
         assertNotNull(study.getContent());
         assertNotNull(study.getOrganId());
     }

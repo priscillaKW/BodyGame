@@ -14,9 +14,11 @@ import java.util.List;
 public class GameServiceTest {
     private GameService service = new GameServiceImpl();
 
+    private final String ORRGAN_ID = "5241a3234afaca7a9a000002";
+
     @Test
     public void listHangmanGamesByOrganIdTest() {
-       List<HangmanGame> hangmanGames = service.listHangmanGamesByOrganId("52404778ec48b10e0e000002");
+       List<HangmanGame> hangmanGames = service.listHangmanGamesByOrganId(ORRGAN_ID);
 
         assertNotNull(hangmanGames);
         assertFalse(hangmanGames.isEmpty());
@@ -32,7 +34,7 @@ public class GameServiceTest {
 
     @Test
     public void listAssociationGamesByOrganIdTest() {
-        List<AssociationGame> associationGames = service.listAssociationGamesByOrganId("52404778ec48b10e0e000002");
+        List<AssociationGame> associationGames = service.listAssociationGamesByOrganId(ORRGAN_ID);
 
         assertNotNull(associationGames);
         assertFalse(associationGames.isEmpty());
@@ -48,7 +50,7 @@ public class GameServiceTest {
 
     @Test
     public void listQuizGamesByOrganIdTest() {
-        List<QuizGame> quizGames = service.listQuizGamesByOrganId("52404778ec48b10e0e000002");
+        List<QuizGame> quizGames = service.listQuizGamesByOrganId(ORRGAN_ID);
 
         assertNotNull(quizGames);
         assertFalse(quizGames.isEmpty());
@@ -69,7 +71,7 @@ public class GameServiceTest {
 
     @Test
     public void listWordSearchesGamesByOrganIdTest() {
-        List<WordSearchesGame> wordSearchesGames = service.listWordSearchesGamesByOrganId("52404778ec48b10e0e000002");
+        List<WordSearchesGame> wordSearchesGames = service.listWordSearchesGamesByOrganId(ORRGAN_ID);
 
         assertNotNull(wordSearchesGames);
         assertFalse(wordSearchesGames.isEmpty());
