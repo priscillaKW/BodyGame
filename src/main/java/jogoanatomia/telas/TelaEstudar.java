@@ -94,8 +94,8 @@ public class TelaEstudar extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(575, 610));
         setResizable(false);
 
-        jLabelTitulo.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabelTitulo.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelTitulo.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
+        jLabelTitulo.setForeground(new java.awt.Color(102, 0, 0));
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitulo.setText("BodyGame");
 
@@ -105,7 +105,7 @@ public class TelaEstudar extends javax.swing.JFrame {
 
         jButtonVideo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/video.png"))); // NOI18N
 
-        jButtonAnterior.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonAnterior.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jButtonAnterior.setForeground(new java.awt.Color(153, 0, 0));
         jButtonAnterior.setText("<< Anterior");
         jButtonAnterior.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +114,7 @@ public class TelaEstudar extends javax.swing.JFrame {
             }
         });
 
-        jButtonJogar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonJogar.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jButtonJogar.setForeground(new java.awt.Color(153, 0, 0));
         jButtonJogar.setText("Jogar");
         jButtonJogar.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +123,7 @@ public class TelaEstudar extends javax.swing.JFrame {
             }
         });
 
-        jButtonProximo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonProximo.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jButtonProximo.setForeground(new java.awt.Color(153, 0, 0));
         jButtonProximo.setText("Próximo >>");
         jButtonProximo.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +132,7 @@ public class TelaEstudar extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe Print", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 0, 0));
         jLabel1.setText("Orgao");
 
@@ -196,7 +196,7 @@ public class TelaEstudar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAnterior)
                     .addComponent(jButtonProximo))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

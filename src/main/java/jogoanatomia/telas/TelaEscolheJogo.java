@@ -78,7 +78,7 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(450, 350));
         setResizable(false);
 
-        jBforca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBforca.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jBforca.setForeground(new java.awt.Color(153, 0, 0));
         jBforca.setText("Forca");
         jBforca.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +87,7 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
             }
         });
 
-        jBcacaPalavras.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBcacaPalavras.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jBcacaPalavras.setForeground(new java.awt.Color(153, 0, 0));
         jBcacaPalavras.setText("Caça-Palavras");
         jBcacaPalavras.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +96,7 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
             }
         });
 
-        jBassociacao.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBassociacao.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jBassociacao.setForeground(new java.awt.Color(153, 0, 0));
         jBassociacao.setText("Jogo de Associação");
         jBassociacao.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +105,7 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
             }
         });
 
-        jBperguntas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBperguntas.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jBperguntas.setForeground(new java.awt.Color(153, 0, 0));
         jBperguntas.setText("Quiz");
         jBperguntas.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +114,7 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe Script", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 0, 0));
         jLabel5.setText("Escolha um jogo!");
 
@@ -133,7 +133,7 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
                     .addComponent(jBforca, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBcacaPalavras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBassociacao, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +159,7 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
                 .addComponent(jBperguntas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();

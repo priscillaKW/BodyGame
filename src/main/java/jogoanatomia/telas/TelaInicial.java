@@ -1,10 +1,13 @@
 package jogoanatomia.telas;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 import jogoanatomia.entidades.User;
 import jogoanatomia.services.UserService;
 import jogoanatomia.services.UserServiceImpl;
+import net.sourceforge.napkinlaf.NapkinLookAndFeel;
 
 public class TelaInicial extends javax.swing.JFrame {
     private UserService userService;
@@ -17,6 +20,13 @@ public class TelaInicial extends javax.swing.JFrame {
      * Creates new form TelaInicial
      */
     public TelaInicial() {
+        try{
+            UIManager.setLookAndFeel(new NapkinLookAndFeel());
+            SwingUtilities.updateComponentTreeUI(this);
+        }catch(Exception e ){
+            System.err.println(e.toString());
+        }
+        this.setVisible(true);
         userService = new UserServiceImpl();
         telaDeCadastro = new TelaCadastro();
         telaPersoganemOrgao = new TelaPersonagemOrgaos();
@@ -35,12 +45,16 @@ public class TelaInicial extends javax.swing.JFrame {
 
         jButtonEntrar = new javax.swing.JButton();
         jLabelTitulo = new javax.swing.JLabel();
-        jTextSenha = new javax.swing.JPasswordField();
+        jTextSenha = new javax.swing.JTextField();
         jLabelLogin = new javax.swing.JLabel();
         jLabelSenha = new javax.swing.JLabel();
         jTextLogin1 = new javax.swing.JTextField();
         jButtonCadastro = new javax.swing.JButton();
         jLabelMessage = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("BodyGame");
@@ -50,7 +64,7 @@ public class TelaInicial extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonEntrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonEntrar.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jButtonEntrar.setForeground(new java.awt.Color(153, 0, 0));
         jButtonEntrar.setText("Entrar");
         jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
@@ -58,27 +72,27 @@ public class TelaInicial extends javax.swing.JFrame {
                 jButtonEntrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 83, -1));
+        getContentPane().add(jButtonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 110, -1));
 
-        jLabelTitulo.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabelTitulo.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelTitulo.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
+        jLabelTitulo.setForeground(new java.awt.Color(102, 0, 0));
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitulo.setText("BodyGame");
         getContentPane().add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 580, 50));
 
-        jTextSenha.setToolTipText("Insira o login");
+        jTextSenha.setToolTipText("Insira a senha");
         getContentPane().add(jTextSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 120, 40));
 
         jLabelLogin.setText("Login:");
         getContentPane().add(jLabelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
 
         jLabelSenha.setText("Senha:");
-        getContentPane().add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
+        getContentPane().add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 50, 20));
 
         jTextLogin1.setToolTipText("Insira o login");
         getContentPane().add(jTextLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 120, 40));
 
-        jButtonCadastro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonCadastro.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jButtonCadastro.setForeground(new java.awt.Color(153, 0, 0));
         jButtonCadastro.setText("Cadastre-se");
         jButtonCadastro.addActionListener(new java.awt.event.ActionListener() {
@@ -86,10 +100,23 @@ public class TelaInicial extends javax.swing.JFrame {
                 jButtonCadastroActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 110, -1));
+        getContentPane().add(jButtonCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 130, -1));
 
         jLabelMessage.setForeground(new java.awt.Color(255, 0, 0));
-        getContentPane().add(jLabelMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 310, 30));
+        jLabelMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabelMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 310, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/brain.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/spleen.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/heart.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 450, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -158,11 +185,15 @@ public class TelaInicial extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButtonCadastro;
     public javax.swing.JButton jButtonEntrar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelLogin;
     public javax.swing.JLabel jLabelMessage;
     private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelTitulo;
     public javax.swing.JTextField jTextLogin1;
-    public javax.swing.JPasswordField jTextSenha;
+    public javax.swing.JTextField jTextSenha;
     // End of variables declaration//GEN-END:variables
 }
