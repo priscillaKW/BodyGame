@@ -207,7 +207,7 @@ public class Forca extends javax.swing.JFrame {
         }
         if(palavra.equals(jTforca.getText().replace("-", " "))){
             JOptionPane.showMessageDialog(rootPane, "Parabéns!! Você completou o jogo!", "AVISO", 1, null);
-            forcaActor.setPontuacaoTotal(1);
+            forcaActor.setPontuacaoTotal(10);
             
             jLletrasErradas.setText("");
             rodada += 1;

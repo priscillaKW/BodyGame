@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package jogoanatomia.entidades.actor;
 
 import java.util.ArrayList;
@@ -87,7 +83,7 @@ public class ForcaActor {
     //chamar para verificar se completou o jogo
     public boolean completouForca() {
         //TODO - enviar pontuação para o banco!
-        if(getPontuacaoTotal()>=10) 
+        if(getPontuacaoTotal()>=100) 
             return true;
         return false;
     }
