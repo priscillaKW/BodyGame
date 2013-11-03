@@ -26,12 +26,12 @@ public class TelaInicial extends javax.swing.JFrame {
         }catch(Exception e ){
             System.err.println(e.toString());
         }
-        this.setVisible(true);
         userService = new UserServiceImpl();
         telaDeCadastro = new TelaCadastro();
         telaPersoganemOrgao = new TelaPersonagemOrgaos();
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
 
     /**
@@ -134,6 +134,7 @@ public class TelaInicial extends javax.swing.JFrame {
             User user = userService.login(login, senha);
 
             if(user != null) {
+                SessionStore.setLoggedUser(user);
                 this.dispose();                
                 telaPersoganemOrgao.setVisible(true);
             } else {

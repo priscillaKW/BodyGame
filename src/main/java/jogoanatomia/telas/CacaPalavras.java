@@ -8,13 +8,13 @@ import javax.swing.table.DefaultTableModel;
 import jogoanatomia.entidades.Organ;
 import jogoanatomia.entidades.WordSearchesGame;
 import jogoanatomia.entidades.actor.CacaPalavraActor;
+import jogoanatomia.services.GameServiceImpl;
 
 public class CacaPalavras extends javax.swing.JFrame {
 
     public Organ orgao;
     public CacaPalavraActor cacaPalavrasActor;
     private WordSearchesGame fase;
-    public int rodada;
 
     private int[] primeiraLetra = {-1, -1};
     Timer timer;
@@ -26,13 +26,10 @@ public class CacaPalavras extends javax.swing.JFrame {
 
     public CacaPalavras(Organ orgao) {
         initComponents();
-        setVisible(true);
-        cacaPalavrasActor = new CacaPalavraActor();
+        cacaPalavrasActor = new CacaPalavraActor(new GameServiceImpl(), SessionStore.getLoggedUser(), orgao);
         setOrgao(orgao);
-        cacaPalavrasActor.sorteiaFases(orgao.getId());
-        rodada = 0;
 
-        fase = cacaPalavrasActor.getProxFase(rodada);
+        fase = cacaPalavrasActor.nextStage();
         String[] colunas = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"};
         DefaultTableModel modelo = new DefaultTableModel(colunas, 20);
         jTcacaPalavras.setModel(modelo);
@@ -49,6 +46,7 @@ public class CacaPalavras extends javax.swing.JFrame {
         setCurrent(240);
         jLtempo.setText(getCurrent() + "");
         goTimer();
+        setVisible(true);
     }
 
     public int getCurrent() {
@@ -398,8 +396,7 @@ public class CacaPalavras extends javax.swing.JFrame {
                     JLabel teste = (JLabel) a[i];
                     teste.setFont(new Font("Tahoma", Font.ITALIC, 11));
                     teste.setEnabled(false);
-                    cacaPalavrasActor.setPontuacaoTotal(cacaPalavrasActor.getPontuacaoTotal() + 100);
-                    jLpontuacaoTotal.setText(cacaPalavrasActor.getPontuacaoTotal() + "");
+                    jLpontuacaoTotal.setText(cacaPalavrasActor.getActualStage() + "/" + cacaPalavrasActor.getTotalStages());
                     cacaPalavrasActor.setFaltaEncontrar(cacaPalavrasActor.getFaltaEncontrar() - 1);
                     encontrou = true;
                 }
@@ -427,13 +424,11 @@ public class CacaPalavras extends javax.swing.JFrame {
         if (cacaPalavrasActor.getFaltaEncontrar() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Parabéns! Você completou essa rodada! Vamos para a próxima!", "AVISO", 1, null);
 
-            cacaPalavrasActor.setPontuacaoTotal(10);
-
-            rodada += 1;
-            fase = cacaPalavrasActor.getProxFase(rodada);
+            fase = cacaPalavrasActor.nextStage();
 
             if (fase == null) {
                 JOptionPane.showMessageDialog(rootPane, "Não há mais fases para este jogo!", "AVISO", 1, null);
+                cacaPalavrasActor.finish();
                 setVisible(false);
             } else {
                 limpa();

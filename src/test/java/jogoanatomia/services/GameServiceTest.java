@@ -14,7 +14,23 @@ import java.util.List;
 public class GameServiceTest {
     private GameService service = new GameServiceImpl();
 
-    private final String ORRGAN_ID = "5241a3234afaca7a9a000002";
+    private final String ORRGAN_ID = "52753c921f6c390956000002";
+
+    @Test
+    public void listGamesByOrganIdTest() {
+        List<HangmanGame> hangmanGames = service.listGamesByOrganId(ORRGAN_ID, HangmanGame.class);
+
+        assertNotNull(hangmanGames);
+        assertFalse(hangmanGames.isEmpty());
+
+        for (HangmanGame game: hangmanGames) {
+            assertNotNull(game.getId());
+            assertNotNull(game.getTip());
+            assertNotNull(game.getAnswer());
+            assertNotNull(game.getScore());
+            assertNotNull(game.getOrganId());
+        }
+    }
 
     @Test
     public void listHangmanGamesByOrganIdTest() {

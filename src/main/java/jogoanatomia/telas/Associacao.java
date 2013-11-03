@@ -8,13 +8,13 @@ import javax.swing.Timer;
 import jogoanatomia.entidades.AssociationGame;
 import jogoanatomia.entidades.Organ;
 import jogoanatomia.entidades.actor.AssociacaoActor;
+import jogoanatomia.services.GameServiceImpl;
 
 public class Associacao extends javax.swing.JFrame {
 
     Organ orgao;
     AssociacaoActor associacaoActor;
     AssociationGame fase;
-    int rodada;
 
     public Timer timer;
     public int current;
@@ -25,14 +25,11 @@ public class Associacao extends javax.swing.JFrame {
 
     public Associacao() {
         initComponents();
-        setVisible(true);
-        associacaoActor = new AssociacaoActor();
+        associacaoActor = new AssociacaoActor(new GameServiceImpl(), SessionStore.getLoggedUser(), orgao);
         setOrgao(orgao);
         limpa();
-        associacaoActor.sorteiaFases(orgao.getId());
-        rodada = 0;
 
-        fase = associacaoActor.getProxFase(rodada);
+        fase = associacaoActor.nextStage();
         jLdica1.setText(associacaoActor.fasesOriginal.get(0).getTip());
         jLdica2.setText(associacaoActor.fasesOriginal.get(1).getTip());
         jLdica3.setText(associacaoActor.fasesOriginal.get(2).getTip());
@@ -46,6 +43,7 @@ public class Associacao extends javax.swing.JFrame {
         setCurrent(40);
         jLtempo.setText(getCurrent() + "");
         goTimer();
+        setVisible(true);
     }
 
     public int getCurrent() {
@@ -413,15 +411,13 @@ public class Associacao extends javax.swing.JFrame {
 
             if (certo) {
                 JOptionPane.showMessageDialog(rootPane, "Parabéns! Você completou essa rodada! Vamos para a próxima!", "AVISO", 1, null);
-                associacaoActor.setPontuacaoTotal(associacaoActor.getPontuacaoTotal() + 500);
-                jLpontuacaoTotal.setText(associacaoActor.getPontuacaoTotal() + "");
+                jLpontuacaoTotal.setText(associacaoActor.getActualStage() + "/" + associacaoActor.getTotalStages());
 
-                associacaoActor.setPontuacaoTotal(10);
-                rodada += 1;
-                fase = associacaoActor.getProxFase(rodada);
+                fase = associacaoActor.nextStage();
 
                 if (fase == null) {
                     JOptionPane.showMessageDialog(rootPane, "Não há mais fases para este jogo!", "AVISO", 1, null);
+                    associacaoActor.finish();
                     setVisible(false);
                 } else {
                     limpa();
@@ -443,9 +439,8 @@ public class Associacao extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Ops, você perdeu!", "AVISO", 1, null);
                 limpa();
+                associacaoActor.finish();
                 this.setVisible(false);
-                associacaoActor.setPontuacaoTotal(0);
-                jLpontuacaoTotal.setText(associacaoActor.getPontuacaoTotal() + "");
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed

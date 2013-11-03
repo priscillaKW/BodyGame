@@ -3,65 +3,26 @@ package jogoanatomia.entidades.actor;
 import java.util.ArrayList;
 import java.util.List;
 import jogoanatomia.entidades.HangmanGame;
+import jogoanatomia.entidades.Organ;
+import jogoanatomia.entidades.User;
+import jogoanatomia.services.GameService;
 import jogoanatomia.services.GameServiceImpl;
 
 /**
  *
  * @author Priscilla
  */
-public class ForcaActor {
-    
-    ArrayList<HangmanGame> fasesForca;
-    
+public class ForcaActor extends StageGameActor<HangmanGame> {
+
     int pontuacaoTotal=0;
     int letrasErradas=0;
     String palavraForca="";
     public ArrayList<String> listaLetrasErradas;
-    
-    public GameServiceImpl game;
-    
-    
-    public void sorteiaFaseDicas(String idOrgao) {
-        game = new GameServiceImpl();
-        List<HangmanGame> todas = game.listHangmanGamesByOrganId(idOrgao);
-        fasesForca = (ArrayList<HangmanGame>) todas;
-    }
-    
-    public HangmanGame getProxFase(int i) {
-        if(fasesForca.size()>i){
-            setLetrasErradas(0);
-            setPalavraForca(fasesForca.get(i).getAnswer());
-            listaLetrasErradas=new ArrayList<String>();
-            return fasesForca.get(i);
-        }
-        return null;
-    }
-    
-    public int getPontuacaoTotal() {
-        return pontuacaoTotal;
+
+    public ForcaActor(GameService service, User user, Organ organ) {
+        super(service, user, organ);
     }
 
-    public void setPontuacaoTotal(int pontuacaoTotal) {
-        this.pontuacaoTotal += pontuacaoTotal;
-    }
-    
-    public int getLetrasErradas() {
-        return letrasErradas;
-    }
-
-    public void setLetrasErradas(int letrasErradas) {
-        this.letrasErradas = letrasErradas;
-    }
-
-    public String getPalavraForca() {
-        return palavraForca;
-    }
-
-    public void setPalavraForca(String palavraForca) {
-        this.palavraForca = palavraForca.toUpperCase();
-        gerarMascara();
-    }
-    
     public String gerarMascara(){
         String retorno="";        
         for(int i=0; i<getPalavraForca().length();i++){
@@ -79,12 +40,32 @@ public class ForcaActor {
         String temp=palavraForca.replaceAll(" ", "");
         return "Essa palavra tem " + temp.length() + " letras.";
     }
-    
-    //chamar para verificar se completou o jogo
-    public boolean completouForca() {
-        //TODO - enviar pontuação para o banco!
-        if(getPontuacaoTotal()>=100) 
-            return true;
-        return false;
+
+    @Override
+    void afterSelectNextStage(HangmanGame stage) {
+        setLetrasErradas(0);
+        setPalavraForca(stage.getAnswer());
+        listaLetrasErradas = new ArrayList<String>();
+    }
+
+    @Override
+    Class<HangmanGame> getGameType() {
+        return HangmanGame.class;
+    }
+
+    public int getLetrasErradas() {
+        return letrasErradas;
+    }
+
+    public void setLetrasErradas(int letrasErradas) {
+        this.letrasErradas = letrasErradas;
+    }
+
+    public String getPalavraForca() {
+        return palavraForca;
+    }
+
+    public void setPalavraForca(String palavraForca) {
+        this.palavraForca = palavraForca.toUpperCase();
     }
 }

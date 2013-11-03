@@ -1,11 +1,13 @@
 package jogoanatomia.telas;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import jogoanatomia.entidades.HangmanGame;
 import jogoanatomia.entidades.Organ;
 import jogoanatomia.entidades.actor.ForcaActor;
+import jogoanatomia.services.GameServiceImpl;
 
 
 public class Forca extends javax.swing.JFrame {
@@ -13,26 +15,23 @@ public class Forca extends javax.swing.JFrame {
     public Organ orgao;
     public ForcaActor forcaActor;
     private HangmanGame fase;
-    public int rodada;
-    
+
     public void setOrgao(Organ orgao) {
         this.orgao = orgao;
     }
       
     public Forca(Organ orgao) {
         initComponents();
-        setVisible(true);
-        forcaActor = new ForcaActor();
+        forcaActor = new ForcaActor(new GameServiceImpl(), SessionStore.getLoggedUser(), orgao);
         setOrgao(orgao);
-        forcaActor.sorteiaFaseDicas(orgao.getId());
-        rodada = 0;
-        
-        fase = forcaActor.getProxFase(rodada);
+
+        fase = forcaActor.nextStage();
         jTforca.setText(forcaActor.gerarMascara());
         jLdica.setText(fase.getTip());
         jLletras.setText(forcaActor.quantLetras());
         jLletrasErradas.setText("");
         jLforca.setIcon(new ImageIcon(getClass().getResource("images/forca0.png")));
+        setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -202,19 +201,18 @@ public class Forca extends javax.swing.JFrame {
         }
         if(forcaActor.getLetrasErradas()==6){
             JOptionPane.showMessageDialog(rootPane, "Ops!! Você perdeu!", "AVISO", 1, null);
+            forcaActor.finish();
             this.setVisible(false);
-            forcaActor.completouForca();
         }
         if(palavra.equals(jTforca.getText().replace("-", " "))){
             JOptionPane.showMessageDialog(rootPane, "Parabéns!! Você completou o jogo!", "AVISO", 1, null);
-            forcaActor.setPontuacaoTotal(10);
-            
+
             jLletrasErradas.setText("");
-            rodada += 1;
-            fase = forcaActor.getProxFase(rodada);   
+            fase = forcaActor.nextStage();
             
             if(fase==null) {
                 JOptionPane.showMessageDialog(rootPane, "Não há mais fases para este jogo!", "AVISO", 1, null);
+                forcaActor.finish();
                 setVisible(false);
             } else {
                 jTforca.setText(forcaActor.gerarMascara());
