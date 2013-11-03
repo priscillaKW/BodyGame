@@ -42,11 +42,11 @@ public class Forca extends javax.swing.JFrame {
         jLletrasErradas.setText("");
         jLforca.setIcon(new ImageIcon(getClass().getResource("images/forca0.png")));
         setVisible(true);
-        carregaObj = new CarregaObj();
+       /* carregaObj = new CarregaObj();
         String file = orgao.getImageFileName();
         carregaObj.setFile(file);
         Canvas3D c = carregaObj.carregaOrgao();
-        atualizaPanel(c);        
+        atualizaPanel(c); */       
     }
     
     public void atualizaPanel(Canvas3D c){
@@ -64,8 +64,6 @@ public class Forca extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLdica = new javax.swing.JLabel();
         jLletras = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLnivel = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jTletra = new javax.swing.JTextField();
         jBtentaLetra = new javax.swing.JButton();
@@ -87,12 +85,12 @@ public class Forca extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 0, 0));
         jLabel5.setText("Jogo de Forca");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jLabel6.setText("Letras erradas:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
 
@@ -104,17 +102,9 @@ public class Forca extends javax.swing.JFrame {
         jLletras.setText("-");
         getContentPane().add(jLletras, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 240, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel7.setText("Nível:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, -1, -1));
-
-        jLnivel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLnivel.setText("-");
-        getContentPane().add(jLnivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, -1, -1));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jLabel8.setText("Dica:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 10));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, 10));
 
         jTletra.setColumns(1);
         jTletra.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -134,9 +124,9 @@ public class Forca extends javax.swing.JFrame {
         });
         getContentPane().add(jBtentaLetra, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 40, 40));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jLabel10.setText("Escolha uma letra:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
         jLletrasErradas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         getContentPane().add(jLletrasErradas, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, 240, 20));
@@ -155,7 +145,7 @@ public class Forca extends javax.swing.JFrame {
         jLpontuacaoTotal.setText("-");
         getContentPane().add(jLpontuacaoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, 100, -1));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jLabel12.setText("Pontuação Total:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, -1, -1));
 
@@ -256,13 +246,11 @@ public class Forca extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLdica;
     private javax.swing.JLabel jLforca;
     private javax.swing.JLabel jLletras;
     private javax.swing.JLabel jLletrasErradas;
-    private javax.swing.JLabel jLnivel;
     private javax.swing.JLabel jLpontuacaoTotal;
     private javax.swing.JPanel jPanelOrgao;
     private javax.swing.JRadioButton jRadioButtonStereo;

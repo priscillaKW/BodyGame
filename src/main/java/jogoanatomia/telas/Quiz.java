@@ -1,11 +1,18 @@
 package jogoanatomia.telas;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.media.j3d.Canvas3D;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import jogoanatomia.entidades.Organ;
+import jogoanatomia.entidades.QuizGame;
+import jogoanatomia.entidades.actor.QuizActor;
 import jogoanatomia.loader.CarregaObj;
 import jogoanatomia.loader.CarregaStereo;
+import jogoanatomia.services.GameServiceImpl;
 
 
 public class Quiz extends javax.swing.JFrame {
@@ -16,13 +23,62 @@ public class Quiz extends javax.swing.JFrame {
     
     public Organ orgao;
     
-    public Quiz() {
+    public QuizActor quizActor;
+    
+    public QuizGame fase;
+    
+    Timer timer;  
+    
+    int current = 120;  
+
+    
+    public Quiz(Organ orgao) {
+        quizActor = new QuizActor(new GameServiceImpl(), SessionStore.getLoggedUser(), orgao);
+        fase = quizActor.nextStage();
+        this.orgao = orgao;
         initComponents();
-    carregaObj = new CarregaObj();
+        carregaObj = new CarregaObj();
         String file = orgao.getImageFileName();
         carregaObj.setFile(file);
         Canvas3D c = carregaObj.carregaOrgao();
-        atualizaPanel(c);        
+        atualizaPanel(c);   
+    }
+    
+    public void reinicializaCampos(){
+        jLPergunta.setText(fase.getAnswer());
+        if (fase.getOptionA().length() > 70) {
+            jRBresposta1.setText(quizActor.naoCabeLable(fase.getOptionA()));
+        } else {
+            jRBresposta1.setText(fase.getOptionA());
+        }
+        
+        if (fase.getOptionB().length() > 70) {
+            jRBresposta2.setText(quizActor.naoCabeLable(fase.getOptionB()));
+        } else {
+            jRBresposta2.setText(fase.getOptionB());
+        }
+        
+        if (fase.getOptionC().length() > 70) {
+            jRBresposta3.setText(quizActor.naoCabeLable(fase.getOptionC()));
+        } else {
+            jRBresposta3.setText(fase.getOptionC());
+        }
+        
+        if (fase.getOptionD().length() > 70) {
+            jRBresposta4.setText(quizActor.naoCabeLable(fase.getOptionD()));
+        } else {
+            jRBresposta4.setText(fase.getOptionD());
+        }
+        
+        jRBresposta1.setSelected(false);
+        jRBresposta2.setSelected(false);
+        jRBresposta3.setSelected(false);
+        jRBresposta4.setSelected(false);
+        jLquestao.setText(fase.getQuestion()+"");
+        if (timer!=null) {
+            timer.stop();
+        }                
+
     }
     
     public void atualizaPanel(Canvas3D c){
@@ -30,6 +86,45 @@ public class Quiz extends javax.swing.JFrame {
         jPanelOrgao.setLayout(new BorderLayout(10, 0));
         jPanelOrgao.add(c);
         jPanelOrgao.updateUI();    
+    }
+    
+    public int getCurrent() {
+        return current;
+    }
+
+    public void setCurrent(int current) {
+        this.current = current;
+    }
+    
+    public void goTimer() {  
+        ActionListener action = new ActionListener() {  
+            public void actionPerformed(ActionEvent e) {  
+                jLtempo.setText(--current + "");
+                if(current==0){
+                    JOptionPane.showMessageDialog(rootPane, "Ops!! Você perdeu!", "AVISO", 1, null);    
+                }
+            }  
+        };  
+        this.timer = new Timer(1000, action);  
+        this.timer.start();  
+    }
+    
+    public String getResposta(){
+        if(jRBresposta1.isSelected()) {
+            return "a";
+        }
+        else if(jRBresposta2.isSelected()) {
+            return "b";
+        }
+        else if(jRBresposta3.isSelected()) {
+            return "c";
+        }
+        else if(jRBresposta4.isSelected()) {
+            return "d";
+        }
+        else {
+            return null;
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -69,13 +164,13 @@ public class Quiz extends javax.swing.JFrame {
         jLPergunta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLPergunta.setText("-");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jLabel5.setText("Questão:");
 
         jLquestao.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLquestao.setText("-");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jLabel9.setText("Tempo:");
 
         jLtempo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -94,7 +189,7 @@ public class Quiz extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLquestao, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 330, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 316, Short.MAX_VALUE)
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
                         .addComponent(jLtempo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -118,7 +213,7 @@ public class Quiz extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, 550, 70));
 
-        jBresponder.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBresponder.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jBresponder.setForeground(new java.awt.Color(153, 0, 0));
         jBresponder.setText("Responder");
         jBresponder.addActionListener(new java.awt.event.ActionListener() {
@@ -208,10 +303,10 @@ public class Quiz extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 550, 340));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(153, 0, 0));
         jLabel11.setText("Quiz");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, -1));
 
         jPanelOrgao.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -228,7 +323,7 @@ public class Quiz extends javax.swing.JFrame {
 
         getContentPane().add(jPanelOrgao, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 550, 420));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jLabel12.setText("Pontuação Total:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, -1, -1));
 
@@ -251,7 +346,23 @@ public class Quiz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBresponderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBresponderActionPerformed
-
+        String resp=getResposta();
+        if (resp==null){
+            JOptionPane.showMessageDialog(rootPane, "Ops!! Você esqueceu de escolher a alternativa!", "AVISO", 1, null);
+            return;
+        }
+        if (resp.equals(fase.getAnswer())) {
+            JOptionPane.showMessageDialog(rootPane, "Parabéns! Resposta Correta ;)", "AVISO", 1, null);
+            fase = quizActor.nextStage();
+            if(fase == null){
+                JOptionPane.showMessageDialog(rootPane, "Parabéns! Você completou o jogo!!", "AVISO", 1, null);
+            }
+            reinicializaCampos();
+        } else {
+                JOptionPane.showMessageDialog(rootPane, "Ops!! Você perdeu!", "AVISO", 1, null);
+                return;
+        }        
+        
     }//GEN-LAST:event_jBresponderActionPerformed
 
     private void jRBresposta1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jRBresposta1KeyReleased

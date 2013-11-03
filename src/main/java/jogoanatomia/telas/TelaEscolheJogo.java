@@ -98,7 +98,7 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
 
         jBassociacao.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jBassociacao.setForeground(new java.awt.Color(153, 0, 0));
-        jBassociacao.setText("Jogo de Associação");
+        jBassociacao.setText("Associação");
         jBassociacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBassociacaoActionPerformed(evt);

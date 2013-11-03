@@ -54,11 +54,11 @@ public class Associacao extends javax.swing.JFrame {
         jLtempo.setText(getCurrent() + "");
         goTimer();
         setVisible(true);
-          carregaObj = new CarregaObj();
+        carregaObj = new CarregaObj();
         String file = orgao.getImageFileName();
         carregaObj.setFile(file);
         Canvas3D c = carregaObj.carregaOrgao();
-        atualizaPanel(c);        
+        atualizaPanel(c);    
     }
     
     public void atualizaPanel(Canvas3D c){
@@ -157,18 +157,18 @@ public class Associacao extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jLabel12.setText("Pontuação Total:");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, -1, 20));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(153, 0, 0));
         jLabel11.setText("Jogo de Associação");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         jLpontuacaoTotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLpontuacaoTotal.setText("0");
-        getContentPane().add(jLpontuacaoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 100, -1));
+        getContentPane().add(jLpontuacaoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 50, -1));
 
         jPanelOrgao.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -371,7 +371,7 @@ public class Associacao extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 560, -1));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(153, 0, 0));
         jButton1.setText("Associar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -381,14 +381,14 @@ public class Associacao extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 480, 120, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jLabel9.setText("Tempo:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 20, -1, -1));
 
         jLtempo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLtempo.setForeground(new java.awt.Color(153, 0, 0));
         jLtempo.setText("-");
-        getContentPane().add(jLtempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 38, -1));
+        getContentPane().add(jLtempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 20, 38, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jogoanatomia/telas/images/fundo_associacao.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-220, 80, 1140, 600));

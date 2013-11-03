@@ -100,6 +100,7 @@ public class TelaEstudar extends javax.swing.JFrame {
         jLabelTitulo.setText("BodyGame");
 
         jTextAreaConteudo.setColumns(20);
+        jTextAreaConteudo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTextAreaConteudo.setRows(5);
         jScrollPane1.setViewportView(jTextAreaConteudo);
 

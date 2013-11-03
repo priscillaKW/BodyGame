@@ -63,7 +63,7 @@ public class CacaPalavras extends javax.swing.JFrame {
         String file = orgao.getImageFileName();
         carregaObj.setFile(file);
         Canvas3D c = carregaObj.carregaOrgao();
-        atualizaPanel(c);        
+        atualizaPanel(c);     
     }
     
     public void atualizaPanel(Canvas3D c){
@@ -233,10 +233,10 @@ public class CacaPalavras extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 93, 641, 341));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(153, 0, 0));
         jLabel11.setText("Caça-Palavras");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -327,7 +327,7 @@ public class CacaPalavras extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(657, 93, 240, 341));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jLabel12.setText("Pontuação Total:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 23, -1, -1));
 
@@ -335,7 +335,7 @@ public class CacaPalavras extends javax.swing.JFrame {
         jLpontuacaoTotal.setText("-");
         getContentPane().add(jLpontuacaoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 23, 100, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jLabel9.setText("Tempo:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(672, 23, -1, -1));
 
@@ -360,8 +360,9 @@ public class CacaPalavras extends javax.swing.JFrame {
         getContentPane().add(jPanelOrgao, new org.netbeans.lib.awtextra.AbsoluteConstraints(906, 7, 410, 390));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 0, 51));
         jLabel1.setText("Clique na primeira e última letra de cada palavra para marcá-la!");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 58, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
 
         jRadioButtonStereo2.setText("Stereoscopia");
         jRadioButtonStereo2.addActionListener(new java.awt.event.ActionListener() {
@@ -485,8 +486,6 @@ public class CacaPalavras extends javax.swing.JFrame {
     private javax.swing.JLabel jLtempo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelOrgao;
-    private javax.swing.JRadioButton jRadioButtonStereo;
-    private javax.swing.JRadioButton jRadioButtonStereo1;
     private javax.swing.JRadioButton jRadioButtonStereo2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTcacaPalavras;
