@@ -12,6 +12,12 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
 
     public Forca forca;
     
+    public Associacao associacao;
+    
+    public Quiz quiz;
+    
+    public CacaPalavras cacaPalavras;
+    
     public void setOrgao(Organ orgao) {
         this.orgao = orgao;
     }
@@ -166,7 +172,7 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBassociacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBassociacaoActionPerformed
-
+       associacao = new Associacao(orgao);
     }//GEN-LAST:event_jBassociacaoActionPerformed
 
     private void jBforcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBforcaActionPerformed
@@ -174,11 +180,11 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
     }//GEN-LAST:event_jBforcaActionPerformed
 
     private void jBperguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBperguntasActionPerformed
-
+        quiz = new Quiz(orgao);
     }//GEN-LAST:event_jBperguntasActionPerformed
 
     private void jBcacaPalavrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcacaPalavrasActionPerformed
-
+        cacaPalavras = new CacaPalavras(orgao);
     }//GEN-LAST:event_jBcacaPalavrasActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

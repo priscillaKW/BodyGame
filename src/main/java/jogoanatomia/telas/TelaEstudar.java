@@ -44,6 +44,9 @@ public class TelaEstudar extends javax.swing.JFrame {
         studyServiceImpl = new StudyServiceImpl();
         conteudos = studyServiceImpl.listByOrganId(orgao.getId());
         jLabel1.setText(orgao.getName());
+        jTextAreaConteudo.setLineWrap(true);
+        jTextAreaConteudo.setWrapStyleWord(true);
+        jTextAreaConteudo.setText(conteudos.get(0).getContent());
         carregaObj = new CarregaObj();
         String file = orgao.getImageFileName();
         carregaObj.setFile(file);
