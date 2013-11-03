@@ -2,19 +2,29 @@ package jogoanatomia.telas;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import javax.media.j3d.Canvas3D;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import jogoanatomia.entidades.HangmanGame;
 import jogoanatomia.entidades.Organ;
 import jogoanatomia.entidades.actor.ForcaActor;
+import jogoanatomia.loader.CarregaObj;
+import jogoanatomia.loader.CarregaStereo;
 import jogoanatomia.services.GameServiceImpl;
 
 
 public class Forca extends javax.swing.JFrame {
 
     public Organ orgao;
+    
     public ForcaActor forcaActor;
+    
     private HangmanGame fase;
+    
+    public CarregaObj carregaObj;
+    
+    public CarregaStereo carregaStereo;
+    
 
     public void setOrgao(Organ orgao) {
         this.orgao = orgao;
@@ -32,6 +42,18 @@ public class Forca extends javax.swing.JFrame {
         jLletrasErradas.setText("");
         jLforca.setIcon(new ImageIcon(getClass().getResource("images/forca0.png")));
         setVisible(true);
+        carregaObj = new CarregaObj();
+        String file = orgao.getImageFileName();
+        carregaObj.setFile(file);
+        Canvas3D c = carregaObj.carregaOrgao();
+        atualizaPanel(c);        
+    }
+    
+    public void atualizaPanel(Canvas3D c){
+        jPanelOrgao.removeAll();
+        jPanelOrgao.setLayout(new BorderLayout(10, 0));
+        jPanelOrgao.add(c);
+        jPanelOrgao.updateUI();    
     }
 
     @SuppressWarnings("unchecked")
@@ -47,15 +69,14 @@ public class Forca extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jTletra = new javax.swing.JTextField();
         jBtentaLetra = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jTBestereoscopia = new javax.swing.JToggleButton();
         jLabel10 = new javax.swing.JLabel();
         jLletrasErradas = new javax.swing.JLabel();
         jTforca = new javax.swing.JTextField();
         jLforca = new javax.swing.JLabel();
         jLpontuacaoTotal = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jRadioButtonStereo = new javax.swing.JRadioButton();
+        jPanelOrgao = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("BodyGame - Jogo de Forca");
@@ -113,18 +134,6 @@ public class Forca extends javax.swing.JFrame {
         });
         getContentPane().add(jBtentaLetra, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 40, 40));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel9.setText("Estereoscopia:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, -1, -1));
-
-        jTBestereoscopia.setText("ON");
-        jTBestereoscopia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTBestereoscopiaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTBestereoscopia, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, -1, 30));
-
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setText("Escolha uma letra:");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
@@ -150,25 +159,29 @@ public class Forca extends javax.swing.JFrame {
         jLabel12.setText("Pontuação Total:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jRadioButtonStereo.setText("Stereoscopia");
+        jRadioButtonStereo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonStereoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jRadioButtonStereo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, -1, -1));
+
+        javax.swing.GroupLayout jPanelOrgaoLayout = new javax.swing.GroupLayout(jPanelOrgao);
+        jPanelOrgao.setLayout(jPanelOrgaoLayout);
+        jPanelOrgaoLayout.setHorizontalGroup(
+            jPanelOrgaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 440, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanelOrgaoLayout.setVerticalGroup(
+            jPanelOrgaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 310, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, 440, 310));
+        getContentPane().add(jPanelOrgao, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, 440, 310));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTBestereoscopiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTBestereoscopiaActionPerformed
-        
-    }//GEN-LAST:event_jTBestereoscopiaActionPerformed
 
     private void jBtentaLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtentaLetraActionPerformed
         if(jTletra.getText().isEmpty()){
@@ -230,6 +243,13 @@ public class Forca extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTletraKeyPressed
 
+    private void jRadioButtonStereoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonStereoActionPerformed
+        carregaStereo = new CarregaStereo();
+        String file = orgao.getImageFileName();
+        carregaStereo.setFileName(file);
+        atualizaPanel(carregaStereo.carregaObjeto());
+    }//GEN-LAST:event_jRadioButtonStereoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtentaLetra;
     private javax.swing.JLabel jLabel10;
@@ -238,15 +258,14 @@ public class Forca extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLdica;
     private javax.swing.JLabel jLforca;
     private javax.swing.JLabel jLletras;
     private javax.swing.JLabel jLletrasErradas;
     private javax.swing.JLabel jLnivel;
     private javax.swing.JLabel jLpontuacaoTotal;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JToggleButton jTBestereoscopia;
+    private javax.swing.JPanel jPanelOrgao;
+    private javax.swing.JRadioButton jRadioButtonStereo;
     private javax.swing.JTextField jTforca;
     private javax.swing.JTextField jTletra;
     // End of variables declaration//GEN-END:variables

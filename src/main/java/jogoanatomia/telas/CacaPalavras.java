@@ -3,23 +3,35 @@ package jogoanatomia.telas;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.media.j3d.Canvas3D;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import jogoanatomia.entidades.Organ;
 import jogoanatomia.entidades.WordSearchesGame;
 import jogoanatomia.entidades.actor.CacaPalavraActor;
+import jogoanatomia.loader.CarregaObj;
+import jogoanatomia.loader.CarregaStereo;
 import jogoanatomia.services.GameServiceImpl;
 
 public class CacaPalavras extends javax.swing.JFrame {
 
     public Organ orgao;
+    
     public CacaPalavraActor cacaPalavrasActor;
+    
     private WordSearchesGame fase;
+    
+    public CarregaObj carregaObj;
+    
+    public CarregaStereo carregaStereo;
 
     private int[] primeiraLetra = {-1, -1};
+    
     Timer timer;
+    
     int current = 120;
 
+    
     public void setOrgao(Organ orgao) {
         this.orgao = orgao;
     }
@@ -47,6 +59,18 @@ public class CacaPalavras extends javax.swing.JFrame {
         jLtempo.setText(getCurrent() + "");
         goTimer();
         setVisible(true);
+        carregaObj = new CarregaObj();
+        String file = orgao.getImageFileName();
+        carregaObj.setFile(file);
+        Canvas3D c = carregaObj.carregaOrgao();
+        atualizaPanel(c);        
+    }
+    
+    public void atualizaPanel(Canvas3D c){
+        jPanelOrgao.removeAll();
+        jPanelOrgao.setLayout(new BorderLayout(10, 0));
+        jPanelOrgao.add(c);
+        jPanelOrgao.updateUI();    
     }
 
     public int getCurrent() {
@@ -174,10 +198,9 @@ public class CacaPalavras extends javax.swing.JFrame {
         jLpontuacaoTotal = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLtempo = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jTBestereoscopia = new javax.swing.JToggleButton();
-        jLabel10 = new javax.swing.JLabel();
+        jPanelOrgao = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jRadioButtonStereo2 = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -321,47 +344,38 @@ public class CacaPalavras extends javax.swing.JFrame {
         jLtempo.setText("-");
         getContentPane().add(jLtempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(723, 23, 38, -1));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanelOrgao.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanelOrgaoLayout = new javax.swing.GroupLayout(jPanelOrgao);
+        jPanelOrgao.setLayout(jPanelOrgaoLayout);
+        jPanelOrgaoLayout.setHorizontalGroup(
+            jPanelOrgaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 406, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanelOrgaoLayout.setVerticalGroup(
+            jPanelOrgaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 386, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(906, 7, 410, 390));
-
-        jTBestereoscopia.setText("ON");
-        jTBestereoscopia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTBestereoscopiaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTBestereoscopia, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 400, -1, 30));
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel10.setText("Estereoscopia:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 410, -1, -1));
+        getContentPane().add(jPanelOrgao, new org.netbeans.lib.awtextra.AbsoluteConstraints(906, 7, 410, 390));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Clique na primeira e última letra de cada palavra para marcá-la!");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 58, -1, -1));
+
+        jRadioButtonStereo2.setText("Stereoscopia");
+        jRadioButtonStereo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonStereo2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jRadioButtonStereo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 400, 120, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jogoanatomia/telas/images/fundo_cacapalavras.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1330, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTBestereoscopiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTBestereoscopiaActionPerformed
-
-
-    }//GEN-LAST:event_jTBestereoscopiaActionPerformed
 
 
     private void jTcacaPalavrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTcacaPalavrasMouseClicked
@@ -443,9 +457,16 @@ public class CacaPalavras extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jTcacaPalavrasMouseClicked
+
+    private void jRadioButtonStereo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonStereo2ActionPerformed
+        carregaStereo = new CarregaStereo();
+        String file = orgao.getImageFileName();
+        carregaStereo.setFileName(file);
+        atualizaPanel(carregaStereo.carregaObjeto());
+    }//GEN-LAST:event_jRadioButtonStereo2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
@@ -463,9 +484,11 @@ public class CacaPalavras extends javax.swing.JFrame {
     private javax.swing.JLabel jLpontuacaoTotal;
     private javax.swing.JLabel jLtempo;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanelOrgao;
+    private javax.swing.JRadioButton jRadioButtonStereo;
+    private javax.swing.JRadioButton jRadioButtonStereo1;
+    private javax.swing.JRadioButton jRadioButtonStereo2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jTBestereoscopia;
     private javax.swing.JTable jTcacaPalavras;
     // End of variables declaration//GEN-END:variables
 }
