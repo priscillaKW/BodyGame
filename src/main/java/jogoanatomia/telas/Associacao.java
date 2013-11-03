@@ -33,7 +33,7 @@ public class Associacao extends javax.swing.JFrame {
         this.orgao = orgao;
     }
 
-    public Associacao() {
+    public Associacao(Organ orgao) {
         initComponents();
         associacaoActor = new AssociacaoActor(new GameServiceImpl(), SessionStore.getLoggedUser(), orgao);
         setOrgao(orgao);
@@ -146,7 +146,6 @@ public class Associacao extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLtempo = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jRadioButtonStereo = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -155,7 +154,6 @@ public class Associacao extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1142, 600));
         setPreferredSize(new java.awt.Dimension(1142, 600));
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jLabel12.setText("Pontuação Total:");
@@ -390,9 +388,6 @@ public class Associacao extends javax.swing.JFrame {
         jLtempo.setText("-");
         getContentPane().add(jLtempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 20, 38, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jogoanatomia/telas/images/fundo_associacao.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-220, 80, 1140, 600));
-
         jRadioButtonStereo.setText("Stereoscopia");
         jRadioButtonStereo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -476,7 +471,6 @@ public class Associacao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLdica1;
     private javax.swing.JLabel jLdica2;

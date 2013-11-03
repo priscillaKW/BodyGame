@@ -148,7 +148,6 @@ public class Quiz extends javax.swing.JFrame {
         jPanelOrgao = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLpontuacaoTotal = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jRadioButtonStereo = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -331,9 +330,6 @@ public class Quiz extends javax.swing.JFrame {
         jLpontuacaoTotal.setText("-");
         getContentPane().add(jLpontuacaoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 20, 100, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jogoanatomia/telas/images/fundo_perguntas.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 580));
-
         jRadioButtonStereo.setText("Stereoscopia");
         jRadioButtonStereo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -408,7 +404,6 @@ public class Quiz extends javax.swing.JFrame {
     private javax.swing.ButtonGroup BGrespostas;
     private javax.swing.JButton jBresponder;
     private javax.swing.JLabel jLPergunta;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel5;

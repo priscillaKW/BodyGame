@@ -41,7 +41,6 @@ public class Forca extends javax.swing.JFrame {
         jLletras.setText(forcaActor.quantLetras());
         jLletrasErradas.setText("");
         jLforca.setIcon(new ImageIcon(getClass().getResource("images/forca0.png")));
-        setVisible(true);
        /* carregaObj = new CarregaObj();
         String file = orgao.getImageFileName();
         carregaObj.setFile(file);
@@ -54,6 +53,13 @@ public class Forca extends javax.swing.JFrame {
         jPanelOrgao.setLayout(new BorderLayout(10, 0));
         jPanelOrgao.add(c);
         jPanelOrgao.updateUI();    
+    }
+
+    private void disposeAndBackToGameSelection() {
+        forcaActor.finish();
+        TelaEscolheJogo escolheJogo = new TelaEscolheJogo(orgao);
+        this.dispose();
+        escolheJogo.setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -204,8 +210,7 @@ public class Forca extends javax.swing.JFrame {
         }
         if(forcaActor.getLetrasErradas()==6){
             JOptionPane.showMessageDialog(rootPane, "Ops!! Você perdeu!", "AVISO", 1, null);
-            forcaActor.finish();
-            this.setVisible(false);
+            disposeAndBackToGameSelection();
         }
         if(palavra.equals(jTforca.getText().replace("-", " "))){
             JOptionPane.showMessageDialog(rootPane, "Parabéns!! Você completou o jogo!", "AVISO", 1, null);
@@ -215,8 +220,7 @@ public class Forca extends javax.swing.JFrame {
             
             if(fase==null) {
                 JOptionPane.showMessageDialog(rootPane, "Não há mais fases para este jogo!", "AVISO", 1, null);
-                forcaActor.finish();
-                setVisible(false);
+                disposeAndBackToGameSelection();
             } else {
                 jTforca.setText(forcaActor.gerarMascara());
                 jLdica.setText(fase.getTip());

@@ -40,7 +40,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabelLogin = new javax.swing.JLabel();
         jTextLogin1 = new javax.swing.JTextField();
         jLabelSenha = new javax.swing.JLabel();
-        jTextSenha = new javax.swing.JTextField();
+        jTextSenha = new javax.swing.JPasswordField();
         jButtonCadastrar = new javax.swing.JButton();
         jLabelMessage = new javax.swing.JLabel();
         jButtonVoltar = new javax.swing.JButton();
@@ -194,9 +194,9 @@ public class TelaCadastro extends javax.swing.JFrame {
             User user = userService.create(login, senha);
             if(user != null){
                 // JOptionPane.showMessageDialog(rootPane, "Cadastro realizado com sucesso!");
+                SessionStore.setLoggedUser(user);
                 this.dispose();                
                 telaPersoganemOrgao.setVisible(true);
-                
             }else{
                 jLabelMessage.setText("Login já cadastrado no sistema, tente outro");
             }
@@ -256,6 +256,6 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelTitulo;
     public javax.swing.JTextField jTextLogin1;
-    public javax.swing.JTextField jTextSenha;
+    public javax.swing.JPasswordField jTextSenha;
     // End of variables declaration//GEN-END:variables
 }

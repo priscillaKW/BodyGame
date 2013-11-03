@@ -7,7 +7,9 @@ import jogoanatomia.entidades.*;
 import jogoanatomia.utils.JSONParser;
 import org.apache.http.HttpResponse;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GameServiceImpl implements GameService {
     private ApiClient apiClient;
@@ -50,11 +52,38 @@ public class GameServiceImpl implements GameService {
     }
 
     public <T extends Game> void updateCompletedPercentage(String userId, String organId, Float percentage, Class<T> type) {
-        // TODO
+        try {
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("score", percentage);
+            params.put("organ_id", organId);
+            params.put("game_type", type.getSimpleName());
+
+            HttpResponse response = apiClient.post(format("/users/%s/game_scores", userId), JSONParser.toJson(params));
+
+            if (response != null && response.getStatusLine().getStatusCode() != 201)
+                System.out.println("something went wrong when update completed percentage");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public <T extends Game> Float getCompletedPercentage(String userId, String organId, Class<T> type) {
-        // TODO
-        return 0f;
+        try {
+            HttpResponse response = apiClient.get(format("/users/%s/game_scores", userId));
+
+            if (response != null && response.getStatusLine().getStatusCode() == 200) {
+                List<GameScore> scores = (List<GameScore>) JSONParser.fromHttpResponse(response, List.class, GameScore.class);
+
+                for (GameScore g: scores) {
+                    if(g.getOrganId().equals(organId) && g.getGameType().equals(type.getSimpleName()))
+                        return g.getScore();
+                }
+            }
+
+            return 0f;
+        } catch (Exception e) {
+            return 0f;
+        }
     }
 }

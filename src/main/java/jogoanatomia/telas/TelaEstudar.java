@@ -218,8 +218,7 @@ public class TelaEstudar extends javax.swing.JFrame {
     private void jButtonJogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJogarActionPerformed
         //telaEscolheJogo = new EscolheJogo();
         //telaEscolheJogo.orgao = orgao;
-        windowJogos = new TelaEscolheJogo();
-        windowJogos.setOrgao(orgao);
+        windowJogos = new TelaEscolheJogo(orgao);
         this.dispose();
         windowJogos.setVisible(true);
     }//GEN-LAST:event_jButtonJogarActionPerformed

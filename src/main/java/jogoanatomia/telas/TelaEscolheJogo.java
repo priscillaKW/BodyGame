@@ -1,12 +1,16 @@
 package jogoanatomia.telas;
 
+import static java.lang.String.format;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import jogoanatomia.entidades.Organ;
+
+import jogoanatomia.entidades.*;
+import jogoanatomia.services.GameService;
+import jogoanatomia.services.GameServiceImpl;
 
 public class TelaEscolheJogo extends javax.swing.JFrame {
-
-    public Icon icon;
+    public Icon icon = new ImageIcon(getClass().getResource("/images/trophy.png"), "Troféu");
 
     static Organ orgao;
 
@@ -21,52 +25,48 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
     public void setOrgao(Organ orgao) {
         this.orgao = orgao;
     }
-    
-    public TelaEscolheJogo() {
+
+    private GameService service;
+
+    private Float quizPercentage;
+    private Float hangmanPercentage;
+    private Float associationPercentage;
+    private Float wordSearchesPercentage;
+
+    public TelaEscolheJogo(Organ organ) {
+        orgao = organ;
+        service = new GameServiceImpl();
+
+        String userId = SessionStore.getLoggedUser().getId();
+
+        quizPercentage = service.getCompletedPercentage(userId, organ.getId(), QuizGame.class);
+        hangmanPercentage = service.getCompletedPercentage(userId, organ.getId(), HangmanGame.class);
+        associationPercentage = service.getCompletedPercentage(userId, organ.getId(), AssociationGame.class);
+        wordSearchesPercentage = service.getCompletedPercentage(userId, organ.getId(), WordSearchesGame.class);
+
         initComponents();
-        icon = new ImageIcon(getClass().getResource("/images/trophy.png"), "Troféu");
-        orgao = new Organ();
-  /*      //Forca completa?
-        if(jogosActor.jogoCompletoPorOrgao(1, Integer.parseInt(orgao.getId()))) jBforca.setIcon(icon);
-        //Associação completa?
-        if(jogosActor.jogoCompletoPorOrgao(2,Integer.parseInt(orgao.getId()))) jBassociacao.setIcon(icon);
-        //Caça-Palavras completa?
-        if(jogosActor.jogoCompletoPorOrgao(3,Integer.parseInt(orgao.getId()))) jBcacaPalavras.setIcon(icon);
-        //Quiz completo?
-        if(jogosActor.jogoCompletoPorOrgao(4,Integer.parseInt(orgao.getId()))) jBperguntas.setIcon(icon); */
+
+        if (hangmanPercentage.equals(100f))
+            jBforca.setIcon(icon);
+        else if(hangmanPercentage > 0f)
+            jBforca.setText(jBforca.getText() + " (" + hangmanPercentage + "%)");
+
+        if (associationPercentage.equals(100f))
+            jBassociacao.setIcon(icon);
+        else if(associationPercentage > 0f)
+            jBassociacao.setText(jBassociacao.getText() + " (" + associationPercentage + "%)");
+
+        if (quizPercentage.equals(100f))
+            jBperguntas.setIcon(icon);
+        else if(quizPercentage > 0f)
+            jBperguntas.setText(jBperguntas.getText() + " (" + quizPercentage + "%)");
+
+        if (wordSearchesPercentage.equals(100f))
+            jBcacaPalavras.setIcon(icon);
+        else if(wordSearchesPercentage > 0f)
+            jBcacaPalavras.setText(jBcacaPalavras.getText() + " (" + wordSearchesPercentage + "%)");
     }
 
-    public static void main(String[] args) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaEscolheJogo().setVisible(true);
-            }
-        });
-    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -172,19 +172,27 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBassociacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBassociacaoActionPerformed
-       associacao = new Associacao(orgao);
+       	associacao = new Associacao(orgao);
+        this.dispose();
+        associacao.setVisible(true);
     }//GEN-LAST:event_jBassociacaoActionPerformed
 
     private void jBforcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBforcaActionPerformed
-       forca = new Forca(orgao);       
+        forca = new Forca(orgao);
+        this.dispose();
+        forca.setVisible(true);
     }//GEN-LAST:event_jBforcaActionPerformed
 
     private void jBperguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBperguntasActionPerformed
         quiz = new Quiz(orgao);
+	this.dispose();
+	quiz.setVisible(true);
     }//GEN-LAST:event_jBperguntasActionPerformed
 
     private void jBcacaPalavrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcacaPalavrasActionPerformed
         cacaPalavras = new CacaPalavras(orgao);
+	this.dispose();
+	cacaPalavras.setVisible(true);
     }//GEN-LAST:event_jBcacaPalavrasActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

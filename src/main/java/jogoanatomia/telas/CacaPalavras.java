@@ -201,7 +201,7 @@ public class CacaPalavras extends javax.swing.JFrame {
         jPanelOrgao = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jRadioButtonStereo2 = new javax.swing.JRadioButton();
-        jLabel2 = new javax.swing.JLabel();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("BodyGame - Caça-Palavras");
@@ -372,9 +372,6 @@ public class CacaPalavras extends javax.swing.JFrame {
         });
         getContentPane().add(jRadioButtonStereo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 400, 120, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jogoanatomia/telas/images/fundo_cacapalavras.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1330, 470));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -470,7 +467,6 @@ public class CacaPalavras extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLpalavra1;
     private javax.swing.JLabel jLpalavra10;
