@@ -45,7 +45,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         jButtonEntrar = new javax.swing.JButton();
         jLabelTitulo = new javax.swing.JLabel();
-        jTextSenha = new javax.swing.JTextField();
+        jTextSenha = new javax.swing.JPasswordField();
         jLabelLogin = new javax.swing.JLabel();
         jLabelSenha = new javax.swing.JLabel();
         jTextLogin1 = new javax.swing.JTextField();
@@ -195,6 +195,6 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelTitulo;
     public javax.swing.JTextField jTextLogin1;
-    public javax.swing.JTextField jTextSenha;
+    public javax.swing.JPasswordField jTextSenha;
     // End of variables declaration//GEN-END:variables
 }
