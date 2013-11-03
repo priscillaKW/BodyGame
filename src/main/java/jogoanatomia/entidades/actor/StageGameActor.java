@@ -26,7 +26,7 @@ public abstract class StageGameActor<T extends Game> {
 
     private void init() {
         this.games = service.listGamesByOrganId(organ.getId(), getGameType());
-        this.completedPercentage = service.getCompletedPercentage(organ.getId(), user.getId(), getGameType());
+        this.completedPercentage = service.getCompletedPercentage(user.getId(), organ.getId(), getGameType());
     }
 
     public T nextStage() {

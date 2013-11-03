@@ -174,7 +174,7 @@
         <Property name="text" type="java.lang.String" value="Senha:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextSenha">
+    <Component class="javax.swing.JPasswordField" name="jTextSenha">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="Insira o login"/>
       </Properties>
