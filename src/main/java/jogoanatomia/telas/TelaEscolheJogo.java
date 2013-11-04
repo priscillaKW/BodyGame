@@ -67,11 +67,10 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
             jBcacaPalavras.setText(jBcacaPalavras.getText() + " (" + wordSearchesPercentage + "%)");
     }
     
-    private void disposeAndBackToStudy() {
-        TelaEstudar estudar = new TelaEstudar();
-        estudar.setOrgao(orgao);
+    private void disposeAndBackToOrganSelection() {
+        TelaPersonagemOrgaos personagemOrgaos = new TelaPersonagemOrgaos();
         this.dispose();
-        estudar.setVisible(true);
+        personagemOrgaos.setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -209,7 +208,7 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
     }//GEN-LAST:event_jBcacaPalavrasActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        disposeAndBackToStudy();
+        disposeAndBackToOrganSelection();
     }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

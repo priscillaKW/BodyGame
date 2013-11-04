@@ -219,7 +219,7 @@ public class Forca extends javax.swing.JFrame {
         }
         if(palavra.equals(jTforca.getText().replace("-", " "))){
             JOptionPane.showMessageDialog(rootPane, "Parabéns!! Você completou o jogo!", "AVISO", 1, null);
-
+            jLpontuacaoTotal.setText((100 * (forcaActor.completedStageCount+1)) / forcaActor.getTotalStages()+"");
             jLletrasErradas.setText("");
             fase = forcaActor.nextStage();
             

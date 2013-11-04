@@ -423,7 +423,6 @@ public class CacaPalavras extends javax.swing.JFrame {
                     JLabel teste = (JLabel) a[i];
                     teste.setFont(new Font("Tahoma", Font.ITALIC, 11));
                     teste.setEnabled(false);
-                    jLpontuacaoTotal.setText(cacaPalavrasActor.getActualStage() + "/" + cacaPalavrasActor.getTotalStages());
                     cacaPalavrasActor.setFaltaEncontrar(cacaPalavrasActor.getFaltaEncontrar() - 1);
                     encontrou = true;
                 }
@@ -450,7 +449,7 @@ public class CacaPalavras extends javax.swing.JFrame {
         }
         if (cacaPalavrasActor.getFaltaEncontrar() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Parabéns! Você completou essa rodada! Vamos para a próxima!", "AVISO", 1, null);
-
+            jLpontuacaoTotal.setText((100 * (cacaPalavrasActor.completedStageCount+1)) / cacaPalavrasActor.getTotalStages()+"");
             fase = cacaPalavrasActor.nextStage();
 
             if (fase == null) {

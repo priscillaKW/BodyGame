@@ -15,7 +15,7 @@ public abstract class StageGameActor<T extends Game> {
 
     private float completedPercentage;
     private int actualStage = -1;
-    private int completedStageCount = -1;
+    public int completedStageCount = -1;
 
     public StageGameActor(GameService service, User user, Organ organ) {
         this.service = service;

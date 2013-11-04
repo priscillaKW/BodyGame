@@ -37,6 +37,9 @@ public class Quiz extends javax.swing.JFrame {
         fase = quizActor.nextStage();
         this.orgao = orgao;
         initComponents();
+        setCurrent(120);
+        jLtempo.setText(getCurrent() + "");
+        goTimer();
         carregaObj = new CarregaObj();
         String file = orgao.getImageFileName();
         carregaObj.setFile(file);
@@ -366,11 +369,15 @@ public class Quiz extends javax.swing.JFrame {
         }
         if (resp.equals(fase.getAnswer())) {
             JOptionPane.showMessageDialog(rootPane, "Parabéns! Resposta Correta ;)", "AVISO", 1, null);
+            jLpontuacaoTotal.setText((100 * (quizActor.completedStageCount+1)) / quizActor.getTotalStages()+"");
             fase = quizActor.nextStage();
             if(fase == null){
                 JOptionPane.showMessageDialog(rootPane, "Parabéns! Você completou o jogo!!", "AVISO", 1, null);
                 disposeAndBackToGameSelection();
             }
+            setCurrent(120);
+            jLtempo.setText(getCurrent() + "");
+            goTimer();
             reinicializaCampos();
         } else {
                 JOptionPane.showMessageDialog(rootPane, "Ops!! Você perdeu!", "AVISO", 1, null);

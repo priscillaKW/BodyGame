@@ -434,7 +434,7 @@ public class Associacao extends javax.swing.JFrame {
 
             if (certo) {
                 JOptionPane.showMessageDialog(rootPane, "Parabéns! Você completou essa rodada! Vamos para a próxima!", "AVISO", 1, null);
-                jLpontuacaoTotal.setText(associacaoActor.getActualStage() + "/" + associacaoActor.getTotalStages());
+                jLpontuacaoTotal.setText((100 * (associacaoActor.completedStageCount+1)) / associacaoActor.getTotalStages()+"");
 
                 fase = associacaoActor.nextStage();
 
