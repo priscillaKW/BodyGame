@@ -46,7 +46,7 @@ public class Quiz extends javax.swing.JFrame {
     }
     
     public void reinicializaCampos(){
-        jLPergunta.setText(fase.getAnswer());
+        jLPergunta.setText(fase.getQuestion());
         if (fase.getOptionA().length() > 70) {
             jRBresposta1.setText(quizActor.naoCabeLable(fase.getOptionA()));
         } else {
@@ -75,7 +75,7 @@ public class Quiz extends javax.swing.JFrame {
         jRBresposta2.setSelected(false);
         jRBresposta3.setSelected(false);
         jRBresposta4.setSelected(false);
-        jLquestao.setText(fase.getQuestion()+"");
+        jLquestao.setText(quizActor.getActualStage()+"");
         if (timer!=null) {
             timer.stop();
         }                
