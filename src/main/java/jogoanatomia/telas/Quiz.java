@@ -42,6 +42,7 @@ public class Quiz extends javax.swing.JFrame {
         carregaObj.setFile(file);
         Canvas3D c = carregaObj.carregaOrgao();
         atualizaPanel(c);   
+        reinicializaCampos();
     }
     
     public void reinicializaCampos(){

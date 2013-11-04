@@ -192,7 +192,6 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
     private void jBcacaPalavrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcacaPalavrasActionPerformed
         cacaPalavras = new CacaPalavras(orgao);
 	this.dispose();
-	cacaPalavras.setVisible(true);
     }//GEN-LAST:event_jBcacaPalavrasActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

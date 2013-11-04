@@ -154,10 +154,11 @@ public class Associacao extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1142, 600));
         setPreferredSize(new java.awt.Dimension(1142, 600));
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jLabel12.setText("Pontuação Total:");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, -1, 20));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(153, 0, 0));

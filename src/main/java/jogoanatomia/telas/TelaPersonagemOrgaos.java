@@ -78,9 +78,9 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
         jListOrgaos = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximizedBounds(new java.awt.Rectangle(590, 520, 520, 520));
-        setMaximumSize(new java.awt.Dimension(590, 520));
-        setPreferredSize(new java.awt.Dimension(590, 520));
+        setMaximizedBounds(new java.awt.Rectangle(650, 520, 520, 520));
+        setMaximumSize(new java.awt.Dimension(650, 520));
+        setPreferredSize(new java.awt.Dimension(650, 520));
 
         jLabelTitulo.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(255, 0, 0));
@@ -106,7 +106,10 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
         });
 
         jListOrgaos.setModel(new javax.swing.AbstractListModel() {
-            public int getSize() { return orgaos.size(); }
+            public int getSize() {  
+            		if(orgaos!=null){
+            		return orgaos.size();}
+            		return 0; }
             public Object getElementAt(int i) { return orgaos.get(i).getName(); }
         });
         jScrollPane1.setViewportView(jListOrgaos);

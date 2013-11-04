@@ -21,8 +21,8 @@ public class AssociacaoActor extends StageGameActor<AssociationGame> {
         fasesOriginal = (ArrayList<AssociationGame.TipAnswer>) stage.getTipAnswers();
         fasesEmbaralhadas=new ArrayList();
         ordemRespostas=new ArrayList();
-        while(ordemRespostas.size()<5){
-            int j=(int) ((Math.random()*5));
+        while(ordemRespostas.size()<fasesOriginal.size()){
+            int j=(int) ((Math.random()*fasesOriginal.size()));
             if(!ordemRespostas.contains(j)){
                 ordemRespostas.add(j);
                 fasesEmbaralhadas.add(fasesOriginal.get(j));
