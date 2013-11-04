@@ -171,7 +171,7 @@ public class Associacao extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
-        jLabel12.setText("Pontuação Total:");
+        jLabel12.setText("Pontuação:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, -1, 20));
 
         jLabel11.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
@@ -396,7 +396,7 @@ public class Associacao extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jLabel9.setText("Tempo:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 20, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 20, -1, -1));
 
         jLtempo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLtempo.setForeground(new java.awt.Color(153, 0, 0));

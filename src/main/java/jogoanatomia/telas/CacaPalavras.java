@@ -344,7 +344,7 @@ public class CacaPalavras extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(657, 93, 240, 341));
 
         jLabel12.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
-        jLabel12.setText("Pontuação Total:");
+        jLabel12.setText("Pontuação:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 23, -1, -1));
 
         jLpontuacaoTotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -353,7 +353,7 @@ public class CacaPalavras extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jLabel9.setText("Tempo:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(672, 23, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, -1, -1));
 
         jLtempo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLtempo.setForeground(new java.awt.Color(153, 0, 0));

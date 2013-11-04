@@ -66,6 +66,13 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
         else if(wordSearchesPercentage > 0f)
             jBcacaPalavras.setText(jBcacaPalavras.getText() + " (" + wordSearchesPercentage + "%)");
     }
+    
+    private void disposeAndBackToStudy() {
+        TelaEstudar estudar = new TelaEstudar();
+        estudar.setOrgao(orgao);
+        this.dispose();
+        estudar.setVisible(true);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -83,6 +90,11 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
         setBounds(new java.awt.Rectangle(300, 50, 0, 0));
         setMinimumSize(new java.awt.Dimension(450, 350));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jBforca.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jBforca.setForeground(new java.awt.Color(153, 0, 0));
@@ -195,6 +207,10 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
         cacaPalavras.setVisible(true);
 
     }//GEN-LAST:event_jBcacaPalavrasActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        disposeAndBackToStudy();
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBassociacao;

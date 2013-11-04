@@ -69,6 +69,11 @@ public class TelaEstudar extends javax.swing.JFrame {
         this.orgao = orgao;
     }
     
+    private void disposeAndBackToOrganSelection() {
+        TelaPersonagemOrgaos personagemOrgaos = new TelaPersonagemOrgaos();
+        this.dispose();
+        personagemOrgaos.setVisible(true);
+    }
     
 
     /**
@@ -96,6 +101,11 @@ public class TelaEstudar extends javax.swing.JFrame {
         setBounds(new java.awt.Rectangle(300, 50, 0, 0));
         setMinimumSize(new java.awt.Dimension(575, 610));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabelTitulo.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(102, 0, 0));
@@ -238,6 +248,10 @@ public class TelaEstudar extends javax.swing.JFrame {
         carregaStereo.setFileName(file);
         atualizaPanel(carregaStereo.carregaObjeto());
     }//GEN-LAST:event_jRadioButtonStereoActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        disposeAndBackToOrganSelection();
+    }//GEN-LAST:event_formWindowClosing
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

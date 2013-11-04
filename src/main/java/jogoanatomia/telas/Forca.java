@@ -157,7 +157,7 @@ public class Forca extends javax.swing.JFrame {
         getContentPane().add(jLpontuacaoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, 100, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
-        jLabel12.setText("Pontuação Total:");
+        jLabel12.setText("Pontuação:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, -1, -1));
 
         jRadioButtonStereo.setText("Stereoscopia");
