@@ -89,6 +89,11 @@ public class Forca extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(820, 500));
         setMinimumSize(new java.awt.Dimension(820, 500));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
@@ -243,6 +248,10 @@ public class Forca extends javax.swing.JFrame {
         carregaStereo.setFileName(file);
         atualizaPanel(carregaStereo.carregaObjeto());
     }//GEN-LAST:event_jRadioButtonStereoActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        disposeAndBackToGameSelection();
+    }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtentaLetra;
