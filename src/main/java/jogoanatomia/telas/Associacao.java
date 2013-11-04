@@ -53,12 +53,11 @@ public class Associacao extends javax.swing.JFrame {
         setCurrent(40);
         jLtempo.setText(getCurrent() + "");
         goTimer();
-        setVisible(true);
         carregaObj = new CarregaObj();
         String file = orgao.getImageFileName();
         carregaObj.setFile(file);
         Canvas3D c = carregaObj.carregaOrgao();
-        atualizaPanel(c);    
+        atualizaPanel(c);
     }
     
     public void atualizaPanel(Canvas3D c){
@@ -66,6 +65,13 @@ public class Associacao extends javax.swing.JFrame {
         jPanelOrgao.setLayout(new BorderLayout(10, 0));
         jPanelOrgao.add(c);
         jPanelOrgao.updateUI();    
+    }
+
+    private void disposeAndBackToGameSelection() {
+        associacaoActor.finish();
+        TelaEscolheJogo escolheJogo = new TelaEscolheJogo(orgao);
+        this.dispose();
+        escolheJogo.setVisible(true);
     }
 
     public int getCurrent() {
@@ -103,7 +109,7 @@ public class Associacao extends javax.swing.JFrame {
                 jLtempo.setText(--current + "");
                 if (current == 0) {
                     JOptionPane.showMessageDialog(rootPane, "Ops, você perdeu!", "AVISO", 1, null);
-                    //TODO - salva quanto ele completou
+                    disposeAndBackToGameSelection();
                 }
             }
         };
@@ -426,8 +432,7 @@ public class Associacao extends javax.swing.JFrame {
 
                 if (fase == null) {
                     JOptionPane.showMessageDialog(rootPane, "Não há mais fases para este jogo!", "AVISO", 1, null);
-                    associacaoActor.finish();
-                    setVisible(false);
+                    disposeAndBackToGameSelection();
                 } else {
                     limpa();
                     jLdica1.setText(associacaoActor.fasesOriginal.get(0).getTip());
@@ -447,9 +452,7 @@ public class Associacao extends javax.swing.JFrame {
 
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Ops, você perdeu!", "AVISO", 1, null);
-                limpa();
-                associacaoActor.finish();
-                this.setVisible(false);
+                disposeAndBackToGameSelection();
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed

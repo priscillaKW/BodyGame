@@ -6,6 +6,15 @@ public class GameScore {
     @JsonProperty
     private String id;
 
+<<<<<<< HEAD
+    @JsonProperty("user_id")
+    private String userId;
+
+    @JsonProperty("organ_id")
+    private String organId;
+
+    @JsonProperty
+=======
     @JsonProperty("organ_id")
     private String organId;
 
@@ -13,6 +22,7 @@ public class GameScore {
     private String userId;
 
     @JsonProperty("score")
+>>>>>>> b4f9350ad68b76761d298ef325dd705c7ea1a888
     private Float score;
 
     @JsonProperty("game_type")
@@ -26,6 +36,7 @@ public class GameScore {
         this.id = id;
     }
 
+<<<<<<< HEAD
     public String getUserId() {
         return userId;
     }
@@ -34,6 +45,8 @@ public class GameScore {
         this.userId = userId;
     }
 
+=======
+>>>>>>> b4f9350ad68b76761d298ef325dd705c7ea1a888
     public String getOrganId() {
         return organId;
     }
@@ -42,6 +55,17 @@ public class GameScore {
         this.organId = organId;
     }
 
+<<<<<<< HEAD
+=======
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+>>>>>>> b4f9350ad68b76761d298ef325dd705c7ea1a888
     public Float getScore() {
         return score;
     }

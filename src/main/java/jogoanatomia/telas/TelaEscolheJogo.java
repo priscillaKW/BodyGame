@@ -172,7 +172,7 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBassociacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBassociacaoActionPerformed
-       	associacao = new Associacao(orgao);
+        associacao = new Associacao(orgao);
         this.dispose();
         associacao.setVisible(true);
     }//GEN-LAST:event_jBassociacaoActionPerformed
@@ -185,13 +185,15 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
 
     private void jBperguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBperguntasActionPerformed
         quiz = new Quiz(orgao);
-	this.dispose();
-	quiz.setVisible(true);
+        this.dispose();
+        quiz.setVisible(true);
     }//GEN-LAST:event_jBperguntasActionPerformed
 
     private void jBcacaPalavrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcacaPalavrasActionPerformed
         cacaPalavras = new CacaPalavras(orgao);
-	this.dispose();
+        this.dispose();
+        cacaPalavras.setVisible(true);
+
     }//GEN-LAST:event_jBcacaPalavrasActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

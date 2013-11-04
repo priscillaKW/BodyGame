@@ -1,8 +1,5 @@
 package jogoanatomia.services;
 
-import static java.lang.String.format;
-
-import com.fasterxml.jackson.core.type.TypeReference;
 import jogoanatomia.entidades.*;
 import jogoanatomia.utils.JSONParser;
 import org.apache.http.HttpResponse;
@@ -10,6 +7,8 @@ import org.apache.http.HttpResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static java.lang.String.format;
 
 public class GameServiceImpl implements GameService {
     private ApiClient apiClient;
