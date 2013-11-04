@@ -16,22 +16,14 @@ import jogoanatomia.services.GameServiceImpl;
 public class CacaPalavras extends javax.swing.JFrame {
 
     public Organ orgao;
-    
     public CacaPalavraActor cacaPalavrasActor;
-    
     private WordSearchesGame fase;
-    
     public CarregaObj carregaObj;
-    
     public CarregaStereo carregaStereo;
-
     private int[] primeiraLetra = {-1, -1};
-    
     Timer timer;
-    
     int current = 120;
 
-    
     public void setOrgao(Organ orgao) {
         this.orgao = orgao;
     }
@@ -50,6 +42,7 @@ public class CacaPalavras extends javax.swing.JFrame {
         while (i < a.length && i < fase.getWords().size()) {
             JLabel teste = (JLabel) a[i];
             teste.setText(fase.getWords().get(i));
+            i++;
         }
         preencheTable();
         if (timer != null) {
@@ -62,17 +55,20 @@ public class CacaPalavras extends javax.swing.JFrame {
         String file = orgao.getImageFileName();
         carregaObj.setFile(file);
         Canvas3D c = carregaObj.carregaOrgao();
-        atualizaPanel(c);     
+        atualizaPanel(c);
     }
-    
-    public void atualizaPanel(Canvas3D c){
+
+    public void atualizaPanel(Canvas3D c) {
         jPanelOrgao.removeAll();
         jPanelOrgao.setLayout(new BorderLayout(10, 0));
         jPanelOrgao.add(c);
-        jPanelOrgao.updateUI();    
+        jPanelOrgao.updateUI();
     }
-    
+
     private void disposeAndBackToGameSelection() {
+        if (timer != null) {
+            timer.stop();
+        }
         cacaPalavrasActor.finish();
         TelaEscolheJogo escolheJogo = new TelaEscolheJogo(orgao);
         this.dispose();
@@ -89,6 +85,7 @@ public class CacaPalavras extends javax.swing.JFrame {
 
     public void goTimer() {
         ActionListener action = new ActionListener() {
+
             public void actionPerformed(ActionEvent e) {
                 jLtempo.setText(--current + "");
                 if (current == 0) {
@@ -105,6 +102,15 @@ public class CacaPalavras extends javax.swing.JFrame {
         String[] colunas = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"};
         DefaultTableModel modelo = new DefaultTableModel(colunas, 20);
         jTcacaPalavras.setModel(modelo);
+        Component[] a = jPanel1.getComponents();
+                int i = 0;
+                while (i < a.length) {
+                    JLabel teste = (JLabel) a[i];
+                    teste.setText("-");
+                    teste.setFont(new Font("Tahoma", Font.BOLD, 12));
+                    teste.setEnabled(true);
+                    i++;
+                }
         if (timer != null) {
             timer.stop();
         }
@@ -385,7 +391,6 @@ public class CacaPalavras extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     private void jTcacaPalavrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTcacaPalavrasMouseClicked
         int y = jTcacaPalavras.getSelectedColumn();
         final int x = jTcacaPalavras.getSelectedRow();
@@ -458,8 +463,14 @@ public class CacaPalavras extends javax.swing.JFrame {
                 while (i < a.length && i < fase.getWords().size()) {
                     JLabel teste = (JLabel) a[i];
                     teste.setText(fase.getWords().get(i));
+                    i++;
                 }
                 preencheTable();
+                if (timer != null) {
+                    timer.stop();
+                }
+                setCurrent(240);
+                jLtempo.setText(getCurrent() + "");
                 goTimer();
             }
         }
@@ -475,7 +486,6 @@ public class CacaPalavras extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         disposeAndBackToGameSelection();
     }//GEN-LAST:event_formWindowClosing
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;

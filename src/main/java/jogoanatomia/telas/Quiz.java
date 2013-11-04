@@ -75,7 +75,7 @@ public class Quiz extends javax.swing.JFrame {
         jRBresposta2.setSelected(false);
         jRBresposta3.setSelected(false);
         jRBresposta4.setSelected(false);
-        jLquestao.setText(quizActor.getActualStage()+"");
+        jLquestao.setText((quizActor.getActualStage()+1)+"");
         if (timer!=null) {
             timer.stop();
         }                
@@ -90,6 +90,9 @@ public class Quiz extends javax.swing.JFrame {
     }
     
     private void disposeAndBackToGameSelection() {
+        if (timer != null) {
+            timer.stop();
+        }
         quizActor.finish();
         TelaEscolheJogo escolheJogo = new TelaEscolheJogo(orgao);
         this.dispose();

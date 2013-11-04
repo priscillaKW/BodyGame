@@ -68,6 +68,9 @@ public class Associacao extends javax.swing.JFrame {
     }
 
     private void disposeAndBackToGameSelection() {
+        if (timer != null) {
+            timer.stop();
+        }
         associacaoActor.finish();
         TelaEscolheJogo escolheJogo = new TelaEscolheJogo(orgao);
         this.dispose();
