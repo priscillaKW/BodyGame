@@ -1,0 +1,60 @@
+package jogoanatomia.entidades;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class GameScore {
+    @JsonProperty
+    private String id;
+
+    @JsonProperty("organ_id")
+    private String organId;
+
+    @JsonProperty("user_id")
+    private String userId;
+
+    @JsonProperty("score")
+    private Float score;
+
+    @JsonProperty("game_type")
+    private String gameType;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getOrganId() {
+        return organId;
+    }
+
+    public void setOrganId(String organId) {
+        this.organId = organId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public Float getScore() {
+        return score;
+    }
+
+    public void setScore(Float score) {
+        this.score = score;
+    }
+
+    public String getGameType() {
+        return gameType;
+    }
+
+    public void setGameType(String gameType) {
+        this.gameType = gameType;
+    }
+}
