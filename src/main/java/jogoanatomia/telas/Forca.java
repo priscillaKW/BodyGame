@@ -45,7 +45,7 @@ public class Forca extends javax.swing.JFrame {
         String file = orgao.getImageFileName();
         carregaObj.setFile(file);
         Canvas3D c = carregaObj.carregaOrgao();
-        atualizaPanel(c); 
+        atualizaPanel(c);
     }
     
     public void atualizaPanel(Canvas3D c){

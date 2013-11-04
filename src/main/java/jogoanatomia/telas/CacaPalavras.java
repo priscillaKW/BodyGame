@@ -58,7 +58,6 @@ public class CacaPalavras extends javax.swing.JFrame {
         setCurrent(240);
         jLtempo.setText(getCurrent() + "");
         goTimer();
-        setVisible(true);
         carregaObj = new CarregaObj();
         String file = orgao.getImageFileName();
         carregaObj.setFile(file);
