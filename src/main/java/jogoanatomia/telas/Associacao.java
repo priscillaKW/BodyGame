@@ -160,6 +160,11 @@ public class Associacao extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1142, 600));
         setPreferredSize(new java.awt.Dimension(1142, 600));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
@@ -463,6 +468,10 @@ public class Associacao extends javax.swing.JFrame {
         carregaStereo.setFileName(file);
         atualizaPanel(carregaStereo.carregaObjeto());
     }//GEN-LAST:event_jRadioButtonStereoActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        disposeAndBackToGameSelection();
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup BGdicas;

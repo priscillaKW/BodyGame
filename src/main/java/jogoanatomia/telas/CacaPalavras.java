@@ -71,6 +71,13 @@ public class CacaPalavras extends javax.swing.JFrame {
         jPanelOrgao.add(c);
         jPanelOrgao.updateUI();    
     }
+    
+    private void disposeAndBackToGameSelection() {
+        cacaPalavrasActor.finish();
+        TelaEscolheJogo escolheJogo = new TelaEscolheJogo(orgao);
+        this.dispose();
+        escolheJogo.setVisible(true);
+    }
 
     public int getCurrent() {
         return current;
@@ -86,7 +93,7 @@ public class CacaPalavras extends javax.swing.JFrame {
                 jLtempo.setText(--current + "");
                 if (current == 0) {
                     JOptionPane.showMessageDialog(rootPane, "Ops, você perdeu!", "AVISO", 1, null);
-                    //TODO - salva quanto ele completou
+                    disposeAndBackToGameSelection();
                 }
             }
         };
@@ -201,11 +208,15 @@ public class CacaPalavras extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jRadioButtonStereo2 = new javax.swing.JRadioButton();
 
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("BodyGame - Caça-Palavras");
         setBounds(new java.awt.Rectangle(0, 50, 0, 0));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTcacaPalavras.setModel(new javax.swing.table.DefaultTableModel(
@@ -439,8 +450,7 @@ public class CacaPalavras extends javax.swing.JFrame {
 
             if (fase == null) {
                 JOptionPane.showMessageDialog(rootPane, "Não há mais fases para este jogo!", "AVISO", 1, null);
-                cacaPalavrasActor.finish();
-                setVisible(false);
+                disposeAndBackToGameSelection();
             } else {
                 limpa();
                 Component[] a = jPanel1.getComponents();
@@ -461,6 +471,10 @@ public class CacaPalavras extends javax.swing.JFrame {
         carregaStereo.setFileName(file);
         atualizaPanel(carregaStereo.carregaObjeto());
     }//GEN-LAST:event_jRadioButtonStereo2ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        disposeAndBackToGameSelection();
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

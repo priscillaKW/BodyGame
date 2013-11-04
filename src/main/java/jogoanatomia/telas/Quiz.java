@@ -89,6 +89,13 @@ public class Quiz extends javax.swing.JFrame {
         jPanelOrgao.updateUI();    
     }
     
+    private void disposeAndBackToGameSelection() {
+        quizActor.finish();
+        TelaEscolheJogo escolheJogo = new TelaEscolheJogo(orgao);
+        this.dispose();
+        escolheJogo.setVisible(true);
+    }
+    
     public int getCurrent() {
         return current;
     }
@@ -103,6 +110,7 @@ public class Quiz extends javax.swing.JFrame {
                 jLtempo.setText(--current + "");
                 if(current==0){
                     JOptionPane.showMessageDialog(rootPane, "Ops!! Você perdeu!", "AVISO", 1, null);    
+                    disposeAndBackToGameSelection();
                 }
             }  
         };  
@@ -156,6 +164,11 @@ public class Quiz extends javax.swing.JFrame {
         setBounds(new java.awt.Rectangle(300, 0, 580, 720));
         setMinimumSize(new java.awt.Dimension(1131, 579));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -189,7 +202,7 @@ public class Quiz extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLquestao, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 316, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 324, Short.MAX_VALUE)
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
                         .addComponent(jLtempo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -281,7 +294,7 @@ public class Quiz extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRBresposta1, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
+                    .addComponent(jRBresposta1, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
                     .addComponent(jRBresposta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jRBresposta3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jRBresposta4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -298,7 +311,7 @@ public class Quiz extends javax.swing.JFrame {
                 .addComponent(jRBresposta3)
                 .addGap(56, 56, 56)
                 .addComponent(jRBresposta4)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 550, 340));
@@ -353,11 +366,12 @@ public class Quiz extends javax.swing.JFrame {
             fase = quizActor.nextStage();
             if(fase == null){
                 JOptionPane.showMessageDialog(rootPane, "Parabéns! Você completou o jogo!!", "AVISO", 1, null);
+                disposeAndBackToGameSelection();
             }
             reinicializaCampos();
         } else {
                 JOptionPane.showMessageDialog(rootPane, "Ops!! Você perdeu!", "AVISO", 1, null);
-                return;
+                disposeAndBackToGameSelection();
         }        
         
     }//GEN-LAST:event_jBresponderActionPerformed
@@ -400,6 +414,10 @@ public class Quiz extends javax.swing.JFrame {
         carregaStereo.setFileName(file);
         atualizaPanel(carregaStereo.carregaObjeto());
     }//GEN-LAST:event_jRadioButtonStereoActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        disposeAndBackToGameSelection();
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup BGrespostas;
