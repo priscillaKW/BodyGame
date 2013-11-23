@@ -11,6 +11,12 @@ public class User {
 
     @JsonProperty("password")
     private String password;
+    
+    @JsonProperty("finish_organ")
+    private String finishOrgan;
+    
+    @JsonProperty("personage")
+    private String personage;
 
     public String getId() {
         return id;
@@ -35,4 +41,22 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+	public String getFinishOrgan() {
+		return finishOrgan;
+	}
+
+	public void setFinishOrgan(String finishOrgan) {
+		this.finishOrgan = finishOrgan;
+	}
+
+	public String getPersonage() {
+		return personage;
+	}
+
+	public void setPersonage(String personage) {
+		this.personage = personage;
+	}
+    
+    
 }

@@ -3,6 +3,12 @@
  * and open the template in the editor.
  */
 package jogoanatomia.telas;
+import javax.swing.JLabel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
+import javax.swing.JRadioButton;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JButton;
 
 /**
  *
@@ -27,17 +33,62 @@ public class TelaSelecionaPersonagens extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        
+        JLabel label = new JLabel("");
+        label.setIcon(new ImageIcon(TelaSelecionaPersonagens.class.getResource("/images/256px-Female_with_organs.png")));
+        
+        JLabel label_1 = new JLabel("");
+        label_1.setIcon(new ImageIcon(TelaSelecionaPersonagens.class.getResource("/images/256px-Male_with_organs.png")));
+        
+        JRadioButton rdbtnMulher = new JRadioButton("Mulher");
+        
+        JRadioButton rdbtnHomem = new JRadioButton("Homem");
+        
+        JLabel lblSelecioneOPersonagem = new JLabel("Selecione o personagem");
+        
+        JButton btnOk = new JButton("Ok");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(98)
+        					.addComponent(rdbtnMulher)
+        					.addGap(309)
+        					.addComponent(rdbtnHomem))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(226)
+        					.addComponent(lblSelecioneOPersonagem))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(44)
+        					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        						.addComponent(btnOk)
+        						.addGroup(layout.createSequentialGroup()
+        							.addComponent(label)
+        							.addGap(74)
+        							.addComponent(label_1)))))
+        			.addContainerGap(734, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(8)
+        			.addComponent(lblSelecioneOPersonagem)
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(label_1)
+        				.addComponent(label))
+        			.addGap(18)
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(rdbtnMulher)
+        				.addComponent(rdbtnHomem))
+        			.addGap(27)
+        			.addComponent(btnOk)
+        			.addContainerGap(214, Short.MAX_VALUE))
         );
+        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -76,6 +127,4 @@ public class TelaSelecionaPersonagens extends javax.swing.JFrame {
             }
         });
     }
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
 }
