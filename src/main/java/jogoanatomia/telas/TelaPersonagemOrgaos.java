@@ -54,7 +54,7 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
 	@SuppressWarnings("unchecked")
 	public TelaPersonagemOrgaos() {
 		this.usuario = SessionStore.getLoggedUser(); 
-
+		
 		this.personagem = usuario.getPersonage();
 		
 		carregaPersonagem();
@@ -98,6 +98,9 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
 	}
 
 	private void carregaPersonagem() {
+		if(personagem ==null){
+			return;
+		}
 		if (personagem.equals("mulher")) {
 			switch (usuario.getFinishOrgan()) {
 			case -1:
