@@ -4,6 +4,7 @@ import static java.lang.String.format;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 import jogoanatomia.entidades.*;
 import jogoanatomia.services.GameService;
@@ -22,6 +23,8 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
     
     public CacaPalavras cacaPalavras;
     
+    private User usuario;
+    
     public void setOrgao(Organ orgao) {
         this.orgao = orgao;
     }
@@ -36,8 +39,10 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
     public TelaEscolheJogo(Organ organ) {
         orgao = organ;
         service = new GameServiceImpl();
-
-        String userId = SessionStore.getLoggedUser().getId();
+        
+        usuario = SessionStore.getLoggedUser();
+        
+        String userId = usuario.getId();
 
         quizPercentage = service.getCompletedPercentage(userId, organ.getId(), QuizGame.class);
         hangmanPercentage = service.getCompletedPercentage(userId, organ.getId(), HangmanGame.class);
@@ -45,26 +50,47 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
         wordSearchesPercentage = service.getCompletedPercentage(userId, organ.getId(), WordSearchesGame.class);
 
         initComponents();
-
-        if (hangmanPercentage.equals(100f))
+        int jogosCompletos = 0;
+        
+        if (hangmanPercentage.equals(100f)){
             jBforca.setIcon(icon);
-        else if(hangmanPercentage > 0f)
+        	jogosCompletos++;
+    	}else if(hangmanPercentage > 0f){
             jBforca.setText(jBforca.getText() + " (" + hangmanPercentage + "%)");
-
-        if (associationPercentage.equals(100f))
+    	}
+        
+        if (associationPercentage.equals(100f)){
             jBassociacao.setIcon(icon);
-        else if(associationPercentage > 0f)
+            jogosCompletos++;
+        }else if(associationPercentage > 0f){
             jBassociacao.setText(jBassociacao.getText() + " (" + associationPercentage + "%)");
-
-        if (quizPercentage.equals(100f))
+        }
+        
+        if (quizPercentage.equals(100f)){
             jBperguntas.setIcon(icon);
-        else if(quizPercentage > 0f)
+            jogosCompletos++;
+        }else if(quizPercentage > 0f){
             jBperguntas.setText(jBperguntas.getText() + " (" + quizPercentage + "%)");
-
-        if (wordSearchesPercentage.equals(100f))
+        }
+        
+        if (wordSearchesPercentage.equals(100f)){
             jBcacaPalavras.setIcon(icon);
-        else if(wordSearchesPercentage > 0f)
+            jogosCompletos++;
+        }
+        else if(wordSearchesPercentage > 0f){
             jBcacaPalavras.setText(jBcacaPalavras.getText() + " (" + wordSearchesPercentage + "%)");
+        }
+        
+        if(jogosCompletos==4){
+        	if(Integer.parseInt(orgao.getId())>usuario.getFinishOrgan()){
+        		usuario.setFinishOrgan(Integer.parseInt(orgao.getId()));
+        		//XXX Salvar usuario 
+        		JOptionPane.showMessageDialog(null, "Parabéns!! Você completou os jogos para o órgão "+organ.getName()+". Veja como está o seu personagem ;)");
+        		TelaPersonagemOrgaos tPersonagemOrgaos = new TelaPersonagemOrgaos();
+        		tPersonagemOrgaos.setVisible(true);
+        		dispose();
+        	}
+        }
     }
     
     private void disposeAndBackToOrganSelection() {

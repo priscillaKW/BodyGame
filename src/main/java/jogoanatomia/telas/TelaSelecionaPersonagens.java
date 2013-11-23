@@ -10,6 +10,11 @@ import javax.swing.JRadioButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import jogoanatomia.entidades.User;
+
 /**
  *
  * @author Jessica
@@ -40,13 +45,30 @@ public class TelaSelecionaPersonagens extends javax.swing.JFrame {
         JLabel label_1 = new JLabel("");
         label_1.setIcon(new ImageIcon(TelaSelecionaPersonagens.class.getResource("/images/256px-Male_with_organs.png")));
         
-        JRadioButton rdbtnMulher = new JRadioButton("Mulher");
+        final JRadioButton rdbtnMulher = new JRadioButton("Mulher");
         
-        JRadioButton rdbtnHomem = new JRadioButton("Homem");
+        final JRadioButton rdbtnHomem = new JRadioButton("Homem");
         
         JLabel lblSelecioneOPersonagem = new JLabel("Selecione o personagem");
         
         JButton btnOk = new JButton("Ok");
+        btnOk.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		User usuario = SessionStore.getLoggedUser();
+        		String personagem = null;
+        		if(rdbtnMulher.isSelected()){
+        			personagem = "mulher";
+        		}else{
+        			personagem = "homem";
+        		}
+        		usuario.setPersonage(personagem);
+        		// XXX Salvar a escolha do personagem usuario.save();
+        		TelaPersonagemOrgaos tPersonagemOrgaos = new TelaPersonagemOrgaos();
+        		tPersonagemOrgaos.setVisible(true);
+        		dispose();
+        		
+        	}
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(

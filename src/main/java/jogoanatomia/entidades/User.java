@@ -13,7 +13,7 @@ public class User {
     private String password;
     
     @JsonProperty("finish_organ")
-    private String finishOrgan;
+    private Integer finishOrgan;
     
     @JsonProperty("personage")
     private String personage;
@@ -42,11 +42,11 @@ public class User {
         this.password = password;
     }
 
-	public String getFinishOrgan() {
+	public Integer getFinishOrgan() {
 		return finishOrgan;
 	}
 
-	public void setFinishOrgan(String finishOrgan) {
+	public void setFinishOrgan(Integer finishOrgan) {
 		this.finishOrgan = finishOrgan;
 	}
 

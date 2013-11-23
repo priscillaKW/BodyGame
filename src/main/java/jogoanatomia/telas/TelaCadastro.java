@@ -4,6 +4,8 @@
  */
 package jogoanatomia.telas;
 
+import javax.swing.JOptionPane;
+
 import jogoanatomia.entidades.User;
 import jogoanatomia.services.UserService;
 import jogoanatomia.services.UserServiceImpl;
@@ -193,7 +195,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         }else{
             User user = userService.create(login, senha);
             if(user != null){
-                // JOptionPane.showMessageDialog(rootPane, "Cadastro realizado com sucesso!");
+                JOptionPane.showMessageDialog(rootPane, "Cadastro realizado com sucesso!");
                 SessionStore.setLoggedUser(user);
                 this.dispose();                
                 telaPersoganemOrgao.setVisible(true);
