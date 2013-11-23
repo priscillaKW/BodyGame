@@ -28,7 +28,6 @@ public class TelaInicial extends javax.swing.JFrame {
         }
         userService = new UserServiceImpl();
         telaDeCadastro = new TelaCadastro();
-        telaPersoganemOrgao = new TelaPersonagemOrgaos();
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -135,7 +134,8 @@ public class TelaInicial extends javax.swing.JFrame {
 
             if(user != null) {
                 SessionStore.setLoggedUser(user);
-                this.dispose();                
+                this.dispose();
+                telaPersoganemOrgao = new TelaPersonagemOrgaos();
                 telaPersoganemOrgao.setVisible(true);
             } else {
                 jLabelMessage.setText("Login ou senha inválidos!");
