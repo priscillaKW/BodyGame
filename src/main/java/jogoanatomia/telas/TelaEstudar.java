@@ -6,15 +6,22 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.media.j3d.*;
 import javax.swing.JFrame;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
+
 import jogoanatomia.entidades.Organ;
 import jogoanatomia.entidades.Study;
 import jogoanatomia.loader.CarregaObj;
 import jogoanatomia.loader.CarregaStereo;
 import jogoanatomia.services.StudyServiceImpl;
+
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class TelaEstudar extends javax.swing.JFrame {
 
@@ -89,8 +96,8 @@ public class TelaEstudar extends javax.swing.JFrame {
         jPanelOrgao = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaConteudo = new javax.swing.JTextArea();
-        jButtonVideo = new javax.swing.JButton();
         jButtonAnterior = new javax.swing.JButton();
+        jButtonAnterior.setEnabled(false);
         jButtonJogar = new javax.swing.JButton();
         jButtonProximo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -116,8 +123,6 @@ public class TelaEstudar extends javax.swing.JFrame {
         jTextAreaConteudo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTextAreaConteudo.setRows(5);
         jScrollPane1.setViewportView(jTextAreaConteudo);
-
-        jButtonVideo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/video.png"))); // NOI18N
 
         jButtonAnterior.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jButtonAnterior.setForeground(new java.awt.Color(153, 0, 0));
@@ -158,70 +163,64 @@ public class TelaEstudar extends javax.swing.JFrame {
         });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButtonAnterior)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButtonProximo)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButtonVideo)
-                                    .addComponent(jButtonJogar))
-                                .addGap(19, 19, 19))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanelOrgao, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jRadioButtonStereo)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
+        				.addGroup(layout.createSequentialGroup()
+        					.addContainerGap()
+        					.addComponent(jLabelTitulo, GroupLayout.PREFERRED_SIZE, 580, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(31)
+        					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        						.addGroup(layout.createSequentialGroup()
+        							.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
+        								.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 429, GroupLayout.PREFERRED_SIZE)
+        								.addGroup(layout.createSequentialGroup()
+        									.addComponent(jButtonAnterior)
+        									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        									.addComponent(jButtonProximo)))
+        							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        							.addComponent(jButtonJogar)
+        							.addGap(19))
+        						.addGroup(layout.createSequentialGroup()
+        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        								.addComponent(jPanelOrgao, GroupLayout.PREFERRED_SIZE, 525, GroupLayout.PREFERRED_SIZE)
+        								.addComponent(jRadioButtonStereo)
+        								.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 244, GroupLayout.PREFERRED_SIZE))
+        							.addGap(0, 36, Short.MAX_VALUE)))))
+        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelOrgao, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButtonStereo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonVideo)
-                        .addGap(52, 52, 52)
-                        .addComponent(jButtonJogar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAnterior)
-                    .addComponent(jButtonProximo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addComponent(jLabelTitulo, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addComponent(jPanelOrgao, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(jRadioButtonStereo)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        				.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 170, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(jButtonJogar))
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jButtonAnterior)
+        				.addComponent(jButtonProximo))
+        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
-        contaConteudo--;
+    	if (contaConteudo > 0) {
+    	contaConteudo--;
         jButtonProximo.setEnabled(true);
         jTextAreaConteudo.setText(conteudos.get(contaConteudo).getContent());
-        if (contaConteudo == 0) {
-            jButtonAnterior.setEnabled(false);
         }
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
@@ -234,11 +233,10 @@ public class TelaEstudar extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonJogarActionPerformed
 
     private void jButtonProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProximoActionPerformed
-        contaConteudo++;
+    	if (contaConteudo < conteudos.size() -1) {
+    	contaConteudo++;
         jButtonAnterior.setEnabled(true);
-        jTextAreaConteudo.setText(conteudos.get(contaConteudo).getContent());
-        if (contaConteudo == conteudos.size() - 1) {
-            jButtonProximo.setEnabled(false);
+        jTextAreaConteudo.setText(conteudos.get(contaConteudo).getContent());            
         }
     }//GEN-LAST:event_jButtonProximoActionPerformed
 
@@ -258,7 +256,6 @@ public class TelaEstudar extends javax.swing.JFrame {
     public javax.swing.JButton jButtonAnterior;
     public javax.swing.JButton jButtonJogar;
     public javax.swing.JButton jButtonProximo;
-    private javax.swing.JButton jButtonVideo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanelOrgao;
