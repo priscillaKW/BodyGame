@@ -12,6 +12,9 @@ public class Organ {
     @JsonProperty("image_file_name")
     private String imageFileName;
 
+    @JsonProperty("stage")
+    private Integer stage;
+
     public String getId() {
         return id;
     }
@@ -34,5 +37,13 @@ public class Organ {
 
     public void setImageFileName(String imageFileName) {
         this.imageFileName = imageFileName;
+    }
+
+    public Integer getStage() {
+        return stage;
+    }
+
+    public void setStage(Integer stage) {
+        this.stage = stage;
     }
 }

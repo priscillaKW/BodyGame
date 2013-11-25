@@ -3,6 +3,30 @@ package jogoanatomia.entidades;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class User {
+    public static class Character {
+        @JsonProperty("kind")
+        private String kind;
+
+        @JsonProperty("current_stage")
+        private Integer currentStage;
+
+        public String getKind() {
+            return kind;
+        }
+
+        public void setKind(String kind) {
+            this.kind = kind;
+        }
+
+        public Integer getCurrentStage() {
+            return currentStage == null ? -1 : currentStage;
+        }
+
+        public void setCurrentStage(Integer currentStage) {
+            this.currentStage = currentStage;
+        }
+    }
+
     @JsonProperty
     private String id;
 
@@ -11,12 +35,13 @@ public class User {
 
     @JsonProperty("password")
     private String password;
-    
-    @JsonProperty("finish_organ")
-    private Integer finishOrgan;
-    
-    @JsonProperty("personage")
-    private String personage;
+
+    @JsonProperty("character")
+    private Character character;
+
+    public Integer currentStage() {
+        return getCharacter() != null ? getCharacter().getCurrentStage() : -1;
+    }
 
     public String getId() {
         return id;
@@ -42,21 +67,11 @@ public class User {
         this.password = password;
     }
 
-	public Integer getFinishOrgan() {
-		return finishOrgan;
-	}
+    public Character getCharacter() {
+        return character;
+    }
 
-	public void setFinishOrgan(Integer finishOrgan) {
-		this.finishOrgan = finishOrgan;
-	}
-
-	public String getPersonage() {
-		return personage;
-	}
-
-	public void setPersonage(String personage) {
-		this.personage = personage;
-	}
-    
-    
+    public void setCharacter(Character character) {
+        this.character = character;
+    }
 }

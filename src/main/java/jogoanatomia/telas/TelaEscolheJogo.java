@@ -9,22 +9,26 @@ import javax.swing.JOptionPane;
 import jogoanatomia.entidades.*;
 import jogoanatomia.services.GameService;
 import jogoanatomia.services.GameServiceImpl;
+import jogoanatomia.services.UserService;
+import jogoanatomia.services.UserServiceImpl;
 
 public class TelaEscolheJogo extends javax.swing.JFrame {
+    private UserService userService;
+
     public Icon icon = new ImageIcon(getClass().getResource("/images/trophy.png"), "Troféu");
 
     static Organ orgao;
 
     public Forca forca;
-    
+
     public Associacao associacao;
-    
+
     public Quiz quiz;
-    
+
     public CacaPalavras cacaPalavras;
-    
+
     private User usuario;
-    
+
     public void setOrgao(Organ orgao) {
         this.orgao = orgao;
     }
@@ -38,10 +42,11 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
 
     public TelaEscolheJogo(Organ organ) {
         orgao = organ;
+        userService = new UserServiceImpl();
         service = new GameServiceImpl();
-        
+
         usuario = SessionStore.getLoggedUser();
-        
+
         String userId = usuario.getId();
 
         quizPercentage = service.getCompletedPercentage(userId, organ.getId(), QuizGame.class);
@@ -51,48 +56,50 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
 
         initComponents();
         int jogosCompletos = 0;
-        
-        if (hangmanPercentage.equals(100f)){
+
+        if (hangmanPercentage.equals(100f)) {
             jBforca.setIcon(icon);
-        	jogosCompletos++;
-    	}else if(hangmanPercentage > 0f){
+            jogosCompletos++;
+        } else if (hangmanPercentage > 0f) {
             jBforca.setText(jBforca.getText() + " (" + hangmanPercentage + "%)");
-    	}
-        
-        if (associationPercentage.equals(100f)){
+        }
+
+        if (associationPercentage.equals(100f)) {
             jBassociacao.setIcon(icon);
             jogosCompletos++;
-        }else if(associationPercentage > 0f){
+        } else if (associationPercentage > 0f) {
             jBassociacao.setText(jBassociacao.getText() + " (" + associationPercentage + "%)");
         }
-        
-        if (quizPercentage.equals(100f)){
+
+        if (quizPercentage.equals(100f)) {
             jBperguntas.setIcon(icon);
             jogosCompletos++;
-        }else if(quizPercentage > 0f){
+        } else if (quizPercentage > 0f) {
             jBperguntas.setText(jBperguntas.getText() + " (" + quizPercentage + "%)");
         }
-        
-        if (wordSearchesPercentage.equals(100f)){
+
+        if (wordSearchesPercentage.equals(100f)) {
             jBcacaPalavras.setIcon(icon);
             jogosCompletos++;
-        }
-        else if(wordSearchesPercentage > 0f){
+        } else if (wordSearchesPercentage > 0f) {
             jBcacaPalavras.setText(jBcacaPalavras.getText() + " (" + wordSearchesPercentage + "%)");
         }
-        
-        if(jogosCompletos==4){
-        	if(Integer.parseInt(orgao.getId())>usuario.getFinishOrgan()){
-        		usuario.setFinishOrgan(Integer.parseInt(orgao.getId()));
-        		//XXX Salvar usuario 
-        		JOptionPane.showMessageDialog(null, "Parabéns!! Você completou os jogos para o órgão "+organ.getName()+". Veja como está o seu personagem ;)");
-        		TelaPersonagemOrgaos tPersonagemOrgaos = new TelaPersonagemOrgaos();
-        		tPersonagemOrgaos.setVisible(true);
-        		dispose();
-        	}
+
+        if (jogosCompletos == 4) {
+            if (orgao.getStage() > usuario.currentStage()) {
+                User reloadedUser = userService.updateCurrentStage(usuario.getId(), organ.getStage());
+
+                if(reloadedUser != null)
+                    SessionStore.setLoggedUser(reloadedUser);
+
+                JOptionPane.showMessageDialog(null, "Parabéns!! Você completou os jogos para o órgão " + organ.getName() + ". Veja como está o seu personagem ;)");
+                TelaPersonagemOrgaos tPersonagemOrgaos = new TelaPersonagemOrgaos();
+                tPersonagemOrgaos.setVisible(true);
+                dispose();
+            }
         }
     }
-    
+
     private void disposeAndBackToOrganSelection() {
         TelaPersonagemOrgaos personagemOrgaos = new TelaPersonagemOrgaos();
         this.dispose();
@@ -168,41 +175,41 @@ public class TelaEscolheJogo extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jBforca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBassociacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBcacaPalavras, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                    .addComponent(jBperguntas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(99, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(126, 126, 126))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(33, 33, 33))))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jBforca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jBassociacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jBcacaPalavras, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                                        .addComponent(jBperguntas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(99, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(46, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addGap(126, 126, 126))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addGap(33, 33, 33))))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jLabel5)
-                .addGap(35, 35, 35)
-                .addComponent(jBforca, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jBassociacao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jBcacaPalavras, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jBperguntas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel1)
-                .addContainerGap(23, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(jLabel5)
+                                .addGap(35, 35, 35)
+                                .addComponent(jBforca, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBassociacao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBcacaPalavras, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBperguntas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(jLabel1)
+                                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
