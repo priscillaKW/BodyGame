@@ -63,7 +63,7 @@ public class TelaInicial extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonEntrar.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
+        jButtonEntrar.setFont(new java.awt.Font("Segoe Script", 1, 18)); // NOI18N
         jButtonEntrar.setForeground(new java.awt.Color(153, 0, 0));
         jButtonEntrar.setText("Entrar");
         jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +71,7 @@ public class TelaInicial extends javax.swing.JFrame {
                 jButtonEntrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 110, -1));
+        getContentPane().add(jButtonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 130, -1));
 
         jLabelTitulo.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(102, 0, 0));
@@ -79,19 +79,23 @@ public class TelaInicial extends javax.swing.JFrame {
         jLabelTitulo.setText("BodyGame");
         getContentPane().add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 580, 50));
 
+        jTextSenha.setFont(new java.awt.Font("Segoe Script", 0, 14)); // NOI18N
         jTextSenha.setToolTipText("Insira a senha");
-        getContentPane().add(jTextSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 120, 40));
+        getContentPane().add(jTextSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 120, 40));
 
+        jLabelLogin.setFont(new java.awt.Font("Segoe Script", 0, 14)); // NOI18N
         jLabelLogin.setText("Login:");
-        getContentPane().add(jLabelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
+        getContentPane().add(jLabelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
 
+        jLabelSenha.setFont(new java.awt.Font("Segoe Script", 0, 14)); // NOI18N
         jLabelSenha.setText("Senha:");
-        getContentPane().add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 50, 20));
+        getContentPane().add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 60, 20));
 
+        jTextLogin1.setFont(new java.awt.Font("Segoe Script", 0, 14)); // NOI18N
         jTextLogin1.setToolTipText("Insira o login");
-        getContentPane().add(jTextLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 120, 40));
+        getContentPane().add(jTextLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 120, 40));
 
-        jButtonCadastro.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
+        jButtonCadastro.setFont(new java.awt.Font("Segoe Script", 1, 18)); // NOI18N
         jButtonCadastro.setForeground(new java.awt.Color(153, 0, 0));
         jButtonCadastro.setText("Cadastre-se");
         jButtonCadastro.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +103,7 @@ public class TelaInicial extends javax.swing.JFrame {
                 jButtonCadastroActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 130, -1));
+        getContentPane().add(jButtonCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 160, -1));
 
         jLabelMessage.setForeground(new java.awt.Color(255, 0, 0));
         jLabelMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

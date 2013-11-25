@@ -217,7 +217,7 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed"
-    // desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabelTitulo = new javax.swing.JLabel();
@@ -228,28 +228,26 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
         jListOrgaos = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("BodyGame - Escolha personagem e parte do corpo");
         setMaximizedBounds(new java.awt.Rectangle(650, 520, 520, 520));
-        setMaximumSize(new java.awt.Dimension(650, 520));
-        setPreferredSize(new java.awt.Dimension(650, 520));
+        setMaximumSize(new java.awt.Dimension(800, 650));
+        setMinimumSize(new java.awt.Dimension(800, 650));
+        setPreferredSize(new java.awt.Dimension(800, 650));
 
         jLabelTitulo.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(255, 0, 0));
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitulo.setText("BodyGame");
 
-        jLabelPersonagens.setBorder(javax.swing.BorderFactory
-                .createTitledBorder(javax.swing.BorderFactory
-                        .createLineBorder(new java.awt.Color(0, 0, 0)),
-                        "Escolha o seu personagem",
-                        javax.swing.border.TitledBorder.CENTER,
-                        javax.swing.border.TitledBorder.TOP));
+        jLabelPersonagens.setPreferredSize(new java.awt.Dimension(260, 450));
         jLabelPersonagens.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelPersonagensMouseClicked(evt);
             }
         });
 
-        jLabel2.setText("Selecione o seu personagem e escolha a parte do corpo para Iniciar a Partida!!");
+        jLabel2.setFont(new java.awt.Font("Segoe Script", 0, 14)); // NOI18N
+        jLabel2.setText("Selecione o seu personagem clicando na imagem a esquerda e a parte do corpo à direita!!");
 
         jButtonStart.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonStart.setForeground(new java.awt.Color(153, 0, 0));
@@ -261,105 +259,51 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
         });
 
         jListOrgaos.setModel(new javax.swing.AbstractListModel() {
-            public int getSize() {
-                return orgaos.size();
-            }
-
-            public Object getElementAt(int i) {
-                return orgaos.get(i).getName();
-            }
+            public int getSize() { return orgaos.size(); }
+            public Object getElementAt(int i) { return orgaos.get(i).getName(); }
         });
+        jListOrgaos.setPreferredSize(new java.awt.Dimension(260, 300));
         jScrollPane1.setViewportView(jListOrgaos);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
-                getContentPane());
-        layout.setHorizontalGroup(layout
-                .createParallelGroup(Alignment.LEADING)
-                .addGroup(
-                        layout.createSequentialGroup()
-                                .addGroup(
-                                        layout.createParallelGroup(
-                                                Alignment.LEADING)
-                                                .addGroup(
-                                                        layout.createSequentialGroup()
-                                                                .addContainerGap()
-                                                                .addComponent(
-                                                                        jLabelTitulo,
-                                                                        GroupLayout.PREFERRED_SIZE,
-                                                                        580,
-                                                                        GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(
-                                                        layout.createSequentialGroup()
-                                                                .addGap(21)
-                                                                .addGroup(
-                                                                        layout.createParallelGroup(
-                                                                                Alignment.TRAILING)
-                                                                                .addComponent(
-                                                                                        jButtonStart,
-                                                                                        GroupLayout.PREFERRED_SIZE,
-                                                                                        83,
-                                                                                        GroupLayout.PREFERRED_SIZE)
-                                                                                .addGroup(
-                                                                                        layout.createParallelGroup(
-                                                                                                Alignment.LEADING)
-                                                                                                .addComponent(
-                                                                                                        jLabel2,
-                                                                                                        GroupLayout.PREFERRED_SIZE,
-                                                                                                        492,
-                                                                                                        GroupLayout.PREFERRED_SIZE)
-                                                                                                .addGroup(
-                                                                                                        layout.createSequentialGroup()
-                                                                                                                .addComponent(
-                                                                                                                        jLabelPersonagens,
-                                                                                                                        GroupLayout.PREFERRED_SIZE,
-                                                                                                                        260,
-                                                                                                                        GroupLayout.PREFERRED_SIZE)
-                                                                                                                .addGap(28)
-                                                                                                                .addComponent(
-                                                                                                                        jScrollPane1,
-                                                                                                                        GroupLayout.PREFERRED_SIZE,
-                                                                                                                        GroupLayout.DEFAULT_SIZE,
-                                                                                                                        GroupLayout.PREFERRED_SIZE))))))
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE,
-                                        Short.MAX_VALUE)));
-        layout.setVerticalGroup(layout
-                .createParallelGroup(Alignment.LEADING)
-                .addGroup(
-                        layout.createSequentialGroup()
-                                .addComponent(jLabelTitulo,
-                                        GroupLayout.PREFERRED_SIZE, 50,
-                                        GroupLayout.PREFERRED_SIZE)
-                                .addGap(18)
-                                .addComponent(jLabel2,
-                                        GroupLayout.PREFERRED_SIZE, 20,
-                                        GroupLayout.PREFERRED_SIZE)
-                                .addGap(18)
-                                .addGroup(
-                                        layout.createParallelGroup(
-                                                Alignment.LEADING)
-                                                .addGroup(
-                                                        layout.createSequentialGroup()
-                                                                .addComponent(
-                                                                        jScrollPane1,
-                                                                        GroupLayout.PREFERRED_SIZE,
-                                                                        GroupLayout.DEFAULT_SIZE,
-                                                                        GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(
-                                                                        ComponentPlacement.RELATED,
-                                                                        176,
-                                                                        Short.MAX_VALUE)
-                                                                .addComponent(
-                                                                        jButtonStart)
-                                                                .addGap(52))
-                                                .addGroup(
-                                                        layout.createSequentialGroup()
-                                                                .addComponent(
-                                                                        jLabelPersonagens,
-                                                                        GroupLayout.DEFAULT_SIZE,
-                                                                        289,
-                                                                        Short.MAX_VALUE)
-                                                                .addContainerGap()))));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonStart, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelPersonagens, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(38, 38, 38))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelPersonagens, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonStart)
+                .addContainerGap())
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
