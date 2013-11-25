@@ -310,6 +310,7 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabelPersonagensMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabelPersonagensMouseClicked
+        this.dispose();
         windowSeleciona.setVisible(true);
     }// GEN-LAST:event_jLabelPersonagensMouseClicked
 

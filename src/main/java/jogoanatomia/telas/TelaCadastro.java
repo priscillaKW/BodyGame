@@ -17,8 +17,6 @@ import jogoanatomia.services.UserServiceImpl;
 public class TelaCadastro extends javax.swing.JFrame {
     private UserService userService;
 
-    public TelaPersonagemOrgaos telaPersoganemOrgao;
-
     /**
      * Creates new form TelaCadastro
      */
@@ -205,9 +203,8 @@ public class TelaCadastro extends javax.swing.JFrame {
             if(user != null){
                 JOptionPane.showMessageDialog(rootPane, "Cadastro realizado com sucesso!");
                 SessionStore.setLoggedUser(user);
-                this.dispose();       
-                telaPersoganemOrgao = new TelaPersonagemOrgaos();
-                telaPersoganemOrgao.setVisible(true);
+                this.dispose();
+                new TelaSelecionaPersonagens().setVisible(true);
             }else{
                 jLabelMessage.setText("Login já cadastrado no sistema, tente outro");
             }
