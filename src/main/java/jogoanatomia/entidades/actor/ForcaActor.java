@@ -16,8 +16,10 @@ public class ForcaActor extends StageGameActor<HangmanGame> {
 
     int pontuacaoTotal=0;
     int letrasErradas=0;
+    String palavraOriginal="";
     String palavraForca="";
     public ArrayList<String> listaLetrasErradas;
+    public ArrayList<String> listaLetrasCertas;
 
     public ForcaActor(GameService service, User user, Organ organ) {
         super(service, user, organ);
@@ -46,6 +48,7 @@ public class ForcaActor extends StageGameActor<HangmanGame> {
         setLetrasErradas(0);
         setPalavraForca(stage.getAnswer());
         listaLetrasErradas = new ArrayList<String>();
+        listaLetrasCertas = new ArrayList<String>();
     }
 
     @Override
@@ -66,6 +69,48 @@ public class ForcaActor extends StageGameActor<HangmanGame> {
     }
 
     public void setPalavraForca(String palavraForca) {
-        this.palavraForca = palavraForca.toUpperCase();
+        this.palavraOriginal = palavraForca.toUpperCase();
+        this.palavraForca = replaceCaracteres(this.palavraOriginal);
+    }
+    
+    public String replaceCaracteres(String original) {
+        String resultado="";
+        for(int i=0; i<original.length();i++) {
+            char letra = original.charAt(i);
+            switch(letra) {
+                case 'Á':
+                    letra = 'A';
+                    break;
+                case 'À':
+                    letra = 'A';
+                    break;
+                case 'Ã':
+                    letra = 'A';
+                    break;
+                case 'É':
+                    letra = 'E';
+                    break;
+                case 'Í':
+                    letra = 'I';
+                    break;
+                case 'Ó':
+                    letra = 'O';
+                    break;
+                case 'Õ':
+                    letra = 'O';
+                    break;
+                case 'Ú':
+                    letra = 'U';
+                    break;
+                case 'Ü':
+                    letra = 'U';
+                    break;
+                case 'Ç':
+                    letra = 'C';
+                    break;
+            }
+            resultado = resultado + letra;
+        }
+        return resultado;
     }
 }

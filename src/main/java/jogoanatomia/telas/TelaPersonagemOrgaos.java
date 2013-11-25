@@ -258,6 +258,7 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
             }
         });
 
+        jListOrgaos.setFont(new java.awt.Font("Segoe Script", 0, 14)); // NOI18N
         jListOrgaos.setModel(new javax.swing.AbstractListModel() {
             public int getSize() { return orgaos.size(); }
             public Object getElementAt(int i) { return orgaos.get(i).getName(); }
