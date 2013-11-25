@@ -41,14 +41,14 @@ public class CacaPalavras extends javax.swing.JFrame {
         int i = 0;
         while (i < a.length && i < fase.getWords().size()) {
             JLabel teste = (JLabel) a[i];
-            teste.setText(fase.getWords().get(i).getAnswer());
+            teste.setText(fase.getWords().get(i).getTip());
             i++;
         }
         preencheTable();
         if (timer != null) {
             timer.stop();
         }
-        setCurrent(240);
+        setCurrent(360);
         jLtempo.setText(getCurrent() + "");
         goTimer();
         carregaObj = new CarregaObj();
@@ -85,7 +85,6 @@ public class CacaPalavras extends javax.swing.JFrame {
 
     public void goTimer() {
         ActionListener action = new ActionListener() {
-
             public void actionPerformed(ActionEvent e) {
                 jLtempo.setText(--current + "");
                 if (current == 0) {
@@ -216,7 +215,7 @@ public class CacaPalavras extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("BodyGame - Caça-Palavras");
-        setBounds(new java.awt.Rectangle(0, 50, 0, 0));
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -247,7 +246,7 @@ public class CacaPalavras extends javax.swing.JFrame {
             ListSelectionModel.SINGLE_SELECTION);
         jTcacaPalavras.setCellSelectionEnabled(true);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 93, 641, 341));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 641, 330));
 
         jLabel11.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(153, 0, 0));
@@ -303,7 +302,7 @@ public class CacaPalavras extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLpalavra1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                    .addComponent(jLpalavra1, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
                     .addComponent(jLpalavra2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLpalavra3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLpalavra4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -338,27 +337,27 @@ public class CacaPalavras extends javax.swing.JFrame {
                 .addComponent(jLpalavra9)
                 .addGap(18, 18, 18)
                 .addComponent(jLpalavra10)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(657, 93, 240, 341));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, 710, 330));
 
         jLabel12.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jLabel12.setText("Pontuação:");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 23, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 20, -1, -1));
 
         jLpontuacaoTotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLpontuacaoTotal.setText("-");
-        getContentPane().add(jLpontuacaoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 23, 100, -1));
+        getContentPane().add(jLpontuacaoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 20, 100, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
         jLabel9.setText("Tempo:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, -1, -1));
 
         jLtempo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLtempo.setForeground(new java.awt.Color(153, 0, 0));
         jLtempo.setText("-");
-        getContentPane().add(jLtempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(723, 23, 38, -1));
+        getContentPane().add(jLtempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1320, 20, 38, -1));
 
         jPanelOrgao.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -366,19 +365,19 @@ public class CacaPalavras extends javax.swing.JFrame {
         jPanelOrgao.setLayout(jPanelOrgaoLayout);
         jPanelOrgaoLayout.setHorizontalGroup(
             jPanelOrgaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 406, Short.MAX_VALUE)
+            .addGap(0, 676, Short.MAX_VALUE)
         );
         jPanelOrgaoLayout.setVerticalGroup(
             jPanelOrgaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 386, Short.MAX_VALUE)
+            .addGap(0, 276, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanelOrgao, new org.netbeans.lib.awtextra.AbsoluteConstraints(906, 7, 410, 390));
+        getContentPane().add(jPanelOrgao, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 680, 280));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 51));
         jLabel1.setText("Clique na primeira e última letra de cada palavra para marcá-la!");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
 
         jRadioButtonStereo2.setText("Stereoscopia");
         jRadioButtonStereo2.addActionListener(new java.awt.event.ActionListener() {
@@ -386,7 +385,7 @@ public class CacaPalavras extends javax.swing.JFrame {
                 jRadioButtonStereo2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButtonStereo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 400, 120, 30));
+        getContentPane().add(jRadioButtonStereo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 660, 120, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
