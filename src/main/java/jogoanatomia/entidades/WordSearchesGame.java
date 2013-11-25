@@ -6,13 +6,13 @@ import java.util.List;
 
 public class WordSearchesGame extends Game {
     @JsonProperty
-    private List<String> words;
+    private List<TipAnswer> words;
 
-    public List<String> getWords() {
+    public List<TipAnswer> getWords() {
         return words;
     }
 
-    public void setWords(List<String> words) {
+    public void setWords(List<TipAnswer> words) {
         this.words = words;
     }
 }

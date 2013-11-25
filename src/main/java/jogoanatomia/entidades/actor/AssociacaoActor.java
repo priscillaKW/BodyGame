@@ -2,14 +2,15 @@ package jogoanatomia.entidades.actor;
 
 import jogoanatomia.entidades.AssociationGame;
 import jogoanatomia.entidades.Organ;
+import jogoanatomia.entidades.TipAnswer;
 import jogoanatomia.entidades.User;
 import jogoanatomia.services.GameService;
 
 import java.util.ArrayList;
 
 public class AssociacaoActor extends StageGameActor<AssociationGame> {
-    public ArrayList<AssociationGame.TipAnswer> fasesOriginal;
-    public ArrayList<AssociationGame.TipAnswer> fasesEmbaralhadas;
+    public ArrayList<TipAnswer> fasesOriginal;
+    public ArrayList<TipAnswer> fasesEmbaralhadas;
     public ArrayList<Integer> ordemRespostas;
 
     public AssociacaoActor(GameService service, User user, Organ organ) {
@@ -18,7 +19,7 @@ public class AssociacaoActor extends StageGameActor<AssociationGame> {
 
     @Override
     void afterSelectNextStage(AssociationGame stage) {
-        fasesOriginal = (ArrayList<AssociationGame.TipAnswer>) stage.getTipAnswers();
+        fasesOriginal = (ArrayList<TipAnswer>) stage.getTipAnswers();
         fasesEmbaralhadas=new ArrayList();
         ordemRespostas=new ArrayList();
         while(ordemRespostas.size()<fasesOriginal.size()){

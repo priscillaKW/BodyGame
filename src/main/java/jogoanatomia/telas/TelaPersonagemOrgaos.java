@@ -54,12 +54,6 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
     public TelaPersonagemOrgaos() {
         this.usuario = SessionStore.getLoggedUser();
 
-        if (usuario.getCharacter() != null) {
-        System.out.println("FUUUUUUUUUUUUUUUUUUUUCK");
-        System.out.println(usuario.getCharacter().getKind());
-        System.out.println(usuario.getCharacter().getCurrentStage());
-        }
-
         windowSeleciona = new TelaSelecionaPersonagens();
 
         organServiceImpl = new OrganServiceImpl();

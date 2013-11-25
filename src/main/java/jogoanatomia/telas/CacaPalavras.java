@@ -41,7 +41,7 @@ public class CacaPalavras extends javax.swing.JFrame {
         int i = 0;
         while (i < a.length && i < fase.getWords().size()) {
             JLabel teste = (JLabel) a[i];
-            teste.setText(fase.getWords().get(i));
+            teste.setText(fase.getWords().get(i).getAnswer());
             i++;
         }
         preencheTable();
@@ -121,7 +121,7 @@ public class CacaPalavras extends javax.swing.JFrame {
 
     public void preencheTable() {
         for (int i = 0; i < fase.getWords().size(); i++) {
-            String palavra = fase.getWords().get(i).replace(" ", "");
+            String palavra = fase.getWords().get(i).getAnswer().replace(" ", "");
             boolean naoCabe;
             boolean taVazio;
             do {
@@ -418,7 +418,7 @@ public class CacaPalavras extends javax.swing.JFrame {
             //encontrou palavra
             boolean encontrou = false;
             for (int i = 0; i < fase.getWords().size(); i++) {
-                if (fase.getWords().get(i).replace(" ", "").toUpperCase().equals(palavra)) {
+                if (fase.getWords().get(i).getAnswer().replace(" ", "").toUpperCase().equals(palavra)) {
                     Component[] a = jPanel1.getComponents();
                     JLabel teste = (JLabel) a[i];
                     teste.setFont(new Font("Tahoma", Font.ITALIC, 11));
@@ -461,7 +461,7 @@ public class CacaPalavras extends javax.swing.JFrame {
                 int i = 0;
                 while (i < a.length && i < fase.getWords().size()) {
                     JLabel teste = (JLabel) a[i];
-                    teste.setText(fase.getWords().get(i));
+                    teste.setText(fase.getWords().get(i).getAnswer());
                     i++;
                 }
                 preencheTable();
