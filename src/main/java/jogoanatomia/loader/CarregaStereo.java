@@ -74,7 +74,7 @@ public class CarregaStereo extends Applet {
             ObjectFile f = new ObjectFile();
             f.setFlags(ObjectFile.RESIZE | ObjectFile.TRIANGULATE | ObjectFile.STRIPIFY);
 
-            Scene s = f.load(this.getClass().getResource("/malhas/coracao.obj").getPath());
+            Scene s = f.load(this.getClass().getResource("/malhas/"+fileName+".obj").getPath());
             Transform3D myTrans = new Transform3D();
             myTrans.setTranslation(new Vector3f(eyeOffset, -eyeOffset, 0F));
             TransformGroup mytg = new TransformGroup(myTrans);

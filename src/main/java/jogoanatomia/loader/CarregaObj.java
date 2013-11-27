@@ -58,13 +58,12 @@ public class CarregaObj extends Applet {
         TransformGroup tg1 = new TransformGroup();
         Transform3D t3d = new Transform3D();
         Transform3D t3d1 = new Transform3D();
-
         Scene s = null;
         // Loader .obj
         try {
             ObjectFile f = new ObjectFile();
             f.setFlags(ObjectFile.RESIZE | Loader.LOAD_ALL);
-            s = f.load(this.getClass().getResource("/malhas/coracao.obj").getPath()); 
+            s = f.load(this.getClass().getResource("/malhas/"+file+".obj").getPath()); 
             tg.addChild(s.getSceneGroup());
         } catch (java.io.FileNotFoundException ex) {
             System.err.println(ex.toString());
@@ -164,10 +163,10 @@ public class CarregaObj extends Applet {
 	GraphicsConfiguration gcn = defaultScreen.getBestConfiguration(g3d);
 	c = new Canvas3D(gcn);
         // construcao do universo        
-        CarregaObj CarregaObj = new CarregaObj();
+        
         System.out.println(file); 
-        myLocale.addBranchGraph(CarregaObj.createSceneGraph());
-        myLocale.addBranchGraph(CarregaObj.branchGroupLeft(c));
+        myLocale.addBranchGraph(this.createSceneGraph());
+        myLocale.addBranchGraph(this.branchGroupLeft(c));
         BranchGroup brbg = new BranchGroup();
         BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0),
                 100);
