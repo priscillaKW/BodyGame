@@ -75,6 +75,34 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
 			atualizaListaOrgaos();
 		}
 	}
+	
+	/**
+	 * 
+	 * Creates new form TelaPersonagemOrgaos
+	 */
+	//XXX Construtor usado na classe de teste
+	@SuppressWarnings("unchecked")
+	public TelaPersonagemOrgaos(User usuario, List<Organ> orgaos) {
+		this.usuario = usuario;
+
+		windowSeleciona = new TelaSelecionaPersonagens();
+
+		organServiceImpl = new OrganServiceImpl();
+
+		this.orgaos = orgaos;
+
+			Collections.sort(orgaos, new Comparator<Organ>() {
+				public int compare(Organ o1, Organ o2) {
+					return o1.getStage().compareTo(o2.getStage());
+				}
+			});
+		initComponents();
+		if (usuario != null) {
+			carregaPersonagem();
+
+			atualizaListaOrgaos();
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	private void atualizaListaOrgaos() {
@@ -440,7 +468,7 @@ public class TelaPersonagemOrgaos extends javax.swing.JFrame {
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	public javax.swing.JButton jButtonStart;
 	private javax.swing.JLabel jLabel2;
-	private javax.swing.JLabel jLabelPersonagens;
+	public javax.swing.JLabel jLabelPersonagens;
 	private javax.swing.JLabel jLabelTitulo;
 	private javax.swing.JList jListOrgaos;
 	private javax.swing.JScrollPane jScrollPane1;
