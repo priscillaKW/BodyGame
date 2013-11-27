@@ -107,7 +107,7 @@ public class Forca extends javax.swing.JFrame {
 
         jLdica.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLdica.setText("-");
-        getContentPane().add(jLdica, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 380, 20));
+        getContentPane().add(jLdica, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 650, 20));
 
         jLletras.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLletras.setText("-");
@@ -194,15 +194,20 @@ public class Forca extends javax.swing.JFrame {
         String resultado = "";
         String palavra = forcaActor.getPalavraForca();
         if (palavra.indexOf(letra) >= 0) {
-            for (int i = 0; i < palavra.length(); i++) {
-                String temp = jTforca.getText();
-                if (palavra.charAt(i) == letra) {
-                    resultado = resultado + palavra.charAt(i);
-                } else {
-                    resultado = resultado + temp.charAt(i);
+            if (forcaActor.listaLetrasCertas.contains(letra+"")) {
+                JOptionPane.showMessageDialog(rootPane, "Ops!! Você já tentou essa letra!", "AVISO", 1, null);
+            } else {
+                forcaActor.listaLetrasCertas.add(letra+"");
+                for (int i = 0; i < palavra.length(); i++) {
+                    String temp = jTforca.getText();
+                    if (palavra.charAt(i) == letra) {
+                        resultado = resultado + palavra.charAt(i);
+                    } else {
+                        resultado = resultado + temp.charAt(i);
+                    }
                 }
+                jTforca.setText(resultado);
             }
-            jTforca.setText(resultado);
         } else {
             if (forcaActor.listaLetrasErradas.contains(letra + "")) {
                 JOptionPane.showMessageDialog(rootPane, "Ops!! Você já tentou essa letra!", "AVISO", 1, null);

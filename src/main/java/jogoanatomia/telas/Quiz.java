@@ -167,7 +167,7 @@ public class Quiz extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("BodyGame - Quiz");
-        setBounds(new java.awt.Rectangle(300, 0, 580, 720));
+        setBounds(new java.awt.Rectangle(150, 0, 580, 720));
         setMinimumSize(new java.awt.Dimension(1131, 579));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -317,7 +317,7 @@ public class Quiz extends javax.swing.JFrame {
                 .addComponent(jRBresposta3)
                 .addGap(56, 56, 56)
                 .addComponent(jRBresposta4)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 550, 340));
