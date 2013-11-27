@@ -63,7 +63,7 @@ public class CarregaObj extends Applet {
         try {
             ObjectFile f = new ObjectFile();
             f.setFlags(ObjectFile.RESIZE | Loader.LOAD_ALL);
-            s = f.load(this.getClass().getResource("/malhas/"+file+".obj").getPath()); 
+            s = f.load(this.getClass().getResource("/malhas/"+file).getPath()); 
             tg.addChild(s.getSceneGroup());
         } catch (java.io.FileNotFoundException ex) {
             System.err.println(ex.toString());

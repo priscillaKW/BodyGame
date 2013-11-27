@@ -460,7 +460,7 @@ public class CacaPalavras extends javax.swing.JFrame {
                 int i = 0;
                 while (i < a.length && i < fase.getWords().size()) {
                     JLabel teste = (JLabel) a[i];
-                    teste.setText(fase.getWords().get(i).getAnswer());
+                    teste.setText(fase.getWords().get(i).getTip());
                     i++;
                 }
                 preencheTable();
