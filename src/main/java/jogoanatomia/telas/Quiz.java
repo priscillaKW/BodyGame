@@ -29,7 +29,6 @@ public class Quiz extends javax.swing.JFrame {
     
     Timer timer;  
     
-    int current = 120;  
 
     
     public Quiz(Organ orgao) {
@@ -37,9 +36,6 @@ public class Quiz extends javax.swing.JFrame {
         fase = quizActor.nextStage();
         this.orgao = orgao;
         initComponents();
-        setCurrent(120);
-        jLtempo.setText(getCurrent() + "");
-        goTimer();
         carregaObj = new CarregaObj();
         String file = orgao.getImageFileName();
         carregaObj.setFile(file);
@@ -101,29 +97,7 @@ public class Quiz extends javax.swing.JFrame {
         this.dispose();
         escolheJogo.setVisible(true);
     }
-    
-    public int getCurrent() {
-        return current;
-    }
-
-    public void setCurrent(int current) {
-        this.current = current;
-    }
-    
-    public void goTimer() {  
-        ActionListener action = new ActionListener() {  
-            public void actionPerformed(ActionEvent e) {  
-                jLtempo.setText(--current + "");
-                if(current==0){
-                    JOptionPane.showMessageDialog(rootPane, "Ops!! Você perdeu!", "AVISO", 1, null);    
-                    disposeAndBackToGameSelection();
-                }
-            }  
-        };  
-        this.timer = new Timer(1000, action);  
-        this.timer.start();  
-    }
-    
+       
     public String getResposta(){
         if(jRBresposta1.isSelected()) {
             return "a";
@@ -151,8 +125,6 @@ public class Quiz extends javax.swing.JFrame {
         jLPergunta = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLquestao = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLtempo = new javax.swing.JLabel();
         jBresponder = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jRBresposta1 = new javax.swing.JRadioButton();
@@ -189,13 +161,6 @@ public class Quiz extends javax.swing.JFrame {
         jLquestao.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLquestao.setText("-");
 
-        jLabel9.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
-        jLabel9.setText("Tempo:");
-
-        jLtempo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLtempo.setForeground(new java.awt.Color(153, 0, 0));
-        jLtempo.setText("-");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -208,23 +173,16 @@ public class Quiz extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLquestao, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
-                        .addComponent(jLabel9)
-                        .addGap(39, 39, 39)
-                        .addComponent(jLtempo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 432, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
-                        .addComponent(jLquestao))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel9)
-                        .addComponent(jLtempo)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLquestao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLPergunta)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -375,9 +333,6 @@ public class Quiz extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Parabéns! Você completou o jogo!!", "AVISO", 1, null);
                 disposeAndBackToGameSelection();
             }
-            setCurrent(120);
-            jLtempo.setText(getCurrent() + "");
-            goTimer();
             reinicializaCampos();
         } else {
                 JOptionPane.showMessageDialog(rootPane, "Ops!! Você perdeu!", "AVISO", 1, null);
@@ -436,10 +391,8 @@ public class Quiz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLpontuacaoTotal;
     private javax.swing.JLabel jLquestao;
-    private javax.swing.JLabel jLtempo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelOrgao;
