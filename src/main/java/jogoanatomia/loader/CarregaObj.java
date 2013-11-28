@@ -164,7 +164,6 @@ public class CarregaObj extends Applet {
 	c = new Canvas3D(gcn);
         // construcao do universo        
         
-        System.out.println(file); 
         myLocale.addBranchGraph(this.createSceneGraph());
         myLocale.addBranchGraph(this.branchGroupLeft(c));
         BranchGroup brbg = new BranchGroup();
