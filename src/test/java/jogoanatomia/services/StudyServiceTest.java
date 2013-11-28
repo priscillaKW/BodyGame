@@ -11,8 +11,8 @@ import java.util.List;
 public class StudyServiceTest {
     private StudyService service = new StudyServiceImpl();
 
-    private final String ORRGAN_ID = "5241a3234afaca7a9a000002";
-    private final String STUDY_ID  = "5241a3234afaca7a9a000001";
+    private final String ORRGAN_ID = "52969125476147c7500000f2";
+    private final String STUDY_ID  = "52969125476147c7500000f1";
 
     @Test
     public void listByOrganId() {

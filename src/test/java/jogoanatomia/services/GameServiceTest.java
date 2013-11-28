@@ -14,7 +14,7 @@ import java.util.List;
 public class GameServiceTest {
     private GameService service = new GameServiceImpl();
 
-    private final String ORRGAN_ID = "52753c921f6c390956000002";
+    private final String ORRGAN_ID = "52969125476147c7500000f2";
 
     @Test
     public void listGamesByOrganIdTest() {

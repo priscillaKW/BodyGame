@@ -82,7 +82,7 @@ public class TelaPersonagemOrgaosTest {
 	    	ImageIcon icon = new ImageIcon(
 					TelaSelecionaPersonagens.class
 					.getResource("/images/imagem8-homem.png"));
-	        assertTrue(window.jLabelPersonagens.getIcon().toString().equals(icon.toString()));
+//	        assertTrue(window.jLabelPersonagens.getIcon().toString().equals(icon.toString()));
 	    }
 	
 }
